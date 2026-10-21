@@ -312,17 +312,53 @@ footer a:hover { color: #fff; }
 /* ---------- motion on entry (content stays visible without script) ---------- */
 .js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
 .js .reveal.in { opacity: 1; transform: none; }
-.js .hero h1 .line span { transform: translateY(105%); transition: transform 1.1s var(--ease); }
-.js .hero.ready h1 .line span { transform: none; }
-.js .hero h1 .line:nth-child(2) span { transition-delay: .12s; }
-.js .hero .lede, .js .hero .cta, .js .hero-facts, .js .phone-wrap { opacity: 0; transform: translateY(18px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
-.js .hero.ready .lede { opacity: 1; transform: none; transition-delay: .35s; }
-.js .hero.ready .cta { opacity: 1; transform: none; transition-delay: .5s; }
-.js .hero.ready .hero-facts { opacity: 1; transform: none; transition-delay: .65s; }
-.js .hero.ready .phone-wrap { opacity: 1; transform: none; transition-delay: .2s; }
 .float-card { animation: bob 6s ease-in-out infinite; }
 .fc-2 { animation-delay: -3s; }
 @keyframes bob { 50% { transform: translateY(-10px); } }
+
+/* ---------- the 3D story ---------- */
+#stage3d { position: fixed; inset: 0; z-index: 0; display: none; transition: opacity .6s var(--ease); }
+#stage3d canvas { width: 100%; height: 100%; display: block; }
+#stage3d.gone { opacity: 0; }
+.has3d #stage3d { display: block; }
+.story { position: relative; z-index: 1; }
+.chapter { min-height: 100vh; display: flex; align-items: center; padding: 110px var(--gutter) 70px; }
+.chapter .box { width: min(500px, 100%); }
+@media (min-width: 1240px) { .chapter { padding-inline: calc((100vw - 1240px) / 2 + var(--gutter)); } }
+.chapter .who { display: inline-block; font-size: 15px; font-weight: 600; color: var(--c, var(--brass-soft)); margin-bottom: 14px; padding: 4px 14px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--c, #C9A866) 55%, transparent); background: rgba(4, 23, 22, .55); }
+.chapter h2 { font-family: var(--display); font-weight: 700; color: #fff; font-size: clamp(30px, 3.4vw, 50px); line-height: 1.35; margin: 0 0 14px; text-wrap: balance; }
+.chapter p { color: var(--muted-dark); margin: 0; font-size: 18px; }
+.hero-ch h1 { font-family: var(--display); font-weight: 700; color: #fff; font-size: clamp(38px, 5vw, 70px); line-height: 1.28; margin: 0 0 24px; text-wrap: balance; }
+.hero-ch h1 .line { display: block; overflow: hidden; padding-bottom: .06em; }
+.hero-ch h1 .line span { display: inline-block; }
+.hero-ch .lede { font-size: clamp(18px, 1.6vw, 21px); color: var(--muted-dark); max-width: 30em; margin: 0 0 30px; }
+.hero-ch .hero-facts { margin-top: 38px; }
+.cue { margin-top: 34px !important; font-size: 14.5px !important; color: var(--muted-dark); display: flex; align-items: center; gap: 12px; }
+.cue span { width: 22px; height: 36px; border-radius: 12px; border: 1.5px solid rgba(255,255,255,.35); position: relative; flex: none; }
+.cue span::after { content: ""; position: absolute; left: 50%; top: 7px; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: var(--brass); animation: cue 1.8s var(--ease) infinite; }
+@keyframes cue { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(12px); opacity: 0; } 100% { opacity: 0; } }
+.has3d .chapter .box { opacity: .12; transform: translateY(28px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.has3d .chapter.on .box { opacity: 1; transform: none; }
+.fallback { display: none; }
+.no3d .chapter { flex-direction: column; align-items: stretch; gap: 28px; min-height: 0; padding-block: 70px; border-bottom: 1px solid var(--line-dark); }
+.no3d .hero-ch { padding-top: 130px; }
+.no3d .fallback { display: block; }
+.no3d .fallback .phone { width: min(280px, 78vw); margin: 0 auto; }
+.after3d { position: relative; z-index: 2; background: var(--night); box-shadow: 0 -40px 80px 20px var(--night); }
+@media (min-width: 981px) { .no3d .chapter { flex-direction: row; align-items: center; justify-content: space-between; } .no3d .fallback { flex: 0 0 320px; } }
+@media (max-width: 900px) {
+  .chapter { align-items: flex-end; padding: 0 0 28px; min-height: 100vh; }
+  .has3d .chapter .box { width: 100%; padding: 90px var(--gutter) 6px; background: linear-gradient(180deg, rgba(4,23,22,0), rgba(4,23,22,.86) 34%, rgba(4,23,22,.96)); }
+  .has3d .hero-ch { align-items: flex-end; }
+  .has3d .hero-ch .box { padding-top: 120px; }
+  .hero-ch h1 { font-size: clamp(32px, 9vw, 44px); }
+  .has3d .hero-ch .lede { display: none; }
+  .has3d .hero-ch h1 { margin-bottom: 18px; }
+  .chapter p { font-size: 16.5px; }
+  .hero-ch .hero-facts { margin-top: 24px; }
+  .cue { margin-top: 18px !important; }
+  .no3d .chapter { padding-inline: var(--gutter); }
+}
 
 /* ---------- small screens ---------- */
 @media (max-width: 980px) {
@@ -352,8 +388,7 @@ footer a:hover { color: #fff; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .js .reveal, .js .hero .lede, .js .hero .cta, .js .hero-facts, .js .phone-wrap { opacity: 1; transform: none; }
-  .js .hero h1 .line span { transform: none; }
+  .js .reveal { opacity: 1; transform: none; }
 }
 </style>
 </head>
@@ -374,10 +409,10 @@ footer a:hover { color: #fff; }
 </header>
 
 <main id="top">
-  <!-- ================= hero ================= -->
-  <section class="hero" id="hero">
-    <div class="wrap hero-grid">
-      <div>
+  <div id="stage3d" aria-hidden="true"><canvas id="gl"></canvas></div>
+  <section class="story" id="story">
+    <div class="chapter hero-ch on" id="hero">
+      <div class="box">
         <h1><span class="line"><span>من الحجز إلى آخر</span></span><span class="line"><span>جرعة دواء، في تطبيق واحد</span></span></h1>
         <p class="lede">VITA يربط المراجع بطبيبه ومختبره ومركز الأشعة والسونار والصيدلية في البصرة. الطلب يصل قبل المراجع، والنتيجة تصل إلى هاتفه، والدواء يذكّره بنفسه.</p>
         <div class="cta">
@@ -389,35 +424,72 @@ footer a:hover { color: #fff; }
           <div><strong class="num" data-count="18">18</strong><span>اختصاصاً</span></div>
           <div><strong class="num" data-count="213">213</strong><span>تحليلاً بأسمائها العربية</span></div>
         </div>
+      
+        <p class="cue"><span></span>مرّر لترى رحلة المراجع</p>
       </div>
-      <div class="phone-wrap" id="tilt">
-        <div class="phone" id="heroPhone"><div class="screen"><img src="assets/screen-1-home.jpg" alt="الصفحة الرئيسية لتطبيق VITA" fetchpriority="high"></div></div>
-        <div class="float-card fc-1"><div class="dot" style="background:var(--lab)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div><b>نتائج تحاليلك جاهزة</b><span>مختبر الشفاء، الآن</span></div></div>
-        <div class="float-card fc-2"><div class="dot" style="background:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="9" width="18" height="6" rx="3"/><path d="M12 9v6"/></svg></div><div><b>حان وقت جرعتك</b><span>حبة الضغط، بعد الفطور</span></div></div>
-      </div>
+      <div class="fallback" data-fallback="hero"></div>
     </div>
-    <div class="monitor" aria-hidden="true"><canvas id="ecg"></canvas><div class="bpm"><i></i><span class="num">72</span></div></div>
+    <div class="chapter" style="--c:var(--patient)">
+      <div class="box">
+        <span class="who">المحطة 1 من 7: المراجع</span>
+        <h2>يحجز من هاتفه</h2>
+        <p>يبحث عن الطبيب بالاسم أو الاختصاص، يختار اليوم، فيأخذ رقمه في الطابور ووقتاً تقديرياً. وإن كان الطبيب يقدم خصم VITA يرى السعر بعد الخصم.</p>
+      </div>
+      <div class="fallback" data-fallback="0"></div>
+    </div>
+    <div class="chapter" style="--c:var(--desk)">
+      <div class="box">
+        <span class="who">المحطة 2 من 7: السكرتير</span>
+        <h2>يستقبله بلا دفتر</h2>
+        <p>يثبّت الحجز، يسجل الضغط والسكر والوزن قبل الدخول، ويسجل الدفع نقداً أو بطاقة أو على شركة الضمان. والرقم الحالي على تلفزيون صالة الانتظار.</p>
+      </div>
+      <div class="fallback" data-fallback="1"></div>
+    </div>
+    <div class="chapter" style="--c:var(--doctor)">
+      <div class="box">
+        <span class="who">المحطة 3 من 7: الطبيب</span>
+        <h2>يرى المريض كاملاً قبل أن يتكلم</h2>
+        <p>آخر تشخيص وعلاج ونتائج، واتجاه العلامات الحيوية. يكتب الوصفة من قالب جاهز، وينبهه البرنامج إن وصف دواءً يتحسس منه المريض، ويرسل طلب التحليل بضغطة.</p>
+      </div>
+      <div class="fallback" data-fallback="2"></div>
+    </div>
+    <div class="chapter" style="--c:var(--lab)">
+      <div class="box">
+        <span class="who">المحطة 4 من 7: المختبر</span>
+        <h2>الطلب وصل قبله</h2>
+        <p>المختبر يجد الطلب جاهزاً، يسجل المدفوع، ويطبع وصلاً حرارياً عليه الأسعار والمجموع ووقت تسليم النتائج، ورمز QR يفتح النتائج.</p>
+      </div>
+      <div class="fallback" data-fallback="3"></div>
+    </div>
+    <div class="chapter" style="--c:var(--lab)">
+      <div class="box">
+        <span class="who">المحطة 5 من 7: النتيجة</span>
+        <h2>تُفتح لحظة التسديد</h2>
+        <p>النتيجة تصل إلى الطبيب والمراجع في التطبيق، ومن لا يملك التطبيق يفتحها بالرمز. وما دام هناك مبلغ متبقٍ تبقى مقفلة على الجميع، حتى الطبيب.</p>
+      </div>
+      <div class="fallback" data-fallback="4"></div>
+    </div>
+    <div class="chapter" style="--c:var(--pharmacy)">
+      <div class="box">
+        <span class="who">المحطة 6 من 7: الصيدلية</span>
+        <h2>صرف بضغطة، وجدول علاج بلا جهد</h2>
+        <p>الوصفة عند الصيدلاني بخط واضح. يضغط «صرف»، فيتحول كل دواء إلى علاج في هاتف المراجع بجرعاته ومدته.</p>
+      </div>
+      <div class="fallback" data-fallback="5"></div>
+    </div>
+    <div class="chapter" style="--c:var(--patient)">
+      <div class="box">
+        <span class="who">المحطة 7 من 7: المراجع</span>
+        <h2>والهاتف يتذكر عنه</h2>
+        <p>إشعار في وقت كل جرعة حتى والتطبيق مغلق، وتنبيه قبل نفاد الدواء، وتذكير بموعد المراجعة القادمة الذي حدده الطبيب.</p>
+      </div>
+      <div class="fallback" data-fallback="6"></div>
+    </div>
   </section>
 
-  <!-- ================= journey ================= -->
-  <section class="journey" id="journey">
-    <div class="wrap">
-      <h2 class="sec-title reveal">مراجع واحد، سبع محطات، ملف واحد</h2>
-      <p class="sec-lede reveal">تابع رحلة مراجع من لحظة الحجز إلى آخر جرعة دواء، وكيف تسلّمه كل واجهة إلى التي بعدها.</p>
-      <div class="journey-grid">
-        <ol class="steps" id="steps">
-          <li class="step" style="--c:var(--patient)" data-label="المراجع">
-            <span class="who">المراجع</span>
-            <h3>يحجز من هاتفه</h3>
-            <p>يبحث عن الطبيب بالاسم أو الاختصاص، يختار اليوم، فيأخذ رقمه في الطابور ووقتاً تقديرياً. وإن كان الطبيب يقدم خصم VITA يرى السعر بعد الخصم.</p>
-            <div class="mock-holder"><template><img src="assets/screen-3-booking.jpg" alt="شاشة الحجز"></template></div>
-          </li>
-          <li class="step" style="--c:var(--desk)" data-label="السكرتير">
-            <span class="who">السكرتير</span>
-            <h3>يستقبله بلا دفتر</h3>
-            <p>يثبّت الحجز، يسجل الضغط والسكر والوزن قبل الدخول، ويسجل الدفع: نقداً أو بطاقة أو على شركة الضمان. الرقم الحالي يظهر على تلفزيون صالة الانتظار.</p>
-            <div class="mock-holder"><template>
-              <div class="m">
+  <div id="mock-templates" hidden>
+    <template data-mock="0"><img src="assets/screen-3-booking.jpg" alt="شاشة الحجز"></template>
+    <template data-mock="1"><div class="m">
                 <div class="mh">طابور اليوم</div>
                 <div class="tv"><small>الرقم الحالي</small><strong class="num">12</strong></div>
                 <div class="card">
@@ -427,15 +499,8 @@ footer a:hover { color: #fff; }
                   <div class="row"><span class="q num">15</span><div class="grow"><b>مريم عباس</b><span>حضور مباشر</span></div><span class="chip wait">بانتظار</span></div>
                 </div>
                 <div class="btn-mini">تسجيل الدفع</div>
-              </div>
-            </template></div>
-          </li>
-          <li class="step" style="--c:var(--doctor)" data-label="الطبيب">
-            <span class="who">الطبيب</span>
-            <h3>يرى المريض كاملاً قبل أن يتكلم</h3>
-            <p>آخر تشخيص، آخر علاج، آخر النتائج، واتجاه العلامات الحيوية. يكتب الوصفة من قالب جاهز، ويتنبه للحساسية والتداخلات، ويرسل طلب التحليل إلى المختبر بضغطة.</p>
-            <div class="mock-holder"><template>
-              <div class="m">
+              </div></template>
+    <template data-mock="2"><div class="m">
                 <div class="mh">زينب كاظم، 54 سنة</div>
                 <p class="sub">آخر تشخيص: ارتفاع ضغط الدم</p>
                 <div class="vit"><div><b class="num">130/85</b><span>الضغط</span></div><div><b class="num">112</b><span>السكر</span></div><div><b class="num">78</b><span>الوزن</span></div></div>
@@ -446,15 +511,8 @@ footer a:hover { color: #fff; }
                   <div class="rx"><b>Lipid Profile, HbA1c</b><span>طلب تحاليل إلى المختبر</span></div>
                 </div>
                 <div class="btn-mini">إرسال الوصفة والطلب</div>
-              </div>
-            </template></div>
-          </li>
-          <li class="step" style="--c:var(--lab)" data-label="المختبر">
-            <span class="who">المختبر</span>
-            <h3>الطلب وصل قبله</h3>
-            <p>المختبر يجد الطلب جاهزاً، يسجل المدفوع، ويطبع وصلاً حرارياً عليه الأسعار والمجموع ووقت تسليم النتائج، ورمز QR يفتح النتائج.</p>
-            <div class="mock-holder"><template>
-              <div class="m" style="background:#E9E4D8">
+              </div></template>
+    <template data-mock="3"><div class="m" style="background:#E9E4D8">
                 <div class="receipt">
                   <div class="rh"><b>مختبر الشفاء</b><span class="num">وصل L-5379828</span></div>
                   <div class="li"><span>Lipid Profile</span><span class="num">20,000</span></div>
@@ -464,15 +522,8 @@ footer a:hover { color: #fff; }
                   <div class="li"><span>المتبقي</span><span class="num">15,000</span></div>
                   <div class="qr-row"><div class="qr" data-qr></div><div><b style="font-size:12px">النتائج جاهزة</b><br><span class="num">الساعة 4:30 م</span><br><span style="color:#5C6D69">امسح الرمز لفتحها</span></div></div>
                 </div>
-              </div>
-            </template></div>
-          </li>
-          <li class="step" style="--c:var(--lab)" data-label="النتيجة" data-unlock>
-            <span class="who">النتيجة</span>
-            <h3>تُفتح لحظة التسديد</h3>
-            <p>النتيجة تصل إلى الطبيب والمراجع في التطبيق، ومن لا يملك التطبيق يفتحها بالرمز. وما دام هناك مبلغ متبقٍ تبقى مقفلة على الجميع، حتى الطبيب.</p>
-            <div class="mock-holder"><template>
-              <div class="m">
+              </div></template>
+    <template data-mock="4"><div class="m">
                 <div class="mh">نتائج التحاليل</div>
                 <p class="sub">مختبر الشفاء، اليوم</p>
                 <div class="card results locked">
@@ -483,15 +534,8 @@ footer a:hover { color: #fff; }
                   <div class="lock-note"><div><b>مقفلة حتى التسديد</b><span class="num">المتبقي 15,000 د.ع</span></div></div>
                 </div>
                 <span class="chip ok" style="align-self:flex-start" data-paid hidden>سُدد المبلغ، فُتحت النتائج</span>
-              </div>
-            </template></div>
-          </li>
-          <li class="step" style="--c:var(--pharmacy)" data-label="الصيدلية">
-            <span class="who">الصيدلية</span>
-            <h3>صرف بضغطة، وجدول علاج بلا جهد</h3>
-            <p>الوصفة عند الصيدلاني بخط واضح. يضغط «صرف»، فيتحول كل دواء إلى علاج في هاتف المراجع بجرعاته ومدته.</p>
-            <div class="mock-holder"><template>
-              <div class="m">
+              </div></template>
+    <template data-mock="5"><div class="m">
                 <div class="mh">وصفة من د. حيدر داخل</div>
                 <p class="sub">زينب كاظم</p>
                 <div class="card">
@@ -500,37 +544,17 @@ footer a:hover { color: #fff; }
                 </div>
                 <div class="card row"><span class="chip ok">صُرفت</span><span style="font-size:11.5px;color:#5C6D69">أُضيفت إلى «علاجاتي» عند المراجع</span></div>
                 <div class="card row"><span style="font-size:11.5px">إعادة صرف قريبة: بعد <b class="num">28</b> يوماً</span></div>
-              </div>
-            </template></div>
-          </li>
-          <li class="step" style="--c:var(--patient)" data-label="التذكير">
-            <span class="who">المراجع</span>
-            <h3>والهاتف يتذكر عنه</h3>
-            <p>إشعار في وقت كل جرعة حتى والتطبيق مغلق، وتنبيه قبل نفاد الدواء، وتذكير بموعد المراجعة القادمة الذي حدده الطبيب.</p>
-            <div class="mock-holder"><template>
-              <div class="lockscreen">
+              </div></template>
+    <template data-mock="6"><div class="lockscreen">
                 <div class="time num">8:00</div>
                 <div class="date">السبت</div>
                 <div class="notif"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="9" width="18" height="6" rx="3"/><path d="M12 9v6"/></svg></div><div><b>حان وقت جرعتك</b><span>حبة الضغط، حبة واحدة بعد الفطور</span></div><small>الآن</small></div>
                 <div class="notif"><div class="ic" style="background:#C98B2E"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></div><div><b>دواؤك ينفد بعد 3 أيام</b><span>Atorvastatin 20 mg</span></div><small>أمس</small></div>
                 <div class="notif"><div class="ic" style="background:#4A7BD0"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><div><b>موعد مراجعتك بعد أسبوع</b><span>د. حيدر داخل</span></div><small>الإثنين</small></div>
-              </div>
-            </template></div>
-          </li>
-        </ol>
-        <div class="stage" aria-hidden="true">
-          <svg class="trace" viewBox="0 0 600 120" preserveAspectRatio="none">
-            <defs><linearGradient id="traceGrad" x1="1" x2="0" y1="0" y2="0"><stop offset="0" stop-color="#2FD1BE"/><stop offset="1" stop-color="#C9A866"/></linearGradient></defs>
-            <path class="base" id="traceBase" d="M600 70 H520 L508 52 L492 100 L470 14 L452 86 L440 70 H380 L368 52 L352 100 L330 14 L312 86 L300 70 H240 L228 52 L212 100 L190 14 L172 86 L160 70 H100 L88 52 L72 100 L50 14 L32 86 L20 70 H0"/>
-            <path class="live" id="traceLive" d="M600 70 H520 L508 52 L492 100 L470 14 L452 86 L440 70 H380 L368 52 L352 100 L330 14 L312 86 L300 70 H240 L228 52 L212 100 L190 14 L172 86 L160 70 H100 L88 52 L72 100 L50 14 L32 86 L20 70 H0"/>
-          </svg>
-          <div class="phone"><div class="screen" id="stageScreen"><img src="assets/screen-3-booking.jpg" alt=""></div></div>
-          <div class="stage-label" id="stageLabel">المحطة <b class="num">1</b> من <span class="num">7</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+              </div></template>
+  </div>
 
+  <div class="after3d">
   <!-- ================= roles ================= -->
   <section class="sec light" id="roles">
     <div class="wrap">
@@ -711,6 +735,7 @@ footer a:hover { color: #fff; }
     </div>
     <svg class="get-pulse" viewBox="0 0 1400 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 110 H560 L590 76 L628 150 L680 20 L724 128 L748 110 H1400"/></svg>
   </section>
+  </div>
 </main>
 
 <footer>
@@ -736,11 +761,10 @@ footer a:hover { color: #fff; }
   const onScroll = () => bar.classList.toggle('scrolled', scrollY > 30);
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
-  /* hero entrance, then the counters */
-  requestAnimationFrame(() => requestAnimationFrame(() => $('#hero').classList.add('ready')));
+  /* the counters in the opening chapter */
   if (!reduce) {
     $$('[data-count]').forEach(el => {
-      const end = +el.dataset.count, t0 = performance.now() + 700, dur = 1600;
+      const end = +el.dataset.count, t0 = performance.now() + 500, dur = 1600;
       const fmt = n => n.toLocaleString('en-US');
       el.textContent = fmt(0);
       const tick = now => {
@@ -750,62 +774,6 @@ footer a:hover { color: #fff; }
       };
       requestAnimationFrame(tick);
     });
-  }
-
-  /* the phone leans toward the pointer */
-  const tiltBox = $('#tilt'), heroPhone = $('#heroPhone');
-  if (!reduce && matchMedia('(pointer: fine)').matches) {
-    tiltBox.addEventListener('pointermove', e => {
-      const r = tiltBox.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-      heroPhone.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 10}deg) translateZ(0)`;
-    });
-    tiltBox.addEventListener('pointerleave', () => { heroPhone.style.transform = ''; });
-  }
-
-  /* an ECG monitor sweeping across the hero, 72 beats a minute */
-  const cv = $('#ecg'), ctx = cv.getContext('2d');
-  let W = 0, H = 0, dpr = 1;
-  const size = () => {
-    dpr = Math.min(devicePixelRatio || 1, 2);
-    W = cv.clientWidth; H = cv.clientHeight;
-    cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  };
-  const g = (t, mu, s, a) => a * Math.exp(-((t - mu) ** 2) / (2 * s * s));
-  const wave = ph => g(ph, .18, .025, .12) - g(ph, .36, .009, .14) + g(ph, .40, .012, 1) - g(ph, .44, .01, .26) + g(ph, .68, .045, .28);
-  const yAt = ph => H * .62 - wave(ph) * H * .5;
-  const period = 60 / 72, speed = 150; // pixels a second
-  const drawStatic = () => {
-    ctx.clearRect(0, 0, W, H);
-    ctx.lineWidth = 2; ctx.strokeStyle = '#2FD1BE'; ctx.beginPath();
-    for (let x = 0; x <= W; x += 2) { const ph = ((x / speed) % period) / period; x ? ctx.lineTo(x, yAt(ph)) : ctx.moveTo(x, yAt(ph)); }
-    ctx.stroke();
-  };
-  size();
-  addEventListener('resize', () => { size(); if (reduce) drawStatic(); });
-  if (reduce) drawStatic();
-  else {
-    let last = null, x = 0, tSum = 0, prevY = null, visible = true;
-    new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(cv);
-    const frame = now => {
-      requestAnimationFrame(frame);
-      if (!visible) { last = now; return; }
-      if (last === null) { last = now; return; }
-      const dt = Math.min(.05, (now - last) / 1000); last = now;
-      const steps = Math.max(1, Math.round(dt * speed / 2));
-      for (let i = 0; i < steps; i++) {
-        const sdt = dt / steps; tSum += sdt;
-        const nx = x + speed * sdt, ph = (tSum % period) / period, ny = yAt(ph);
-        ctx.clearRect(nx, 0, 26, H); // the gap ahead of the sweep, as on a bedside monitor
-        if (prevY !== null && nx > x) {
-          ctx.strokeStyle = '#2FD1BE'; ctx.lineWidth = 2.2; ctx.shadowColor = 'rgba(47,209,190,.8)'; ctx.shadowBlur = 10;
-          ctx.beginPath(); ctx.moveTo(x, prevY); ctx.lineTo(nx, ny); ctx.stroke(); ctx.shadowBlur = 0;
-        }
-        x = nx; prevY = ny;
-        if (x > W) { x = 0; prevY = null; }
-      }
-    };
-    requestAnimationFrame(frame);
   }
 
   /* a QR-like pattern for the receipts (decorative) */
@@ -821,64 +789,21 @@ footer a:hover { color: #fff; }
     }
   };
 
-  /* the journey: the step in view drives the phone and the trace */
-  const steps = $$('#steps .step');
-  const stageScreen = $('#stageScreen'), label = $('#stageLabel'), live = $('#traceLive');
-  const mockHTML = steps.map(s => $('template', s.querySelector('.mock-holder')).innerHTML);
-  // phones inside each step for small screens
-  steps.forEach((s, i) => {
-    const holder = $('.mock-holder', s);
-    holder.innerHTML = `<div class="phone"><div class="screen">${mockHTML[i]}</div></div>`;
+  /* the screens: in the role panels, and in the flat story when 3D is off */
+  const mock = $$('#mock-templates template').map(t => t.innerHTML);
+  const phoneOf = inner => `<div class="phone"><div class="screen">${inner}</div></div>`;
+  $$('[data-mock]').forEach(el => { if (el.tagName !== 'TEMPLATE') el.innerHTML = mock[+el.dataset.mock]; });
+  $$('[data-fallback]').forEach(el => {
+    const k = el.dataset.fallback;
+    el.innerHTML = phoneOf(k === 'hero' ? '<img src="assets/screen-1-home.jpg" alt="الصفحة الرئيسية لتطبيق VITA">' : mock[+k]);
   });
-  // phones inside the role panels reuse the same screens
-  $$('[data-mock]').forEach(el => { el.innerHTML = mockHTML[+el.dataset.mock]; });
   $$('[data-qr]').forEach(fillQR);
-
-  const len = live.getTotalLength();
-  live.style.strokeDasharray = len; live.style.strokeDashoffset = len;
-  let current = -1, unlockTimer = null;
-  const show = i => {
-    if (i === current) return;
-    current = i;
-    steps.forEach((s, k) => s.classList.toggle('on', k === i));
-    const old = [...stageScreen.children];
-    const wrap = document.createElement('div');
-    wrap.innerHTML = mockHTML[i]; wrap.style.opacity = 0;
-    stageScreen.appendChild(wrap);
-    $$('[data-qr]', wrap).forEach(fillQR);
-    requestAnimationFrame(() => { wrap.style.opacity = 1; old.forEach(o => { o.classList.add('leaving'); setTimeout(() => o.remove(), 600); }); });
-    label.innerHTML = `المحطة <b class="num">${i + 1}</b> من <span class="num">${steps.length}</span>: ${steps[i].dataset.label}`;
-    label.style.setProperty('--c', getComputedStyle(steps[i]).getPropertyValue('--c'));
-    clearTimeout(unlockTimer);
-    if (steps[i].hasAttribute('data-unlock')) {
-      unlockTimer = setTimeout(() => {
-        const res = $('.results', wrap), note = $('[data-paid]', wrap);
-        if (res) res.classList.remove('locked');
-        if (note) note.hidden = false;
-      }, reduce ? 0 : 1500);
-    }
-  };
-  const journey = $('#journey');
-  const progress = () => {
-    const r = $('#steps').getBoundingClientRect();
-    const p = Math.min(1, Math.max(0, (innerHeight * .5 - r.top) / r.height));
-    live.style.strokeDashoffset = len * (1 - p);
-    // the step crossing the middle of the screen is the one shown
-    const mid = innerHeight * .5;
-    let i = 0;
-    steps.forEach((s, k) => { if (s.getBoundingClientRect().top < mid) i = k; });
-    if (matchMedia('(min-width: 981px)').matches) show(i);
-  };
-  addEventListener('scroll', progress, { passive: true });
-  addEventListener('resize', progress);
-  progress();
-  if (current < 0 && matchMedia('(min-width: 981px)').matches) show(0);
-  // on small screens, unlock the results card when it comes into view
-  new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting && e.target.hasAttribute('data-unlock') && !matchMedia('(min-width: 981px)').matches) {
-      setTimeout(() => { const res = $('.results', e.target); if (res) res.classList.remove('locked'); const n = $('[data-paid]', e.target); if (n) n.hidden = false; }, reduce ? 0 : 1200);
-    }
-  }), { threshold: .6 }).observe(steps.find(s => s.hasAttribute('data-unlock')));
+  // the results screen opens a moment after it is shown
+  $$('[data-fallback] .results').forEach(res => {
+    new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) setTimeout(() => { res.classList.remove('locked'); const n = res.parentElement.querySelector('[data-paid]'); if (n) n.hidden = false; }, reduce ? 0 : 1200);
+    }), { threshold: .6 }).observe(res);
+  });
 
   /* role tabs */
   const tabs = $$('[role="tab"]');
@@ -915,5 +840,12 @@ footer a:hover { color: #fff; }
   $$('.reveal').forEach(el => io.observe(el));
 })();
 </script>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module" src="assets/story3d.js"></script>
 </body>
 </html>
