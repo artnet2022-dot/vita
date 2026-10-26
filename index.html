@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>VITA — طبيبك ومختبرك وصيدليتك في تطبيق واحد</title>
-<meta name="description" content="VITA يربط المراجع بطبيبه ومختبره ومركز الأشعة والسونار والصيدلية في البصرة: حجز، طابور، وصفات إلكترونية، نتائج برمز QR، وتذكير بكل جرعة دواء.">
+<meta name="description" content="VITA يربط المراجع بطبيبه ومختبره ومركز الأشعة والسونار والصيدلية في كل محافظات العراق: حجز، طابور، وصفات إلكترونية، نتائج برمز QR، وتذكير بكل جرعة دواء.">
 <meta name="theme-color" content="#051F1E">
 <meta property="og:title" content="VITA">
 <meta property="og:description" content="من الحجز إلى آخر جرعة دواء، في تطبيق واحد.">
@@ -286,6 +286,11 @@ a { color: inherit; }
 .prov div:nth-child(3n) { padding-left: 0; }
 .prov b { font: 700 19px/1.5 var(--display); display: block; margin-bottom: 6px; color: var(--ink); }
 .prov span { color: var(--muted-light); font-size: 15.5px; }
+/* the same list on the dark ground («جديد في VITA») */
+#new .prov { border-top-color: var(--line-dark); }
+#new .prov div { border-bottom-color: var(--line-dark); }
+#new .prov b { color: #fff; }
+#new .prov span { color: var(--muted-dark); }
 .join { margin-top: 56px; display: flex; flex-wrap: wrap; gap: 20px 40px; align-items: center; justify-content: space-between; background: var(--ink); color: var(--text-dark); border-radius: 28px; padding: 34px clamp(22px, 4vw, 48px); }
 .join h3 { margin: 0 0 6px; font: 700 26px/1.4 var(--display); color: #fff; }
 .join p { margin: 0; color: var(--muted-dark); max-width: 34em; }
@@ -379,14 +384,14 @@ footer a:hover { color: #fff; }
     <div class="wrap hero-grid">
       <div>
         <h1><span class="line"><span>من الحجز إلى آخر</span></span><span class="line"><span>جرعة دواء، في تطبيق واحد</span></span></h1>
-        <p class="lede">VITA يربط المراجع بطبيبه ومختبره ومركز الأشعة والسونار والصيدلية في البصرة. الطلب يصل قبل المراجع، والنتيجة تصل إلى هاتفه، والدواء يذكّره بنفسه.</p>
+        <p class="lede">VITA يربط المراجع بطبيبه ومختبره ومركز الأشعة والسونار والصيدلية، في كل محافظات العراق. الطلب يصل قبل المراجع، والنتيجة تصل إلى هاتفه، والدواء يذكّره بنفسه.</p>
         <div class="cta">
           <a class="btn btn-brass" href="#get"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>حمّل التطبيق</a>
           <a class="btn btn-ghost" href="#providers">أنا طبيب أو مختبر أو صيدلية</a>
         </div>
         <div class="hero-facts">
-          <div><strong class="num" data-count="1613">1,613</strong><span>طبيباً في الدليل</span></div>
-          <div><strong class="num" data-count="18">18</strong><span>اختصاصاً</span></div>
+          <div><strong class="num" data-count="7720">7,720</strong><span>طبيباً في الدليل</span></div>
+          <div><strong class="num" data-count="18">18</strong><span>محافظة عراقية</span></div>
           <div><strong class="num" data-count="213">213</strong><span>تحليلاً بأسمائها العربية</span></div>
         </div>
       </div>
@@ -551,12 +556,19 @@ footer a:hover { color: #fff; }
           <h3>المراجع وعائلته</h3>
           <p class="intro">تطبيق مجاني يجد فيه الطبيب ويحجز، يحجز التحليل والأشعة، ويحتفظ بسجل العائلة كلها.</p>
           <div class="feats">
-            <div class="feat"><b>دليل الأطباء</b><span>1,613 طبيباً في 18 اختصاصاً، بالبحث بالاسم أو الاختصاص أو العنوان.</span></div>
+            <div class="feat"><b>دليل الأطباء</b><span>أكثر من 7,700 طبيب في 18 محافظة، بالبحث بالاسم أو الاختصاص أو المحافظة.</span></div>
+            <div class="feat"><b>صفحة لكل طبيب</b><span>خبرته وتقييمه، الحالات التي يعالجها وشهاداته، وعيادته على الخريطة.</span></div>
+            <div class="feat"><b>أطبائي المفضلون</b><span>احفظ أطباءك بقلب، وشارك بطاقة الطبيب على واتساب برقمه وموقعه.</span></div>
             <div class="feat"><b>حجز ورقم في الطابور</b><span>يعرف دوره ووقته التقديري قبل أن يخرج من البيت.</span></div>
             <div class="feat"><b>عروض المختبرات</b><span>باقات بخصم VITA، والأكثر طلباً، والأكثر توفيراً، وكل تحليل باسمه العربي.</span></div>
             <div class="feat"><b>علاجاتي</b><span>كل دواء مصروف يصير جدول جرعات مع تذكير في وقته.</span></div>
             <div class="feat"><b>حساب للعائلة</b><span>الزوجة والأبناء والوالدان في حساب واحد، ولكل واحد سجله.</span></div>
+            <div class="feat"><b>لقاحات طفلي</b><span>جدول التحصين الوطني العراقي لكل طفل، وتذكير قبل كل موعد.</span></div>
+            <div class="feat"><b>دورتي الشهرية</b><span>موعد الدورة القادمة وأيام الخصوبة، بخصوصية تامة.</span></div>
+            <div class="feat"><b>احسب سعراتك</b><span>سعراتك اليومية وخطة تنحيف آمنة ونموذج يوم من الوجبات، بأرقام منظمة الصحة العالمية.</span></div>
             <div class="feat"><b>السجل الطبي</b><span>الزيارات والوصفات والتحاليل وتقارير الأشعة مع صورها.</span></div>
+            <div class="feat"><b>خصوصية في العائلة</b><span>الأب والأم يريان الجميع، وكل فرد يرى ملفه وحده، وله رمز حماية إن أراد.</span></div>
+            <div class="feat"><b>استشارة عن بعد</b><span>محادثة بالنص والصور والصوت مع طبيب يستقبل الاستشارات.</span></div>
           </div>
         </div>
         <div class="panel-art"><div class="phone"><div class="screen"><img src="assets/screen-4-labs.jpg" alt="المختبرات والعروض" loading="lazy"></div></div></div>
@@ -573,6 +585,8 @@ footer a:hover { color: #fff; }
             <div class="feat"><b>متابعة المرضى</b><span>موعد المراجعة القادمة يُذكَّر به المريض، وقائمة بمن تأخر من المزمنين.</span></div>
             <div class="feat"><b>مستندات جاهزة</b><span>تقرير طبي، إجازة مرضية، رسالة إحالة على ترويسة الطبيب.</span></div>
             <div class="feat"><b>حسابات العيادة</b><span>نقد وبطاقة وضمان يوماً بيوم، ويعمل الطابور حتى بلا إنترنت.</span></div>
+            <div class="feat"><b>صفحتك أمام المراجعين</b><span>سنوات خبرتك، الحالات التي تعالجها، شهاداتك وأماكن عملك، وموقع عيادتك.</span></div>
+            <div class="feat"><b>استشارات عن بعد</b><span>فعّلها إن شئت، بأجرك وطريقة الدفع التي تختارها.</span></div>
           </div>
         </div>
         <div class="panel-art"><div class="phone"><div class="screen" data-mock="2"></div></div></div>
@@ -644,6 +658,22 @@ footer a:hover { color: #fff; }
     </div>
   </section>
 
+  <!-- ================= new ================= -->
+  <section class="sec" id="new">
+    <div class="wrap">
+      <h2 class="sec-title reveal">جديد في VITA</h2>
+      <p class="sec-lede reveal">ما أضفناه حديثاً للمراجع وعائلته.</p>
+      <div class="prov">
+        <div class="reveal"><b>احسب سعراتك</b><span>كم سعرة يحتاج جسمك، وخطة تنحيف آمنة، والبروتين والكربوهيدرات والألياف، ونموذج يوم كامل من الوجبات.</span></div>
+        <div class="reveal"><b>لقاحات طفلي</b><span>المواعيد من جدول التحصين الوطني العراقي محسوبة من تاريخ الميلاد، مع تذكير قبل الموعد بثلاثة أيام ويوم الموعد.</span></div>
+        <div class="reveal"><b>دورتي الشهرية</b><span>موعد الدورة القادمة وأيام الخصوبة والإباضة، وتذكير خاص بها وحدها لا يراه غيرها.</span></div>
+        <div class="reveal"><b>أطباء كل المحافظات</b><span>أكثر من 7,700 طبيب في 18 محافظة، ولكل طبيب مشترك صفحة بخبرته وعيادته على الخريطة.</span></div>
+        <div class="reveal"><b>استشارة عن بعد</b><span>اسأل طبيبك من البيت بمحادثة فيها الصور والرسائل الصوتية.</span></div>
+        <div class="reveal"><b>خصوصية العائلة</b><span>كل فرد في العائلة يرى ملفه وحده، ويضع رمز حماية لصفحته إن أراد.</span></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= lock demo ================= -->
   <section class="sec" id="lock">
     <div class="wrap lock-demo">
@@ -703,7 +733,7 @@ footer a:hover { color: #fff; }
       <h2 class="sec-title reveal">حمّل VITA</h2>
       <p class="sec-lede reveal">التطبيق مجاني للمراجعين.</p>
       <div class="stores">
-        <a class="store reveal" href="https://shifa-image-worker.shifa-health.workers.dev/download"><svg viewBox="0 0 24 24"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 0 0-.83.22l-1.88 3.24a11.43 11.43 0 0 0-8.94 0L5.65 5.67a.643.643 0 0 0-.87-.2c-.28.18-.37.54-.22.83L6.4 9.48A10.78 10.78 0 0 0 1 18h22a10.78 10.78 0 0 0-5.4-8.52M7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5m10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5"/></svg><div><b>أندرويد</b><span>تنزيل مباشر</span></div></a>
+        <a class="store reveal" href="https://vitaiq.app/download"><svg viewBox="0 0 24 24"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 0 0-.83.22l-1.88 3.24a11.43 11.43 0 0 0-8.94 0L5.65 5.67a.643.643 0 0 0-.87-.2c-.28.18-.37.54-.22.83L6.4 9.48A10.78 10.78 0 0 0 1 18h22a10.78 10.78 0 0 0-5.4-8.52M7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5m10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5"/></svg><div><b>أندرويد</b><span>تنزيل مباشر</span></div></a>
         <div class="store soon reveal"><svg viewBox="0 0 24 24"><path d="M16.37 12.6c.02 2.4 2.1 3.2 2.13 3.21-.02.06-.33 1.15-1.1 2.27-.66.97-1.35 1.94-2.43 1.96-1.07.02-1.41-.63-2.63-.63s-1.6.61-2.61.65c-1.04.04-1.84-1.05-2.5-2.02-1.36-1.97-2.4-5.57-1-8 .69-1.2 1.93-1.97 3.28-1.99 1.03-.02 2 .69 2.63.69.63 0 1.81-.85 3.05-.73.52.02 1.98.21 2.92 1.59-.08.05-1.74 1.02-1.73 3.03M14.37 4.6c.56-.67.93-1.6.83-2.53-.8.03-1.77.53-2.34 1.2-.51.59-.96 1.54-.84 2.45.89.07 1.8-.45 2.35-1.12"/></svg><div><b>آيفون</b><span>قريباً في App Store</span></div></div>
         <a class="store reveal" href="https://t.me/vita_iraq" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13.1l-4.8-1.5c-1-.3-1.1-1 .2-1.5L20.5 2.9c.9-.3 1.6.2 1.4 1.4Z"/></svg><div><b>تلغرام</b><span>آخر الأخبار والإصدارات</span></div></a>
         <div class="store soon reveal"><svg viewBox="0 0 24 24"><path d="M3 5.5 10 4.5v7H3zm0 13 7 1v-7H3zm8-14.2L21 3v8.5H11zm0 15.4L21 21v-8.5H11z"/></svg><div><b>ويندوز</b><span>للعيادات والمختبرات، عند التفعيل</span></div></div>
@@ -715,10 +745,10 @@ footer a:hover { color: #fff; }
 
 <footer>
   <div class="wrap">
-    <span>VITA © 2026، البصرة</span>
+    <span>VITA © 2026، العراق</span>
     <nav aria-label="روابط">
-      <a href="https://shifa-image-worker.shifa-health.workers.dev/privacy">سياسة الخصوصية</a>
-      <a href="https://shifa-image-worker.shifa-health.workers.dev/delete-account">حذف الحساب</a>
+      <a href="https://vitaiq.app/privacy">سياسة الخصوصية</a>
+      <a href="https://vitaiq.app/delete-account">حذف الحساب</a>
       <a href="https://t.me/vita_iraq" target="_blank" rel="noopener">قناة تلغرام</a>
       <a href="mailto:artnet.2022@gmail.com">artnet.2022@gmail.com</a>
     </nav>
