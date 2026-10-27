@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>VITA — طبيبك ومختبرك وصيدليتك في تطبيق واحد</title>
-<meta name="description" content="VITA يربط المراجع بطبيبه ومختبره ومركز الأشعة والسونار والصيدلية في كل محافظات العراق: حجز، طابور، وصفات إلكترونية، نتائج برمز QR، وتذكير بكل جرعة دواء.">
-<meta name="theme-color" content="#051F1E">
-<meta property="og:title" content="VITA">
+<title>أوروك كير — طبيبك ومختبرك وصيدليتك في تطبيق واحد</title>
+<meta name="description" content="أوروك كير يربط المراجع بطبيبه ومختبره ومركز الأشعة والسونار والصيدلية في كل محافظات العراق: حجز، طابور، وصفات إلكترونية، نتائج برمز QR، وتذكير بكل جرعة دواء.">
+<meta name="theme-color" content="#070E1D">
+<meta property="og:title" content="Uruk Care">
 <meta property="og:description" content="من الحجز إلى آخر جرعة دواء، في تطبيق واحد.">
 <meta property="og:image" content="assets/logo.jpg">
 <link rel="icon" href="assets/favicon.png">
@@ -15,28 +15,28 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --night: #041716;
-  --ink: #0A3432;
-  --ink-2: #0E403D;
-  --teal: #0B6E69;
-  --teal-glow: #2FD1BE;
-  --brass: #C9A866;
-  --brass-soft: #E6D3A6;
+  --night: #050A16;
+  --ink: #0D1831;
+  --ink-2: #121E3C;
+  --teal: #122C67;
+  --teal-glow: #3B64C5;
+  --brass: #C9A24B;
+  --brass-soft: #E8D29A;
   --paper: #F6F3EC;
   --sheet: #FFFEFB;
-  --line-dark: rgba(214, 236, 230, .12);
+  --line-dark: rgba(216, 221, 234, .12);
   --line-light: #E2DBCC;
-  --text-dark: #DDEBE7;
-  --muted-dark: #A2C3BC;
-  --text-light: #0A3432;
-  --muted-light: #5C6D69;
+  --text-dark: #DEE2EA;
+  --muted-dark: #A4ADC1;
+  --text-light: #0D1831;
+  --muted-light: #5A6378;
   --patient: #3466C0;
-  --doctor: #19A396;
+  --doctor: #234799;
   --desk: #C98B2E;
   --lab: #E07B34;
   --imaging: #8B67C9;
   --pharmacy: #D4507A;
-  --ok: #2DB37A;
+  --ok: #3759A9;
   --display: "Reem Kufi", "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
   --body: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
   --gutter: clamp(16px, 5vw, 72px);
@@ -66,11 +66,11 @@ a { color: inherit; }
   transition: background .4s var(--ease), border-color .4s var(--ease);
   border-bottom: 1px solid transparent;
 }
-.bar.scrolled { background: rgba(4, 23, 22, .78); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); border-color: var(--line-dark); }
+.bar.scrolled { background: rgba(5, 10, 22, .78); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); border-color: var(--line-dark); }
 .bar .wrap { display: flex; align-items: center; gap: 28px; height: 72px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .brand img { width: 38px; height: 38px; border-radius: 11px; }
-.brand span { font-family: var(--display); font-size: 22px; letter-spacing: .16em; font-weight: 600; color: #fff; direction: ltr; }
+.brand span { font-family: var(--display); font-size: 22px; font-weight: 600; color: #fff; white-space: nowrap; }
 .bar nav { display: flex; gap: 26px; margin-inline-start: auto; }
 .bar nav a { text-decoration: none; color: var(--muted-dark); font-size: 15.5px; transition: color .25s; }
 .bar nav a:hover { color: #fff; }
@@ -91,9 +91,9 @@ a { color: inherit; }
 .hero::before {
   content: ""; position: absolute; inset: -20% -10% auto; height: 120%; z-index: -2;
   background:
-    radial-gradient(700px 520px at 18% 30%, rgba(25, 163, 150, .30), transparent 65%),
+    radial-gradient(700px 520px at 18% 30%, rgba(35, 71, 153, .30), transparent 65%),
     radial-gradient(600px 460px at 92% 8%, rgba(201, 168, 102, .14), transparent 60%),
-    linear-gradient(180deg, #072A28 0%, var(--night) 70%);
+    linear-gradient(180deg, #0A1327 0%, var(--night) 70%);
 }
 .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 40px; align-items: center; }
 .hero h1 {
@@ -111,13 +111,13 @@ a { color: inherit; }
 .phone-wrap { position: relative; display: grid; place-items: center; perspective: 1400px; min-height: 640px; }
 .phone {
   position: relative; width: min(318px, 74vw); aspect-ratio: 420 / 884; border-radius: 46px; padding: 12px;
-  background: linear-gradient(145deg, #1C3D3A, #061A19 55%, #0F2E2C);
+  background: linear-gradient(145deg, #1E273B, #080D18 55%, #11192C);
   box-shadow: 0 0 0 1.5px rgba(255,255,255,.08) inset, 0 50px 90px -20px rgba(0,0,0,.7);
   transform-style: preserve-3d; transition: transform .6s var(--ease);
 }
 .phone .screen { position: relative; width: 100%; height: 100%; border-radius: 35px; overflow: hidden; background: #F6F3EC; }
 .phone .screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-.phone::after { content: ""; position: absolute; top: 22px; left: 50%; translate: -50% 0; width: 92px; height: 24px; border-radius: 20px; background: #020B0B; }
+.phone::after { content: ""; position: absolute; top: 22px; left: 50%; translate: -50% 0; width: 92px; height: 24px; border-radius: 20px; background: #03050A; }
 .float-card {
   position: absolute; z-index: 3; background: rgba(255, 254, 251, .96); color: var(--text-light); border-radius: 18px;
   padding: 12px 16px; box-shadow: 0 20px 50px -12px rgba(0,0,0,.55); font-size: 14px; line-height: 1.6; display: flex; gap: 12px; align-items: center;
@@ -144,7 +144,7 @@ a { color: inherit; }
 .light .sec-lede { color: var(--muted-light); }
 
 /* ---------- the journey ---------- */
-.journey { padding: 120px 0 60px; background: linear-gradient(180deg, var(--night), #062120 30%, var(--night)); }
+.journey { padding: 120px 0 60px; background: linear-gradient(180deg, var(--night), #080F1F 30%, var(--night)); }
 .journey-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 70px; }
 .stage { position: sticky; top: 96px; height: calc(100vh - 120px); min-height: 600px; display: grid; place-items: center; }
 .stage .phone { width: min(300px, 70vw); }
@@ -152,8 +152,8 @@ a { color: inherit; }
 .stage .screen .leaving { opacity: 0; transform: scale(.97); }
 .trace { position: absolute; inset-inline: -30px; top: 50%; height: 120px; translate: 0 -50%; z-index: -1; overflow: visible; }
 .trace path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.trace .base { stroke: rgba(47, 209, 190, .10); stroke-width: 2; }
-.trace .live { stroke: url(#traceGrad); stroke-width: 3; filter: drop-shadow(0 0 8px rgba(47,209,190,.6)); }
+.trace .base { stroke: rgba(59, 100, 197, .10); stroke-width: 2; }
+.trace .live { stroke: url(#traceGrad); stroke-width: 3; filter: drop-shadow(0 0 8px rgba(59, 100, 197,.6)); }
 .stage-label { position: absolute; bottom: 4px; inset-inline: 0; text-align: center; font-size: 14px; color: var(--muted-dark); }
 .stage-label b { color: var(--c, var(--brass-soft)); font-weight: 600; transition: color .4s; }
 
@@ -167,37 +167,37 @@ a { color: inherit; }
 .step .mock-holder { display: none; }
 
 /* ---------- mock screens (inside the phone) ---------- */
-.m { position: absolute; inset: 0; background: #F6F3EC; color: #12302E; font-size: 12.5px; line-height: 1.5; padding: 54px 14px 14px; display: flex; flex-direction: column; gap: 10px; }
-.m .mh { font: 700 16px/1.4 var(--display); margin: 0 2px 2px; color: #0A3432; }
-.m .sub { color: #5C6D69; font-size: 11.5px; margin: -8px 2px 2px; }
-.m .card { background: #fff; border-radius: 16px; padding: 11px 12px; box-shadow: 0 1px 0 #E5DFD2, 0 6px 16px -10px rgba(10,52,50,.25); }
+.m { position: absolute; inset: 0; background: #F6F3EC; color: #141C2E; font-size: 12.5px; line-height: 1.5; padding: 54px 14px 14px; display: flex; flex-direction: column; gap: 10px; }
+.m .mh { font: 700 16px/1.4 var(--display); margin: 0 2px 2px; color: #0D1831; }
+.m .sub { color: #5A6378; font-size: 11.5px; margin: -8px 2px 2px; }
+.m .card { background: #fff; border-radius: 16px; padding: 11px 12px; box-shadow: 0 1px 0 #E5DFD2, 0 6px 16px -10px rgba(13, 24, 49,.25); }
 .m .row { display: flex; align-items: center; gap: 10px; }
 .m .row + .row { margin-top: 8px; }
-.m .q { width: 30px; height: 30px; border-radius: 10px; background: #E2EFEB; color: #0B6E69; display: grid; place-items: center; font-weight: 700; flex: none; font-size: 13px; }
+.m .q { width: 30px; height: 30px; border-radius: 10px; background: #E3E6EE; color: #122C67; display: grid; place-items: center; font-weight: 700; flex: none; font-size: 13px; }
 .m .grow { flex: 1; min-width: 0; }
 .m .grow b { display: block; font-size: 13px; }
-.m .grow span { color: #5C6D69; font-size: 11px; }
+.m .grow span { color: #5A6378; font-size: 11px; }
 .chip { display: inline-block; font-size: 10.5px; font-weight: 700; border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
-.chip.ok { background: #DDF2E7; color: #1E7A52; }
+.chip.ok { background: #DFE4F0; color: #253C73; }
 .chip.wait { background: #F6EBD3; color: #8A5A1C; }
 .chip.warn { background: #FBE3E1; color: #B0372D; }
 .chip.info { background: #E3E9F4; color: #2F5DA8; }
-.m .tv { background: #0A3432; color: #fff; border-radius: 16px; padding: 12px; text-align: center; }
-.m .tv small { color: #CFE3DE; display: block; font-size: 11px; }
-.m .tv strong { font: 700 40px/1.1 var(--display); color: #E6D3A6; }
+.m .tv { background: #0D1831; color: #fff; border-radius: 16px; padding: 12px; text-align: center; }
+.m .tv small { color: #D0D6E2; display: block; font-size: 11px; }
+.m .tv strong { font: 700 40px/1.1 var(--display); color: #E8D29A; }
 .m .arrows { display: flex; gap: 4px; }
-.m .arrows i { width: 22px; height: 22px; border-radius: 7px; background: #F0ECE3; display: grid; place-items: center; font-style: normal; color: #0B6E69; font-size: 11px; }
+.m .arrows i { width: 22px; height: 22px; border-radius: 7px; background: #F0ECE3; display: grid; place-items: center; font-style: normal; color: #122C67; font-size: 11px; }
 .m .vit { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
 .m .vit div { background: #F0ECE3; border-radius: 10px; padding: 6px; text-align: center; }
 .m .vit b { display: block; font-size: 13px; }
-.m .vit span { font-size: 10px; color: #5C6D69; }
+.m .vit span { font-size: 10px; color: #5A6378; }
 .m .spark { height: 38px; }
-.m .spark path { fill: none; stroke: #0B6E69; stroke-width: 2; }
-.m .spark .area { fill: rgba(11,110,105,.12); stroke: none; }
-.m .rx { border-inline-start: 3px solid #0B6E69; padding-inline-start: 9px; }
+.m .spark path { fill: none; stroke: #122C67; stroke-width: 2; }
+.m .spark .area { fill: rgba(18, 44, 103,.12); stroke: none; }
+.m .rx { border-inline-start: 3px solid #122C67; padding-inline-start: 9px; }
 .m .rx + .rx { margin-top: 8px; }
 .m .rx b { font-size: 12.5px; display: block; direction: ltr; text-align: right; }
-.m .rx span { color: #5C6D69; font-size: 11px; }
+.m .rx span { color: #5A6378; font-size: 11px; }
 .receipt { background: #fff; border-radius: 6px; padding: 14px 14px 18px; box-shadow: 0 10px 24px -14px rgba(0,0,0,.4); position: relative; font-size: 11.5px; }
 .receipt::after { content: ""; position: absolute; inset-inline: 0; bottom: -8px; height: 8px; background: radial-gradient(circle at 6px 0, transparent 6px, #fff 6.5px) 0 0 / 12px 8px repeat-x; }
 .receipt .rh { text-align: center; border-bottom: 1px dashed #CFC6B5; padding-bottom: 8px; margin-bottom: 8px; }
@@ -207,7 +207,7 @@ a { color: inherit; }
 .receipt .tot { border-top: 1px dashed #CFC6B5; margin-top: 6px; padding-top: 6px; font-weight: 700; }
 .receipt .qr-row { display: flex; gap: 10px; align-items: center; margin-top: 10px; }
 .qr { width: 74px; height: 74px; display: grid; grid-template-columns: repeat(21, 1fr); background: #fff; flex: none; }
-.qr i { background: #0A3432; }
+.qr i { background: #0D1831; }
 .qr i.o { background: transparent; }
 .results { position: relative; }
 .results .r { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #EEE8DC; font-size: 12px; }
@@ -217,18 +217,18 @@ a { color: inherit; }
 .results.locked .val { filter: blur(6px); }
 .lock-note { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; background: rgba(255,254,251,.55); border-radius: 12px; transition: opacity .5s var(--ease); }
 .lock-note b { display: block; font-size: 13px; }
-.lock-note span { font-size: 11px; color: #5C6D69; }
+.lock-note span { font-size: 11px; color: #5A6378; }
 .results:not(.locked) .lock-note { opacity: 0; pointer-events: none; }
-.lockscreen { position: absolute; inset: 0; background: radial-gradient(400px 500px at 50% 0%, #1B5C57, #061A19); color: #fff; padding: 70px 14px 14px; display: flex; flex-direction: column; gap: 10px; }
+.lockscreen { position: absolute; inset: 0; background: radial-gradient(400px 500px at 50% 0%, #203057, #080D18); color: #fff; padding: 70px 14px 14px; display: flex; flex-direction: column; gap: 10px; }
 .lockscreen .time { text-align: center; font: 600 54px/1 var(--display); letter-spacing: .02em; margin-bottom: 4px; direction: ltr; }
-.lockscreen .date { text-align: center; color: #DCEBE7; font-size: 12px; margin-bottom: 16px; }
+.lockscreen .date { text-align: center; color: #DDE1EA; font-size: 12px; margin-bottom: 16px; }
 .notif { background: rgba(255,255,255,.14); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 18px; padding: 10px 12px; display: flex; gap: 10px; align-items: flex-start; font-size: 12px; }
-.notif .ic { width: 30px; height: 30px; border-radius: 9px; flex: none; background: #0B6E69; display: grid; place-items: center; }
+.notif .ic { width: 30px; height: 30px; border-radius: 9px; flex: none; background: #122C67; display: grid; place-items: center; }
 .notif .ic svg { width: 17px; height: 17px; }
 .notif b { display: block; font-size: 12.5px; }
-.notif span { color: #CFE3DE; }
-.notif small { margin-inline-start: auto; color: #E4F0ED; font-size: 10.5px; white-space: nowrap; }
-.btn-mini { background: #0B6E69; color: #fff; border: 0; border-radius: 12px; padding: 9px; font: 600 12px var(--body); text-align: center; }
+.notif span { color: #D0D6E2; }
+.notif small { margin-inline-start: auto; color: #E5E8EF; font-size: 10.5px; white-space: nowrap; }
+.btn-mini { background: #122C67; color: #fff; border: 0; border-radius: 12px; padding: 9px; font: 600 12px var(--body); text-align: center; }
 
 /* ---------- roles ---------- */
 .roles-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin: 46px 0 34px; }
@@ -273,7 +273,7 @@ a { color: inherit; }
 .pay-row .owed b { color: #B0372D; }
 .pay-row.paid .owed b { color: var(--ok); }
 .btn-pay { background: var(--teal); color: #fff; border: 0; border-radius: 14px; padding: 12px 18px; font: 600 15px var(--body); cursor: pointer; transition: background .25s, transform .2s; }
-.btn-pay:hover { background: #095E5A; transform: translateY(-1px); }
+.btn-pay:hover { background: #0F2558; transform: translateY(-1px); }
 .points { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 18px; }
 .points li { display: grid; grid-template-columns: 30px 1fr; gap: 12px; }
 .points svg { width: 26px; height: 26px; stroke: var(--brass); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; margin-top: 3px; }
@@ -286,7 +286,7 @@ a { color: inherit; }
 .prov div:nth-child(3n) { padding-left: 0; }
 .prov b { font: 700 19px/1.5 var(--display); display: block; margin-bottom: 6px; color: var(--ink); }
 .prov span { color: var(--muted-light); font-size: 15.5px; }
-/* the same list on the dark ground («جديد في VITA») */
+/* the same list on the dark ground («جديد في أوروك كير») */
 #new .prov { border-top-color: var(--line-dark); }
 #new .prov div { border-bottom-color: var(--line-dark); }
 #new .prov b { color: #fff; }
@@ -367,7 +367,7 @@ footer a:hover { color: #fff; }
 
 <header class="bar" id="bar">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="VITA، أعلى الصفحة"><img src="assets/logo.jpg" alt=""><span>VITA</span></a>
+    <a class="brand" href="#top" aria-label="أوروك كير، أعلى الصفحة"><img src="assets/logo.jpg" alt=""><span>أوروك كير</span></a>
     <nav aria-label="أقسام الصفحة">
       <a href="#journey">كيف يعمل</a>
       <a href="#roles">الواجهات</a>
@@ -384,7 +384,7 @@ footer a:hover { color: #fff; }
     <div class="wrap hero-grid">
       <div>
         <h1><span class="line"><span>من الحجز إلى آخر</span></span><span class="line"><span>جرعة دواء، في تطبيق واحد</span></span></h1>
-        <p class="lede">VITA يربط المراجع بطبيبه ومختبره ومركز الأشعة والسونار والصيدلية، في كل محافظات العراق. الطلب يصل قبل المراجع، والنتيجة تصل إلى هاتفه، والدواء يذكّره بنفسه.</p>
+        <p class="lede">أوروك كير يربط المراجع بطبيبه ومختبره ومركز الأشعة والسونار والصيدلية، في كل محافظات العراق. الطلب يصل قبل المراجع، والنتيجة تصل إلى هاتفه، والدواء يذكّره بنفسه.</p>
         <div class="cta">
           <a class="btn btn-brass" href="#get"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>حمّل التطبيق</a>
           <a class="btn btn-ghost" href="#providers">أنا طبيب أو مختبر أو صيدلية</a>
@@ -396,7 +396,7 @@ footer a:hover { color: #fff; }
         </div>
       </div>
       <div class="phone-wrap" id="tilt">
-        <div class="phone" id="heroPhone"><div class="screen"><img src="assets/screen-1-home.jpg" alt="الصفحة الرئيسية لتطبيق VITA" fetchpriority="high"></div></div>
+        <div class="phone" id="heroPhone"><div class="screen"><img src="assets/screen-1-home.jpg" alt="الصفحة الرئيسية لتطبيق أوروك كير" fetchpriority="high"></div></div>
         <div class="float-card fc-1"><div class="dot" style="background:var(--lab)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div><b>نتائج تحاليلك جاهزة</b><span>مختبر الشفاء، الآن</span></div></div>
         <div class="float-card fc-2"><div class="dot" style="background:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="9" width="18" height="6" rx="3"/><path d="M12 9v6"/></svg></div><div><b>حان وقت جرعتك</b><span>حبة الضغط، بعد الفطور</span></div></div>
       </div>
@@ -414,7 +414,7 @@ footer a:hover { color: #fff; }
           <li class="step" style="--c:var(--patient)" data-label="المراجع">
             <span class="who">المراجع</span>
             <h3>يحجز من هاتفه</h3>
-            <p>يبحث عن الطبيب بالاسم أو الاختصاص، يختار اليوم، فيأخذ رقمه في الطابور ووقتاً تقديرياً. وإن كان الطبيب يقدم خصم VITA يرى السعر بعد الخصم.</p>
+            <p>يبحث عن الطبيب بالاسم أو الاختصاص، يختار اليوم، فيأخذ رقمه في الطابور ووقتاً تقديرياً. وإن كان الطبيب يقدم خصم أوروك يرى السعر بعد الخصم.</p>
             <div class="mock-holder"><template><img src="assets/screen-3-booking.jpg" alt="شاشة الحجز"></template></div>
           </li>
           <li class="step" style="--c:var(--desk)" data-label="السكرتير">
@@ -444,7 +444,7 @@ footer a:hover { color: #fff; }
                 <div class="mh">زينب كاظم، 54 سنة</div>
                 <p class="sub">آخر تشخيص: ارتفاع ضغط الدم</p>
                 <div class="vit"><div><b class="num">130/85</b><span>الضغط</span></div><div><b class="num">112</b><span>السكر</span></div><div><b class="num">78</b><span>الوزن</span></div></div>
-                <div class="card"><span style="font-size:11px;color:#5C6D69">الضغط في آخر 5 زيارات</span>
+                <div class="card"><span style="font-size:11px;color:#5A6378">الضغط في آخر 5 زيارات</span>
                   <svg class="spark" viewBox="0 0 200 38" preserveAspectRatio="none"><path class="area" d="M0 8 L50 12 L100 18 L150 24 L200 28 V38 H0Z"/><path d="M0 8 L50 12 L100 18 L150 24 L200 28"/></svg></div>
                 <div class="card"><span class="chip warn">تنبيه حساسية: بنسلين</span>
                   <div class="rx" style="margin-top:9px"><b>Amlodipine 5 mg</b><span>حبة واحدة صباحاً، 30 يوماً</span></div>
@@ -467,7 +467,7 @@ footer a:hover { color: #fff; }
                   <div class="li tot"><span>المجموع</span><span class="num">35,000 د.ع</span></div>
                   <div class="li"><span>المدفوع</span><span class="num">20,000</span></div>
                   <div class="li"><span>المتبقي</span><span class="num">15,000</span></div>
-                  <div class="qr-row"><div class="qr" data-qr></div><div><b style="font-size:12px">النتائج جاهزة</b><br><span class="num">الساعة 4:30 م</span><br><span style="color:#5C6D69">امسح الرمز لفتحها</span></div></div>
+                  <div class="qr-row"><div class="qr" data-qr></div><div><b style="font-size:12px">النتائج جاهزة</b><br><span class="num">الساعة 4:30 م</span><br><span style="color:#5A6378">امسح الرمز لفتحها</span></div></div>
                 </div>
               </div>
             </template></div>
@@ -503,7 +503,7 @@ footer a:hover { color: #fff; }
                   <div class="rx"><b>Amlodipine 5 mg</b><span>حبة صباحاً، 30 يوماً</span></div>
                   <div class="rx"><b>Atorvastatin 20 mg</b><span>حبة مساءً، 30 يوماً</span></div>
                 </div>
-                <div class="card row"><span class="chip ok">صُرفت</span><span style="font-size:11.5px;color:#5C6D69">أُضيفت إلى «علاجاتي» عند المراجع</span></div>
+                <div class="card row"><span class="chip ok">صُرفت</span><span style="font-size:11.5px;color:#5A6378">أُضيفت إلى «علاجاتي» عند المراجع</span></div>
                 <div class="card row"><span style="font-size:11.5px">إعادة صرف قريبة: بعد <b class="num">28</b> يوماً</span></div>
               </div>
             </template></div>
@@ -525,7 +525,7 @@ footer a:hover { color: #fff; }
         </ol>
         <div class="stage" aria-hidden="true">
           <svg class="trace" viewBox="0 0 600 120" preserveAspectRatio="none">
-            <defs><linearGradient id="traceGrad" x1="1" x2="0" y1="0" y2="0"><stop offset="0" stop-color="#2FD1BE"/><stop offset="1" stop-color="#C9A866"/></linearGradient></defs>
+            <defs><linearGradient id="traceGrad" x1="1" x2="0" y1="0" y2="0"><stop offset="0" stop-color="#3B64C5"/><stop offset="1" stop-color="#C9A24B"/></linearGradient></defs>
             <path class="base" id="traceBase" d="M600 70 H520 L508 52 L492 100 L470 14 L452 86 L440 70 H380 L368 52 L352 100 L330 14 L312 86 L300 70 H240 L228 52 L212 100 L190 14 L172 86 L160 70 H100 L88 52 L72 100 L50 14 L32 86 L20 70 H0"/>
             <path class="live" id="traceLive" d="M600 70 H520 L508 52 L492 100 L470 14 L452 86 L440 70 H380 L368 52 L352 100 L330 14 L312 86 L300 70 H240 L228 52 L212 100 L190 14 L172 86 L160 70 H100 L88 52 L72 100 L50 14 L32 86 L20 70 H0"/>
           </svg>
@@ -544,7 +544,7 @@ footer a:hover { color: #fff; }
 
       <div class="roles-tabs" role="tablist" aria-label="الواجهات">
         <button class="tab" role="tab" id="t-patient" aria-controls="p-patient" aria-selected="true" style="--c:#2F5DA8"><i></i>المراجع</button>
-        <button class="tab" role="tab" id="t-doctor" aria-controls="p-doctor" aria-selected="false" tabindex="-1" style="--c:#0B6E69"><i></i>الطبيب</button>
+        <button class="tab" role="tab" id="t-doctor" aria-controls="p-doctor" aria-selected="false" tabindex="-1" style="--c:#122C67"><i></i>الطبيب</button>
         <button class="tab" role="tab" id="t-desk" aria-controls="p-desk" aria-selected="false" tabindex="-1" style="--c:#8A5A1C"><i></i>السكرتير</button>
         <button class="tab" role="tab" id="t-lab" aria-controls="p-lab" aria-selected="false" tabindex="-1" style="--c:#A4521A"><i></i>المختبر</button>
         <button class="tab" role="tab" id="t-img" aria-controls="p-img" aria-selected="false" tabindex="-1" style="--c:#6B4AA0"><i></i>الأشعة والسونار</button>
@@ -560,7 +560,7 @@ footer a:hover { color: #fff; }
             <div class="feat"><b>صفحة لكل طبيب</b><span>خبرته وتقييمه، الحالات التي يعالجها وشهاداته، وعيادته على الخريطة.</span></div>
             <div class="feat"><b>أطبائي المفضلون</b><span>احفظ أطباءك بقلب، وشارك بطاقة الطبيب على واتساب برقمه وموقعه.</span></div>
             <div class="feat"><b>حجز ورقم في الطابور</b><span>يعرف دوره ووقته التقديري قبل أن يخرج من البيت.</span></div>
-            <div class="feat"><b>عروض المختبرات</b><span>باقات بخصم VITA، والأكثر طلباً، والأكثر توفيراً، وكل تحليل باسمه العربي.</span></div>
+            <div class="feat"><b>عروض المختبرات</b><span>باقات بخصم أوروك، والأكثر طلباً، والأكثر توفيراً، وكل تحليل باسمه العربي.</span></div>
             <div class="feat"><b>علاجاتي</b><span>كل دواء مصروف يصير جدول جرعات مع تذكير في وقته.</span></div>
             <div class="feat"><b>حساب للعائلة</b><span>الزوجة والأبناء والوالدان في حساب واحد، ولكل واحد سجله.</span></div>
             <div class="feat"><b>لقاحات طفلي</b><span>جدول التحصين الوطني العراقي لكل طفل، وتذكير قبل كل موعد.</span></div>
@@ -574,7 +574,7 @@ footer a:hover { color: #fff; }
         <div class="panel-art"><div class="phone"><div class="screen"><img src="assets/screen-4-labs.jpg" alt="المختبرات والعروض" loading="lazy"></div></div></div>
       </div>
 
-      <div class="panel" id="p-doctor" role="tabpanel" aria-labelledby="t-doctor" style="--c:#0B6E69" hidden>
+      <div class="panel" id="p-doctor" role="tabpanel" aria-labelledby="t-doctor" style="--c:#122C67" hidden>
         <div>
           <h3>الطبيب</h3>
           <p class="intro">العيادة كلها في شاشة واحدة، على الهاتف وعلى حاسوب العيادة.</p>
@@ -617,7 +617,7 @@ footer a:hover { color: #fff; }
             <div class="feat"><b>ورقة نتائج واحدة</b><span>أرقام أو اختيارات أو نص، والحدود الطبيعية حسب العمر والجنس.</span></div>
             <div class="feat"><b>قفل حتى التسديد</b><span>لا نتيجة تخرج لأحد ما دام هناك مبلغ متبقٍ.</span></div>
             <div class="feat"><b>213 تحليلاً جاهزاً</b><span>بأسمائها العربية كما في قائمة دائرة صحة البصرة.</span></div>
-            <div class="feat"><b>باقات وعروض</b><span>خصم VITA يضع باقاتك أمام المراجعين في التطبيق.</span></div>
+            <div class="feat"><b>باقات وعروض</b><span>خصم أوروك يضع باقاتك أمام المراجعين في التطبيق.</span></div>
             <div class="feat"><b>حسابات المالك</b><span>محمية برمز خاص: كشوف، دفعات، مصاريف، وصافٍ.</span></div>
           </div>
         </div>
@@ -661,7 +661,7 @@ footer a:hover { color: #fff; }
   <!-- ================= new ================= -->
   <section class="sec" id="new">
     <div class="wrap">
-      <h2 class="sec-title reveal">جديد في VITA</h2>
+      <h2 class="sec-title reveal">جديد في أوروك كير</h2>
       <p class="sec-lede reveal">ما أضفناه حديثاً للمراجع وعائلته.</p>
       <div class="prov">
         <div class="reveal"><b>احسب سعراتك</b><span>كم سعرة يحتاج جسمك، وخطة تنحيف آمنة، والبروتين والكربوهيدرات والألياف، ونموذج يوم كامل من الوجبات.</span></div>
@@ -708,7 +708,7 @@ footer a:hover { color: #fff; }
   <section class="sec light" id="providers">
     <div class="wrap">
       <h2 class="sec-title reveal">للأطباء والمختبرات والمراكز والصيدليات</h2>
-      <p class="sec-lede reveal">VITA يدخل عملك اليومي ليختصره، ثم يضعك أمام المراجعين.</p>
+      <p class="sec-lede reveal">أوروك كير يدخل عملك اليومي ليختصره، ثم يضعك أمام المراجعين.</p>
       <div class="prov">
         <div class="reveal"><b>تفعيل يدوي لكل حساب</b><span>لا يعمل أي طبيب أو مختبر قبل أن نتحقق منه، فالمراجع يثق بمن يراه.</span></div>
         <div class="reveal"><b>على الحاسوب والهاتف</b><span>برنامج ويندوز للعيادة والمختبر، وتطبيق أندرويد وآيفون.</span></div>
@@ -720,7 +720,7 @@ footer a:hover { color: #fff; }
       <div class="join reveal">
         <div><h3>اطلب تفعيل حسابك</h3><p>سجّل من التطبيق كطبيب أو مختبر أو مركز أو صيدلية، أو راسلنا وسنتواصل معك.</p></div>
         <div class="cta">
-          <a class="btn btn-brass" href="mailto:artnet.2022@gmail.com?subject=VITA%20-%20%D8%B7%D9%84%D8%A8%20%D8%AA%D9%81%D8%B9%D9%8A%D9%84"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>راسلنا</a>
+          <a class="btn btn-brass" href="mailto:artnet.2022@gmail.com?subject=Uruk%20Care%20-%20%D8%B7%D9%84%D8%A8%20%D8%AA%D9%81%D8%B9%D9%8A%D9%84"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>راسلنا</a>
           <a class="btn btn-ghost" href="https://t.me/vita_iraq" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13.1l-4.8-1.5c-1-.3-1.1-1 .2-1.5L20.5 2.9c.9-.3 1.6.2 1.4 1.4Z"/></svg>قناتنا على تلغرام</a>
         </div>
       </div>
@@ -730,7 +730,7 @@ footer a:hover { color: #fff; }
   <!-- ================= download ================= -->
   <section class="get" id="get">
     <div class="wrap">
-      <h2 class="sec-title reveal">حمّل VITA</h2>
+      <h2 class="sec-title reveal">حمّل أوروك كير</h2>
       <p class="sec-lede reveal">التطبيق مجاني للمراجعين.</p>
       <div class="stores">
         <a class="store reveal" href="https://vitaiq.app/download"><svg viewBox="0 0 24 24"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 0 0-.83.22l-1.88 3.24a11.43 11.43 0 0 0-8.94 0L5.65 5.67a.643.643 0 0 0-.87-.2c-.28.18-.37.54-.22.83L6.4 9.48A10.78 10.78 0 0 0 1 18h22a10.78 10.78 0 0 0-5.4-8.52M7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5m10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5"/></svg><div><b>أندرويد</b><span>تنزيل مباشر</span></div></a>
@@ -745,7 +745,7 @@ footer a:hover { color: #fff; }
 
 <footer>
   <div class="wrap">
-    <span>VITA © 2026، العراق</span>
+    <span>أوروك كير © 2026، العراق</span>
     <nav aria-label="روابط">
       <a href="https://vitaiq.app/privacy">سياسة الخصوصية</a>
       <a href="https://vitaiq.app/delete-account">حذف الحساب</a>
@@ -807,7 +807,7 @@ footer a:hover { color: #fff; }
   const period = 60 / 72, speed = 150; // pixels a second
   const drawStatic = () => {
     ctx.clearRect(0, 0, W, H);
-    ctx.lineWidth = 2; ctx.strokeStyle = '#2FD1BE'; ctx.beginPath();
+    ctx.lineWidth = 2; ctx.strokeStyle = '#3B64C5'; ctx.beginPath();
     for (let x = 0; x <= W; x += 2) { const ph = ((x / speed) % period) / period; x ? ctx.lineTo(x, yAt(ph)) : ctx.moveTo(x, yAt(ph)); }
     ctx.stroke();
   };
@@ -828,7 +828,7 @@ footer a:hover { color: #fff; }
         const nx = x + speed * sdt, ph = (tSum % period) / period, ny = yAt(ph);
         ctx.clearRect(nx, 0, 26, H); // the gap ahead of the sweep, as on a bedside monitor
         if (prevY !== null && nx > x) {
-          ctx.strokeStyle = '#2FD1BE'; ctx.lineWidth = 2.2; ctx.shadowColor = 'rgba(47,209,190,.8)'; ctx.shadowBlur = 10;
+          ctx.strokeStyle = '#3B64C5'; ctx.lineWidth = 2.2; ctx.shadowColor = 'rgba(59, 100, 197,.8)'; ctx.shadowBlur = 10;
           ctx.beginPath(); ctx.moveTo(x, prevY); ctx.lineTo(nx, ny); ctx.stroke(); ctx.shadowBlur = 0;
         }
         x = nx; prevY = ny;
