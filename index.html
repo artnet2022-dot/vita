@@ -12,7 +12,7 @@
 <link rel="icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@500;600;700&family=Marcellus&display=swap" rel="stylesheet">
 <style>
 :root {
   --night: #050A16;
@@ -360,10 +360,185 @@ footer a:hover { color: #fff; }
   .js .reveal, .js .hero .lede, .js .hero .cta, .js .hero-facts, .js .phone-wrap { opacity: 1; transform: none; }
   .js .hero h1 .line span { transform: none; }
 }
+
+/* ===== the opening story ===== */
+:root {
+  --st-night: #050A16; --st-lapis: #0F2557; --st-lapis-glow: #3B64C5; --st-gold: #D2AE58; --st-gold-soft: #F3DE9E;
+  --st-text: #EDEAE2; --st-muted: #A9B1C4;
+  --st-display: "Reem Kufi", "IBM Plex Sans Arabic", Tahoma, sans-serif; --st-body: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  --st-latin: "Marcellus", Georgia, serif; --st-gutter: clamp(16px, 5vw, 72px);
+}
+/* The story's fixed layer fades away as the site arrives. */
+.st-layer { transition: opacity .2s linear; }
+body.story-done .st-layer { opacity: 0; pointer-events: none; }
+/* The top bar stays from the first frame, so the story is never forced:
+   its links jump straight to the sections. */
+.st-hint { display: none; }
+/* A small arrow at the foot of the screen invites the next scene. */
+.st-next { position: fixed; z-index: 4; bottom: max(16px, env(safe-area-inset-bottom)); left: 50%; translate: -50% 0;
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; color: var(--st-gold-soft);
+  background: rgba(5, 10, 22, .45); border: 1px solid rgba(243, 222, 158, .35); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transition: opacity .4s, background .3s; animation: st-nudge 2.2s ease-in-out infinite; }
+.st-next:hover { background: rgba(15, 37, 87, .7); }
+.st-next:focus-visible { outline: 3px solid var(--st-gold-soft); outline-offset: 3px; }
+.st-next svg { width: 18px; height: 18px; }
+@keyframes st-nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .st-next { animation: none; } }
+/* The site sits on its own ground over the canvas. */
+main#top, footer { position: relative; z-index: 5; background: var(--night); }
+main#top { box-shadow: 0 -60px 80px 20px var(--night); }
+.preview-pill { position: fixed; z-index: 60; bottom: 12px; inset-inline-start: 12px; font-size: 12px; color: #A9B1C4;
+  background: rgba(5, 10, 22, .7); border: 1px solid rgba(243, 222, 158, .25); border-radius: 999px; padding: 4px 12px; pointer-events: none; }
+
+
+#st-gl { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 0;
+  background: radial-gradient(120% 90% at 50% 20%, #12295E 0%, #0A1736 45%, var(--st-night) 100%); }
+.st-grain { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .07; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+
+/* The scroll track: tall, empty; the story is painted on the canvas and
+   the captions below follow the scroll position. */
+#st-track { position: relative; height: 1700vh; height: 1700svh; z-index: 2; }
+
+.st-caption { position: fixed; z-index: 3; inset-inline-start: var(--st-gutter); bottom: clamp(56px, 12vh, 140px);
+  max-width: min(520px, calc(100vw - 2 * var(--st-gutter))); opacity: 0; transform: translateY(18px);
+  pointer-events: none; will-change: opacity, transform; }
+.st-caption .st-eyebrow { font-family: var(--st-latin); font-size: 12px; letter-spacing: .38em; color: var(--st-gold); text-transform: uppercase; margin: 0 0 10px; direction: ltr; text-align: end; }
+.st-caption h2 { font-family: var(--st-display); font-weight: 600; font-size: clamp(30px, 4.6vw, 54px); line-height: 1.25; margin: 0 0 12px; text-wrap: balance; color: #fff;
+  text-shadow: 0 2px 30px rgba(5, 10, 22, .85); }
+.st-caption p { margin: 0; font-size: clamp(16px, 1.6vw, 19px); color: #E3E0D7; text-shadow: 0 1px 18px rgba(5, 10, 22, .95); max-width: 46ch; }
+.st-caption .st-gold { color: var(--st-gold-soft); }
+
+.st-hero { position: fixed; z-index: 3; inset: 0; display: grid; place-items: end center; padding-bottom: clamp(40px, 9vh, 110px);
+  pointer-events: none; text-align: center; }
+.st-hero .st-name { font-family: var(--st-display); font-weight: 600; font-size: clamp(64px, 11vw, 150px); line-height: 1; color: #fff; margin: 0;
+  text-shadow: 0 8px 60px rgba(59, 100, 197, .45); }
+.st-hero .st-latin { font-family: var(--st-latin); letter-spacing: .7em; color: var(--st-gold); font-size: clamp(13px, 1.3vw, 16px); margin: 14px 0 0 .7em; direction: ltr; }
+.st-hero .st-line { margin: 18px 0 0; color: var(--st-muted); font-size: clamp(15px, 1.5vw, 18px); }
+.st-hint { margin-top: 26px; display: inline-flex; flex-direction: column; align-items: center; gap: 6px; color: var(--st-muted); font-size: 13px; }
+.st-hint i { width: 1px; height: 38px; background: linear-gradient(var(--st-gold), transparent); animation: drip 2.4s ease-in-out infinite; }
+@keyframes drip { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+.st-finale { position: fixed; z-index: 3; inset: 0; display: grid; place-items: end center; padding-bottom: clamp(44px, 10vh, 120px);
+  text-align: center; opacity: 0; pointer-events: none; }
+.st-finale.st-on { pointer-events: auto; }
+.st-finale h2 { font-family: var(--st-display); font-weight: 600; font-size: clamp(34px, 5vw, 60px); line-height: 1.2; margin: 0; color: #fff; text-wrap: balance; }
+.st-finale p { margin: 10px auto 0; color: #D9D6CE; max-width: 44ch; }
+.st-cta { margin-top: 24px; display: inline-flex; align-items: center; gap: 10px; padding: 14px 30px; border-radius: 999px; text-decoration: none;
+  font-weight: 600; color: #0B1430; background: linear-gradient(135deg, var(--st-gold-soft), var(--st-gold) 55%, #A2802F);
+  box-shadow: 0 10px 40px rgba(210, 174, 88, .35); transition: transform .3s cubic-bezier(.22, .8, .2, 1), box-shadow .3s; }
+.st-cta:hover { transform: translateY(-2px); box-shadow: 0 14px 50px rgba(210, 174, 88, .5); }
+.st-cta:focus-visible { outline: 3px solid var(--st-gold-soft); outline-offset: 4px; }
+
+/* The chapters, as a thin gold rail: a real sequence, so it is numbered by position only. */
+.st-rail { position: fixed; z-index: 3; inset-inline-end: clamp(12px, 2.4vw, 34px); top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 11px; }
+.st-rail span { width: 6px; height: 6px; border-radius: 50%; background: rgba(243, 222, 158, .25); transition: background .4s, transform .4s; }
+.st-rail span.st-on { background: var(--st-gold); transform: scale(1.5); }
+
+.st-scrim { position: fixed; z-index: 2; inset: 0; pointer-events: none; opacity: 0;
+  background: radial-gradient(90% 70% at 85% 100%, rgba(5, 10, 22, .88) 0%, rgba(5, 10, 22, .55) 38%, rgba(5, 10, 22, 0) 70%); }
+.st-finale-scrim { background: radial-gradient(80% 55% at 50% 100%, rgba(5, 10, 22, .8) 0%, rgba(5, 10, 22, 0) 70%); }
+.st-skip { position: fixed; z-index: 4; top: 12px; inset-inline-end: 14px; font: inherit; font-size: 13px; color: var(--st-text);
+  background: rgba(5, 10, 22, .55); border: 1px solid rgba(243, 222, 158, .3); border-radius: 999px; padding: 6px 16px; cursor: pointer;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: opacity .4s; }
+.st-skip:focus-visible { outline: 3px solid var(--st-gold-soft); outline-offset: 3px; }
+.st-flash { position: fixed; inset: 0; z-index: 2; pointer-events: none; opacity: 0;
+  background: radial-gradient(40% 50% at 50% 50%, rgba(243, 222, 158, .9) 0%, rgba(210, 174, 88, .45) 30%, #050A16 75%); }
+.st-preview-tag { position: fixed; z-index: 4; top: 14px; inset-inline-start: 14px; font-size: 12px; color: var(--st-muted);
+  background: rgba(5, 10, 22, .6); border: 1px solid rgba(243, 222, 158, .2); border-radius: 999px; padding: 4px 12px; }
+
+@media (max-width: 640px) {
+  .st-caption { bottom: 64px; }
+  .st-rail { display: none; }
+}
 </style>
 </head>
 <body>
 <script>document.documentElement.classList.add('js');</script>
+<script>if (!location.hash) { history.scrollRestoration = 'manual'; scrollTo(0, 0); }</script>
+
+<canvas id="st-gl" aria-hidden="true"></canvas>
+<div class="st-layer" id="st-layer">
+<div class="st-grain" aria-hidden="true"></div>
+<div class="st-scrim" id="st-scrim" aria-hidden="true"></div>
+<div class="st-flash" id="st-flash" aria-hidden="true"></div>
+
+
+<section class="st-hero" id="st-hero" aria-label="آسو">
+  <div>
+    <h1 class="st-name">آسو</h1>
+    <div class="st-latin">AASU</div>
+    <p class="st-line">من أور… إلى تلفونك</p>
+    <div class="st-hint" aria-hidden="true">انزل<i></i></div>
+  </div>
+</section>
+
+<article class="st-caption" data-in=".1" data-out=".16">
+  <p class="st-eyebrow">Ur · 2100 BC</p>
+  <h2>قبل أكثر من أربعة آلاف سنة، في أور</h2>
+  <p>رفع السومريون الزقورة، درجاً من الطين نحو السماء، وحولها قامت أول مدن الدنيا.</p>
+</article>
+<article class="st-caption" data-in=".175" data-out=".245">
+  <p class="st-eyebrow">Cuneiform</p>
+  <h2>وهنا وُلدت الكتابة</h2>
+  <p>أسافين تنضغط على الطين. وعلى لوح منها، من نِفّر، وصلتنا <span class="st-gold">أقدم وصفات طبية</span> يعرفها التاريخ.</p>
+</article>
+<article class="st-caption" data-in=".265" data-out=".33">
+  <p class="st-eyebrow">Asû</p>
+  <h2>وكان الطبيب يُسمّى «آسو»</h2>
+  <p>يعرف الأعشاب، ويطحنها، ويحضّر منها الدواء بإيده لكل مريض.</p>
+</article>
+<article class="st-caption" data-in=".35" data-out=".415">
+  <p class="st-eyebrow">The tablet</p>
+  <h2>ويكتب العلاج على لوح</h2>
+  <p>حتى ما تضيع جرعة، وحتى يتعلّم اللي بعده.</p>
+</article>
+<article class="st-caption" data-in=".435" data-out=".50">
+  <p class="st-eyebrow">The record</p>
+  <h2>وتنحفظ الألواح على الرفوف</h2>
+  <p>أول سجلّ في التاريخ: كل شي مكتوب، وكل شي محفوظ.</p>
+</article>
+<article class="st-caption" data-in=".52" data-out=".585">
+  <p class="st-eyebrow">Four thousand years later</p>
+  <h2>وبعد أربعة آلاف سنة، صار الطب علم</h2>
+  <p>مختبرات وأجهزة وتحاليل تقرا الجسم من جوّا.</p>
+</article>
+<article class="st-caption" data-in=".605" data-out=".67">
+  <p class="st-eyebrow">Pharmacy</p>
+  <h2>علاجك يذكّرك بنفسه</h2>
+  <p>تضيف دواك بآسو، ويذكّرك بكل جرعة بوقتها، حتى والتطبيق مسدود.</p>
+</article>
+<article class="st-caption" data-in=".69" data-out=".755">
+  <p class="st-eyebrow">Laboratory</p>
+  <h2>تحاليلك، ونتيجتها على تلفونك</h2>
+  <p>باقات تحاليل من المختبرات بخصم آسو، والنتيجة توصلك بدون ما ترجع للمختبر.</p>
+</article>
+<article class="st-caption" data-in=".775" data-out=".84">
+  <p class="st-eyebrow">Imaging</p>
+  <h2>أشعتك وسونارك</h2>
+  <p>تحجز موعدك بالمركز، والتقرير يوصلك على التطبيق وين ما تكون.</p>
+</article>
+<article class="st-caption" data-in=".86" data-out=".925">
+  <p class="st-eyebrow">Every specialty</p>
+  <h2>وطبيب أسنانك هم</h2>
+  <p>أطباء بكل الاختصاصات، وبكل محافظات العراق.</p>
+</article>
+
+<section class="st-finale" id="st-finale" aria-label="حمّل آسو">
+  <div>
+    <h2>واليوم، رجع آسو</h2>
+    <p>طبيبك ومختبرك وأشعتك وصيدليتك وسجلّك، بتطبيق واحد.</p>
+    <a class="st-cta" href="https://aasu.app/download">حمّل آسو</a>
+  </div>
+</section>
+
+<nav class="st-rail" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></nav>
+<button class="st-next" id="st-skip" type="button" aria-label="المشهد الجاي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+
+</div>
+<div id="st-track"></div>
+
 
 <header class="bar" id="bar">
   <div class="wrap">
@@ -767,7 +942,8 @@ footer a:hover { color: #fff; }
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   /* hero entrance, then the counters */
-  requestAnimationFrame(() => requestAnimationFrame(() => $('#hero').classList.add('ready')));
+  const startHero = () => {
+  $('#hero').classList.add('ready');
   if (!reduce) {
     $$('[data-count]').forEach(el => {
       const end = +el.dataset.count, t0 = performance.now() + 700, dur = 1600;
@@ -781,6 +957,10 @@ footer a:hover { color: #fff; }
       requestAnimationFrame(tick);
     });
   }
+  };
+  new IntersectionObserver((entries, io) => {
+    if (entries.some(e => e.isIntersecting)) { startHero(); io.disconnect(); }
+  }, { threshold: .25 }).observe($('#hero'));
 
   /* the phone leans toward the pointer */
   const tiltBox = $('#tilt'), heroPhone = $('#heroPhone');
@@ -944,6 +1124,606 @@ footer a:hover { color: #fff; }
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
   $$('.reveal').forEach(el => io.observe(el));
 })();
+</script>
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+if (!location.hash) history.scrollRestoration = 'manual';
+
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const small = Math.min(innerWidth, innerHeight) < 700;
+const canvas = document.getElementById('st-gl');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+renderer.setPixelRatio(Math.min(devicePixelRatio, small ? 1.6 : 2));
+renderer.setClearColor(0x000000, 0);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(38, 1, .1, 120);
+camera.position.set(0, 0, 6);
+
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const seg = (p, a, b) => clamp((p - a) / (b - a));
+const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+const window1 = (p, a, b, f = .03) => Math.min(seg(p, a - f, a + f), 1 - seg(p, b - f, b + f));
+
+/* ---------- Photographs turned into depth: each one a dense mesh pushed
+   towards the camera by its depth map, so the camera can move through it. */
+const loader = new THREE.TextureLoader();
+const photoVert = `
+  uniform sampler2D uDepth; uniform float uAmount;
+  varying vec2 vUv; varying float vD;
+  void main() {
+    vUv = uv;
+    float d = texture2D(uDepth, uv).r; vD = d;
+    vec3 p = position; p.z += d * uAmount;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.);
+  }`;
+const photoFrag = `
+  uniform sampler2D uMap; uniform float uOpacity; uniform float uWarm;
+  varying vec2 vUv; varying float vD;
+  void main() {
+    vec3 c = texture2D(uMap, vUv).rgb;
+    // Night grade: deep shadows lean to lapis, the near light stays warm.
+    float l = dot(c, vec3(.299, .587, .114));
+    vec3 lapis = vec3(.06, .11, .26);
+    c = mix(lapis + c * .9, c, smoothstep(.05, .55, l));
+    c *= mix(.78, 1.04, vD) * uWarm;
+    vec2 q = vUv - .5;
+    float vig = smoothstep(.85, .25, length(q * vec2(1., 1.15)));
+    c *= mix(.35, 1., vig);
+    float edge = smoothstep(0., .07, vUv.x) * smoothstep(1., .93, vUv.x) * smoothstep(0., .06, vUv.y) * smoothstep(1., .94, vUv.y);
+    gl_FragColor = vec4(c, uOpacity * edge);
+  }`;
+
+const photos = {};
+function addPhoto(key, aspect, amount) {
+  const mat = new THREE.ShaderMaterial({
+    uniforms: {
+      uMap: { value: loader.load(`assets/story/s${key}.jpg`) },
+      uDepth: { value: loader.load(`assets/story/s${key}-depth.png`) },
+      uAmount: { value: amount }, uOpacity: { value: 0 }, uWarm: { value: 1 },
+    },
+    vertexShader: photoVert, fragmentShader: photoFrag, transparent: true, depthWrite: false,
+  });
+  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(1, 1, small ? 160 : 240, small ? 160 : 240), mat);
+  mesh.userData.aspect = aspect;
+  mesh.visible = false;
+  scene.add(mesh);
+  photos[key] = mesh;
+}
+// key, aspect, how far the depth pushes forward.
+const PHOTOS = [
+  ['68', 1400 / 1875, 1.25], ['71', 765 / 1024, 1.1], ['69', 765 / 1024, 1.1], ['70', 1024 / 553, 1.0],
+  ['85', 1, 1.15], ['87', 735 / 413, 1.2], ['86', 735 / 412, 1.15], ['94', 1, 1.1], ['93', 736 / 1308, 1.3],
+];
+for (const [k, a, d] of PHOTOS) addPhoto(k, a, d);
+
+// Cover the view at the plane's distance, with room for the camera to move.
+function fitPhoto(mesh, dist) {
+  const h = 2 * dist * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * 1.22;
+  const w = h * camera.aspect;
+  const a = mesh.userData.aspect;
+  let sw = Math.max(w, h * a), sh = sw / a;
+  // A tall picture on a wide screen is shown whole, floating, rather than
+  // cropped to a sliver.
+  if (a < camera.aspect * .42) { sh = h * .9; sw = sh * a; }
+  mesh.scale.set(sw, sh, 1);
+}
+
+/* ---------- Between photographs: the outgoing picture breaks into its own
+   coloured, depth-lifted points, which swirl through the air and settle as
+   the next picture. */
+const N2 = small ? 60000 : 140000;
+const samples = {};
+function samplePhoto(key) {
+  if (samples[key]) return samples[key];
+  return samples[key] = Promise.all([`assets/story/s${key}.jpg`, `assets/story/s${key}-depth.png`].map(src => new Promise(ok => {
+    const im = new Image(); im.onload = () => ok(im); im.src = src;
+  }))).then(([im, dm]) => {
+    const w = 320, h = Math.round(320 * im.height / im.width);
+    const read = img => {
+      const c = document.createElement('canvas'); c.width = w; c.height = h;
+      const g = c.getContext('2d'); g.drawImage(img, 0, 0, w, h); return g.getImageData(0, 0, w, h).data;
+    };
+    const px = read(im), dp = read(dm);
+    const uvd = new Float32Array(N2 * 3), col = new Float32Array(N2 * 3);
+    for (let i = 0; i < N2; i++) {
+      const u = Math.random(), v = Math.random();
+      const x = Math.min(w - 1, Math.floor(u * w)), y = Math.min(h - 1, Math.floor((1 - v) * h)), o = (y * w + x) * 4;
+      uvd.set([u, v, dp[o] / 255], i * 3);
+      // The same night grade as the photograph's shader, so the swap is seamless.
+      let r = px[o] / 255, g = px[o + 1] / 255, b = px[o + 2] / 255;
+      const l = .299 * r + .587 * g + .114 * b, k = clamp((l - .05) / .5), t = k * k * (3 - 2 * k);
+      r = (.06 + r * .9) * (1 - t) + r * t; g = (.11 + g * .9) * (1 - t) + g * t; b = (.26 + b * .9) * (1 - t) + b * t;
+      col.set([r, g, b], i * 3);
+    }
+    return { uvd, col };
+  });
+}
+const cloudGeo = new THREE.BufferGeometry();
+const cSwirl = new Float32Array(N2 * 3), cSeed = new Float32Array(N2 * 4);
+for (let i = 0; i < N2; i++) {
+  const a = Math.random() * 2 - 1, b = Math.random() * Math.PI * 2, q = Math.sqrt(1 - a * a);
+  cSwirl.set([q * Math.cos(b), a, q * Math.sin(b)], i * 3);
+  cSeed.set([Math.random(), Math.random(), Math.random(), Math.random()], i * 4);
+}
+cloudGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(N2 * 3), 3));
+for (const name of ['aA', 'aB', 'aColA', 'aColB']) cloudGeo.setAttribute(name, new THREE.BufferAttribute(new Float32Array(N2 * 3), 3));
+cloudGeo.setAttribute('aSwirl', new THREE.BufferAttribute(cSwirl, 3));
+cloudGeo.setAttribute('aSeed', new THREE.BufferAttribute(cSeed, 4));
+const cloudMat = new THREE.ShaderMaterial({
+  uniforms: {
+    uSA: { value: new THREE.Vector2(1, 1) }, uSB: { value: new THREE.Vector2(1, 1) }, uDA: { value: 1 }, uDB: { value: 1 },
+    uMix: { value: 0 }, uOpacity: { value: 0 }, uSize: { value: 1.5 }, uPx: { value: renderer.getPixelRatio() }, uTime: { value: 0 },
+  },
+  vertexShader: `
+    attribute vec3 aA, aB, aColA, aColB, aSwirl; attribute vec4 aSeed;
+    uniform vec2 uSA, uSB; uniform float uDA, uDB, uMix, uSize, uPx, uTime;
+    varying vec3 vCol; varying float vLift;
+    void main() {
+      vec3 pa = vec3((aA.x - .5) * uSA.x, (aA.y - .5) * uSA.y, aA.z * uDA);
+      vec3 pb = vec3((aB.x - .5) * uSB.x, (aB.y - .5) * uSB.y, aB.z * uDB);
+      float m = smoothstep(0., 1., clamp(uMix * 1.5 - aSeed.x * .5, 0., 1.));
+      float lift = sin(3.14159 * m);
+      // Fine smoke: the picture lifts off as a haze that curls on slow,
+      // layered currents and rises a little, then settles as the next one.
+      vec3 q = mix(pa, pb, m);
+      float t = uTime * .35;
+      vec3 curl = vec3(
+        sin(q.y * 1.6 + t + aSeed.x * 6.) + .5 * sin(q.z * 3.1 - t * 1.3 + aSeed.y * 9.),
+        sin(q.x * 1.3 - t * .8 + aSeed.y * 6.) + .5 * sin(q.x * 2.9 + q.y * 1.7 + t * 1.1),
+        sin((q.x + q.y) * 1.1 + t * .6 + aSeed.z * 6.));
+      // Neighbours share a current, so the haze moves in wisps, not grains.
+      vec3 curl2 = vec3(sin(q.y * 4.2 - t * 1.7), sin(q.x * 3.8 + t * 1.4), 0.);
+      q += (curl * .6 + curl2 * .18) * lift * (.85 + .3 * aSeed.z) + vec3(0., lift * .45, lift * .6);
+      vec4 mv = modelViewMatrix * vec4(q, 1.);
+      gl_Position = projectionMatrix * mv;
+      // Small whatever the distance: smoke, never confetti.
+      gl_PointSize = uSize * uPx * (.7 + .6 * aSeed.w) * clamp(6. / -mv.z, .8, 1.25);
+      vCol = mix(mix(aColA, aColB, m), vec3(1., .88, .66), lift * .45) * (1. + lift * .7);
+      vLift = lift;
+    }`,
+  fragmentShader: `
+    uniform float uOpacity; varying vec3 vCol; varying float vLift;
+    void main() {
+      vec2 q = gl_PointCoord - .5; float r = dot(q, q) * 4.;
+      if (r > 1.) discard;
+      float a = pow(1. - r, 2.) * mix(.6, .7, vLift);
+      gl_FragColor = vec4(vCol * a * uOpacity, 1.);
+    }`,
+  transparent: true, depthWrite: false, depthTest: false,
+  // Additive, premultiplied: thin smoke that glows where it gathers.
+  blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneFactor,
+});
+const photoCloud = new THREE.Points(cloudGeo, cloudMat);
+photoCloud.renderOrder = 1; photoCloud.frustumCulled = false; photoCloud.visible = false;
+scene.add(photoCloud);
+let cloudPair = '';
+async function setCloudPair(ka, kb) {
+  const id = ka + '>' + kb;
+  if (cloudPair === id) return;
+  cloudPair = id;
+  const [A, B] = await Promise.all([samplePhoto(ka), samplePhoto(kb)]);
+  if (cloudPair !== id) return;
+  cloudGeo.attributes.aA.array.set(A.uvd); cloudGeo.attributes.aColA.array.set(A.col);
+  cloudGeo.attributes.aB.array.set(B.uvd); cloudGeo.attributes.aColB.array.set(B.col);
+  for (const n of ['aA', 'aB', 'aColA', 'aColB']) cloudGeo.attributes[n].needsUpdate = true;
+  cloudGeo.userData.ready = id;
+}
+// Sample the pictures in the background so the first break is instant.
+for (const [k] of PHOTOS.slice(1)) samplePhoto(k);
+
+/* ---------- One field of motes that is, in turn, a hologram of the
+   ziggurat, a sheet of cuneiform rippling like silk, gold dust, and the
+   Aasu mark. */
+const N = small ? 26000 : 60000;
+const rnd = (a, b) => a + Math.random() * (b - a);
+
+function sampleZiggurat(n) {
+  const out = new Float32Array(n * 3);
+  // Terraces as boxes (x, y, z extents); the stair as a ramp in front.
+  const boxes = [
+    [-1.7, 1.7, -.95, -.35, -1.1, 1.1],
+    [-1.2, 1.2, -.35, .15, -.8, .8],
+    [-.78, .78, .15, .55, -.52, .52],
+    [-.26, .26, .55, .9, -.22, .22],
+  ];
+  const areas = boxes.map(([a, b, c, d, e, f]) => 2 * ((b - a) * (d - c) + (b - a) * (f - e) + (d - c) * (f - e)));
+  const total = areas.reduce((s, v) => s + v, 0);
+  for (let i = 0; i < n; i++) {
+    let x, y, z;
+    const r = Math.random();
+    if (r >= .16 && r < .185) {
+      // The shrine's gate: a lit frame you can walk through.
+      const side = Math.random();
+      if (side < .38) { x = -.09; y = rnd(.55, .8); } else if (side < .76) { x = .09; y = rnd(.55, .8); } else { x = rnd(-.09, .09); y = .8; }
+      z = .22 + rnd(-.01, .01);
+      out.set([x * .78, y * .78 + .95, z * .78], i * 3);
+      continue;
+    }
+    if (r < .16) {
+      // The front stair: from the ground at the front to the top terrace.
+      // Stepped: each mote sits on a tread or a riser.
+      const t = Math.floor(Math.random() * 26) / 26 + (Math.random() < .5 ? 0 : 1 / 52), w = rnd(-.17, .17);
+      x = w; y = -.95 + t * 1.5; z = 1.55 - t * 1.05;
+      if (Math.random() < .3) x = Math.sign(w || 1) * .17;
+    } else {
+      let pick = Math.random() * total, k = 0;
+      while (pick > areas[k]) { pick -= areas[k]; k++; }
+      const [a, b, c, d, e, f] = boxes[k];
+      const face = Math.floor(Math.random() * 6);
+      x = rnd(a, b); y = rnd(c, d); z = rnd(e, f);
+      if (face === 0) x = a; else if (face === 1) x = b; else if (face === 2) y = d;
+      else if (face === 3) y = c; else if (face === 4) z = e; else z = f;
+      // Crowd the edges so the form reads as a lit wireframe.
+      if (Math.random() < .45) {
+        const snap = Math.random();
+        if (snap < .33) x = Math.random() < .5 ? a : b;
+        else if (snap < .66) y = Math.random() < .5 ? c : d;
+        else z = Math.random() < .5 ? e : f;
+      }
+      // Keep the gate open.
+      if (k === 3 && z === f && Math.abs(x) < .1 && y < .81) { i--; continue; }
+    }
+    out.set([x * .78, y * .78 + .95, z * .78], i * 3);
+  }
+  return out;
+}
+
+// A wedge as (head x, head y, length, angle°, half head, neck x, neck, notch, blunt tip).
+function inWedge(w) {
+  const [hx, hy, L, ang, half, nx, neck, , tail = 0] = w;
+  const width = a => a < nx ? half + (neck - half) * a / nx : neck + (tail - neck) * (a - nx) / (L - nx);
+  for (;;) {
+    const a = Math.random() * L, hw = width(a);
+    if (Math.random() * half > hw) continue;
+    const v = (Math.random() * 2 - 1) * hw * .9;
+    const r = ang * Math.PI / 180, c = Math.cos(r), s = Math.sin(r);
+    return [hx + a * c - v * s, hy + a * s + v * c];
+  }
+}
+
+function sampleSilk(n) {
+  // Rows of signs built from horizontals, verticals and corner wedges,
+  // laid out in "pixels" then scaled onto a 6 × 3.3 sheet.
+  const k = .021, W = 6 / k, H = 3.3 / k, wedges = [];
+  const wedge = (x, y, ang, len) => wedges.push([x, y, len, ang, 1.9, 3.8, .55, 1.2]);
+  for (let y = 9; y < H - 6; y += 15.5) {
+    let x = 4 + Math.random() * 4;
+    while (x < W - 14) {
+      const parts = 1 + Math.floor(Math.random() * 3);
+      for (let p = 0; p < parts; p++) {
+        const kind = Math.floor(Math.random() * 5);
+        if (kind < 2) {
+          const c = 1 + Math.floor(Math.random() * 3), len = 6 + Math.random() * 4;
+          for (let i = 0; i < c; i++) wedge(x, y + (i - (c - 1) / 2) * 3.4, 0, len);
+          x += len * .7 + 1.5;
+        } else if (kind < 4) {
+          const c = 1 + Math.floor(Math.random() * 3), len = 7 + Math.random() * 4;
+          for (let i = 0; i < c; i++) wedge(x + i * 2.8, y - len / 2, 90, len);
+          x += c * 2.8 + 1.5;
+        } else {
+          wedge(x, y - 2.4, 40, 5.6); if (Math.random() < .5) wedge(x, y + 2.4, -40, 5.6);
+          x += 4.5;
+        }
+      }
+      x += 2 + Math.random() * 3;
+    }
+  }
+  const out = new Float32Array(n * 3);
+  for (let i = 0; i < n; i++) {
+    const [px, py] = inWedge(wedges[Math.floor(Math.random() * wedges.length)]);
+    out.set([(px - W / 2) * k, (H / 2 - py) * k + .2, rnd(-.015, .015)], i * 3);
+  }
+  return out;
+}
+
+// Aasu's mark, the same geometry as the app (lib/core/branding/aasu_mark.dart).
+const MARK = [
+  [43.23, 42.86, 22.17, 0, 8.2, 9.02, 1.8, 2.95],
+  [32.36, 64.17, 43.9, 0, 8.2, 9.02, 1.8, 2.95],
+  [21.5, 85.48, 65.63, 0, 8.2, 9.02, 1.8, 2.95],
+  [54.93, 19.91, 93.84, 63, 8.61, 9.47, 3.1, 3.1, 1.07],
+];
+function sampleMark(n) {
+  const area = MARK.map(w => w[2] * (w[6] + w[4] * .5));
+  const total = area.reduce((s, v) => s + v, 0);
+  const out = new Float32Array(n * 3), k = 2.6 / 120;
+  for (let i = 0; i < n; i++) {
+    let pick = Math.random() * total, j = 0;
+    while (pick > area[j]) { pick -= area[j]; j++; }
+    const [x, y] = inWedge(MARK[j]);
+    out.set([(x - 60) * k, (60 - y) * k + .7, rnd(-.03, .03)], i * 3);
+  }
+  return out;
+}
+
+const geo = new THREE.BufferGeometry();
+const cloud = new Float32Array(N * 3), swirl = new Float32Array(N * 3), seed = new Float32Array(N * 4);
+for (let i = 0; i < N; i++) {
+  const u = Math.random() * 2 - 1, t = Math.random() * Math.PI * 2, r = 5 + Math.random() * 6;
+  const s = Math.sqrt(1 - u * u);
+  cloud.set([s * Math.cos(t) * r, u * r * .6, s * Math.sin(t) * r - 2], i * 3);
+  const a = Math.random() * 2 - 1, b = Math.random() * Math.PI * 2, q = Math.sqrt(1 - a * a);
+  swirl.set([q * Math.cos(b), a, q * Math.sin(b)], i * 3);
+  seed.set([Math.random(), Math.random(), Math.random(), Math.random()], i * 4);
+}
+geo.setAttribute('position', new THREE.BufferAttribute(sampleZiggurat(N), 3));
+geo.setAttribute('aCloud', new THREE.BufferAttribute(cloud, 3));
+geo.setAttribute('aSilk', new THREE.BufferAttribute(sampleSilk(N), 3));
+geo.setAttribute('aMark', new THREE.BufferAttribute(sampleMark(N), 3));
+geo.setAttribute('aSwirl', new THREE.BufferAttribute(swirl, 3));
+geo.setAttribute('aSeed', new THREE.BufferAttribute(seed, 4));
+
+const moteMat = new THREE.ShaderMaterial({
+  uniforms: {
+    uTime: { value: 0 }, uIntro: { value: 0 }, uRot: { value: 0 }, uSilk: { value: 0 },
+    uMark: { value: 0 }, uDust: { value: 0 }, uOpacity: { value: 1 }, uScale: { value: 1 },
+    uPx: { value: renderer.getPixelRatio() }, uSize: { value: small ? 2.6 : 2.2 },
+  },
+  vertexShader: `
+    attribute vec3 aCloud, aSilk, aMark, aSwirl; attribute vec4 aSeed;
+    uniform float uTime, uIntro, uRot, uSilk, uMark, uDust, uScale, uPx, uSize;
+    varying float vGold, vAlpha;
+    float stag(float g, float d) { return smoothstep(0., 1., clamp(g * 1.7 - d * .7, 0., 1.)); }
+    vec3 arc(vec3 a, vec3 b, float e, float k) {
+      vec3 mid = (a + b) * .5 + aSwirl * length(b - a) * k;
+      return mix(mix(a, mid, e), mix(mid, b, e), e);
+    }
+    void main() {
+      float d = aSeed.x;
+      // The hologram ziggurat, turning.
+      vec3 z = position;
+      float c = cos(uRot), s = sin(uRot);
+      z = vec3(c * z.x + s * z.z, z.y, -s * z.x + c * z.z);
+      float scan = sin(z.y * 34. - uTime * 2.2) * .5 + .5;
+      vec3 p = arc(aCloud, z, stag(uIntro, d), .5);
+
+      // The sheet of writing, lifting like silk.
+      vec3 w = aSilk;
+      float t = uTime * .55;
+      w.z += .32 * sin(1.25 * w.x + t) + .22 * sin(.9 * w.y - t * .8 + 1.4 * sin(.7 * w.x + t * .5));
+      w.y += .07 * sin(1.7 * w.x - t * 1.1);
+      float tilt = -.32; w = vec3(w.x, w.y * cos(tilt) - w.z * sin(tilt), w.y * sin(tilt) + w.z * cos(tilt));
+      float eS = stag(uSilk, d);
+      p = arc(p, w, eS, .45);
+
+      float eM = stag(uMark, 1. - d);
+      p = arc(p, aMark, eM, .55);
+
+      // Gold dust: the form loosens and drifts while photographs play.
+      p += aSwirl * uDust * (1.4 + 2.2 * aSeed.y) + vec3(sin(uTime * .3 + d * 40.), cos(uTime * .25 + d * 30.), 0.) * uDust * .25;
+      // Each mote floats on its own small loop, crossing its neighbours.
+      float ft = uTime * (.35 + .4 * aSeed.z);
+      p += vec3(sin(ft + d * 31.), sin(ft * 1.3 + d * 17.), cos(ft * .9 + d * 23.)) * (.012 + .022 * aSeed.y) * (1. - eM);
+      p *= uScale;
+
+      vec4 mv = modelViewMatrix * vec4(p, 1.);
+      gl_Position = projectionMatrix * mv;
+      float size = uSize * (.55 + aSeed.z * .9) * (1. + eM * .35);
+      gl_PointSize = size * uPx * clamp(6. / -mv.z, .7, 1.35);
+      vGold = max(max(eS, eM), step(.9, aSeed.w));
+      // Dense gold would burn to white under additive light; the mark is
+      // the densest form, so its motes are the faintest.
+      vAlpha = mix(.55 + .45 * scan, 1., max(eS, eM)) * (.45 + .55 * aSeed.y) * mix(1., .055, eM);
+      // Motes the camera passes through melt away instead of filling the view.
+      vAlpha *= smoothstep(.05, .6, -mv.z);
+    }`,
+  fragmentShader: `
+    uniform float uOpacity;
+    varying float vGold, vAlpha;
+    void main() {
+      vec2 q = gl_PointCoord - .5; float r = dot(q, q) * 4.;
+      if (r > 1.) discard;
+      float a = pow(1. - r, 1.6) * vAlpha * uOpacity;
+      vec3 ice = vec3(.55, .7, 1.), gold = vec3(1., .8, .42);
+      gl_FragColor = vec4(mix(ice, gold, vGold), a);
+    }`,
+  transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending,
+});
+const motes = new THREE.Points(geo, moteMat);
+motes.renderOrder = 2;
+scene.add(motes);
+
+// Stars far behind everything.
+const starGeo = new THREE.BufferGeometry();
+const SN = small ? 1400 : 2600, sp = new Float32Array(SN * 3), ss = new Float32Array(SN);
+for (let i = 0; i < SN; i++) { sp.set([rnd(-40, 40), rnd(-14, 26), rnd(-60, -25)], i * 3); ss[i] = Math.random(); }
+starGeo.setAttribute('position', new THREE.BufferAttribute(sp, 3));
+starGeo.setAttribute('aS', new THREE.BufferAttribute(ss, 1));
+const starMat = new THREE.ShaderMaterial({
+  uniforms: { uTime: { value: 0 }, uOpacity: { value: 1 }, uPx: { value: renderer.getPixelRatio() } },
+  vertexShader: `attribute float aS; uniform float uTime, uPx; varying float vA;
+    void main() { vec4 mv = modelViewMatrix * vec4(position, 1.); gl_Position = projectionMatrix * mv;
+      gl_PointSize = (1. + aS * 1.8) * uPx; vA = .35 + .65 * (.5 + .5 * sin(uTime * (.6 + aS * 1.4) + aS * 60.)); }`,
+  fragmentShader: `uniform float uOpacity; varying float vA;
+    void main() { vec2 q = gl_PointCoord - .5; float r = dot(q, q) * 4.; if (r > 1.) discard;
+      gl_FragColor = vec4(vec3(.85, .9, 1.), (1. - r) * vA * uOpacity); }`,
+  transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+});
+scene.add(new THREE.Points(starGeo, starMat));
+
+// A ring of light that spreads from the finished mark.
+const ring = new THREE.Mesh(new THREE.RingGeometry(.98, 1, 160),
+  new THREE.MeshBasicMaterial({ color: 0xF3DE9E, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false }));
+ring.position.set(0, .7, 0); ring.renderOrder = 3;
+scene.add(ring);
+
+/* ---------- Scroll → story. */
+const captions = [...document.querySelectorAll('.st-caption')];
+const hero = document.getElementById('st-hero');
+const finale = document.getElementById('st-finale');
+const dots = [...document.querySelectorAll('.st-rail span')];
+const scrim = document.getElementById('st-scrim');
+const skip = document.getElementById('st-skip');
+let target = 0, shown = 0, introStart = performance.now();
+const trackEl = document.getElementById('st-track');
+const layer = document.getElementById('st-layer');
+const readScroll = () => {
+  const max = trackEl.offsetHeight - innerHeight;
+  target = max > 0 ? clamp(scrollY / max) : 0;
+  const past = scrollY > trackEl.offsetHeight - innerHeight * .55;
+  document.body.classList.toggle('story-done', past);
+  canvas.style.opacity = 1 - clamp((scrollY - (trackEl.offsetHeight - innerHeight)) / (innerHeight * .6));
+};
+addEventListener('scroll', readScroll, { passive: true });
+let mx = 0, my = 0;
+addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; }, { passive: true });
+
+function resize() {
+  renderer.setSize(innerWidth, innerHeight, false);
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  for (const m of Object.values(photos)) fitPhoto(m, 6);
+  moteMat.uniforms.uScale.value = clamp(camera.aspect / 1.15, .5, 1);
+  // Big enough that the points close up into a picture before they break.
+  cloudMat.uniforms.uSize.value = small ? 1.7 : 1.5;
+  readScroll();
+}
+addEventListener('resize', resize);
+resize();
+
+// The story in scroll fractions. Each photograph holds over [a, b]; the
+// gap to the next one is where it breaks apart and becomes the next.
+const shots = [
+  { key: '68', a: .105, b: .16, from: [0, -.75, 6.5], to: [.15, .55, 4.9] },
+  { key: '71', a: .27, b: .325, from: [-.35, .1, 6.3], to: [.2, -.05, 5.1] },
+  { key: '69', a: .355, b: .41, from: [.3, .2, 6.2], to: [-.15, -.1, 5.2] },
+  { key: '70', a: .44, b: .495, from: [-.5, 0, 6.2], to: [.45, .05, 5.3] },
+  { key: '85', a: .525, b: .58, from: [0, -.2, 6.4], to: [0, .1, 5.0] },
+  { key: '87', a: .61, b: .665, from: [.4, 0, 6.2], to: [-.3, .05, 5.2] },
+  { key: '86', a: .695, b: .75, from: [-.3, -.1, 6.2], to: [.25, .1, 5.1] },
+  { key: '94', a: .78, b: .835, from: [0, .1, 6.6], to: [0, -.05, 4.8] },
+  { key: '93', a: .865, b: .92, from: [.2, -.3, 6.3], to: [-.1, .2, 5.2] },
+];
+const MARK_AT = .935;
+// The climb, in the hologram's own units (scaled with it on small screens):
+// to the foot of the stair, up it, and through the shrine's gate.
+const V = (x, y, z) => new THREE.Vector3(x, y, z);
+const climb = new THREE.CatmullRomCurve3([V(0, .1, 6), V(0, .45, 3.1), V(0, .95, 1.75), V(0, 1.52, .95), V(0, 1.48, .5), V(0, 1.47, -.25)]);
+const climbLook = new THREE.CatmullRomCurve3([V(0, .03, 0), V(0, .8, .9), V(0, 1.35, .45), V(0, 1.48, .17), V(0, 1.47, 0), V(0, 1.47, -1)]);
+const flash = document.getElementById('st-flash');
+const lerp3 = (x, y, t) => x.map((v, i) => v + (y[i] - v) * t);
+// Where the camera is at moment t (0-1) of a shot. On a narrow screen a
+// wide picture is wider than the view, so the camera travels across it.
+function camFor(s, t) {
+  const c = lerp3(s.from, s.to, t);
+  const view = 2 * c[2] * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.aspect;
+  const extra = (photos[s.key].scale.x - view) / 2;
+  if (extra > view * .3) c[0] = (s.to[0] >= s.from[0] ? 1 : -1) * extra * .75 * (2 * t - 1);
+  return c;
+}
+
+// The arrow takes you to the start of the next scene.
+const SCENES = [.105, .175, .265, .35, .435, .52, .605, .69, .775, .86, .955];
+document.getElementById('st-skip').addEventListener('click', () => {
+  const max = trackEl.offsetHeight - innerHeight;
+  const next = SCENES.find(s => s > target + .004);
+  scrollTo({ top: next === undefined ? trackEl.offsetHeight : next * max, behavior: reduced ? 'auto' : 'smooth' });
+});
+
+function frame(now) {
+  const time = now / 1000;
+  shown += (target - shown) * (reduced ? 1 : .075);
+  const p = shown;
+
+  // Hero: the hologram assembles on load and turns as you start to scroll.
+  const intro = reduced ? 1 : clamp((now - introStart) / 3200);
+  const u = moteMat.uniforms;
+  u.uTime.value = reduced ? 0 : time;
+  u.uIntro.value = ease(intro);
+  // The climb: the hologram turns its stair to you and grows as the
+  // camera walks up it and through the shrine's gate.
+  const fly = seg(p, .012, .094);
+  const free = reduced ? 0 : time * .12;
+  const facing = Math.round(free / (Math.PI * 2)) * Math.PI * 2;
+  u.uRot.value = free + (facing - free) * ease(seg(fly, 0, .3));
+  u.uSilk.value = ease(seg(p, .16, .22));
+  u.uMark.value = ease(seg(p, MARK_AT, MARK_AT + .04));
+  const dust = Math.max(window1(p, .105, .155, .012), window1(p, .255, .925, .015));
+  u.uDust.value = ease(dust);
+  u.uOpacity.value = 1 - .88 * dust;
+  starMat.uniforms.uTime.value = time;
+  starMat.uniforms.uOpacity.value = 1 - .8 * window1(p, .255, .925);
+
+  // Photographs: which one shows, and the break between two of them.
+  let cam = null;
+  cloudMat.uniforms.uOpacity.value = 0;
+  photoCloud.visible = false;
+  shots.forEach((s, i) => {
+    const prev = shots[i - 1], next = shots[i + 1];
+    const inA = i === 0 ? .094 : i === 1 ? .245 : s.a - (s.a - prev.b) * .45;
+    const outB = i === 0 ? .172 : !next ? .935 : s.b + (next.a - s.b) * .45;
+    const o = Math.min(seg(p, inA, s.a), 1 - seg(p, s.b, outB));
+    const m = photos[s.key];
+    m.material.uniforms.uOpacity.value = o;
+    m.visible = o > .001;
+    if (p >= s.a && p <= s.b) cam = camFor(s, ease(seg(p, s.a, s.b)));
+    else if (p > inA && p < s.a && i < 2) cam = camFor(s, 0);
+    else if (p > s.b && p < outB && (i === 0 || !next)) cam = camFor(s, 1);
+    // The break into the next photograph.
+    if (i >= 1 && next && p > s.b && p < next.a) {
+      const t = seg(p, s.b, next.a);
+      setCloudPair(s.key, next.key);
+      if (cloudGeo.userData.ready === s.key + '>' + next.key) {
+        const A = photos[s.key].scale, B = photos[next.key].scale;
+        cloudMat.uniforms.uSA.value.set(A.x, A.y); cloudMat.uniforms.uSB.value.set(B.x, B.y);
+        cloudMat.uniforms.uDA.value = photos[s.key].material.uniforms.uAmount.value;
+        cloudMat.uniforms.uDB.value = photos[next.key].material.uniforms.uAmount.value;
+        cloudMat.uniforms.uMix.value = ease(seg(t, .18, .82));
+        cloudMat.uniforms.uTime.value = time;
+        cloudMat.uniforms.uOpacity.value = Math.min(seg(t, 0, .22), 1 - seg(t, .78, 1));
+        photoCloud.visible = true;
+      }
+      cam = lerp3(camFor(s, 1), camFor(next, 0), ease(t));
+    }
+  });
+
+  // The camera: on its path through a photograph, or resting, always with
+  // a slow drift (so the pictures live on a phone too) and pointer parallax.
+  const drift = reduced ? [0, 0] : [Math.sin(time * .23) * .12, Math.cos(time * .19) * .08];
+  let [cx, cy, cz] = cam || [0, .1, 6];
+  let look = null;
+  if (!cam && fly > 0) {
+    const k = u.uScale.value, t = ease(fly);
+    const at = climb.getPoint(t), to = climbLook.getPoint(t);
+    [cx, cy, cz] = [at.x * k, at.y * k, at.z * k];
+    look = [to.x * k, to.y * k, to.z * k];
+  }
+  cx += drift[0] + mx * .3; cy += drift[1] - my * .22;
+  camera.position.set(cx, cy, cz);
+  if (look) camera.lookAt(look[0], look[1], look[2]); else camera.lookAt(cx * .35, cy * .35, 0);
+  // Through the gate: the light closes in, then opens on Ur.
+  flash.style.opacity = seg(fly, .8, .98) * (1 - seg(p, .096, .11));
+
+  // The ring, once the mark is whole.
+  const r = seg(p, MARK_AT + .03, .99);
+  ring.scale.setScalar((1.2 + r * 2.4) * u.uScale.value);
+  ring.material.opacity = r > 0 && r < 1 ? (1 - r) * .55 : 0;
+
+  // Captions.
+  hero.style.opacity = 1 - seg(p, .006, .025);
+  let shade = 0;
+  for (const c of captions) {
+    const o = window1(p, +c.dataset.in, +c.dataset.out, .012);
+    shade = Math.max(shade, o);
+    c.style.opacity = o;
+    c.style.transform = `translateY(${(1 - o) * 18}px)`;
+  }
+  const f = seg(p, .955, .985);
+  scrim.style.opacity = Math.max(shade, f * .7);
+  finale.style.opacity = f;
+  finale.classList.toggle('st-on', f > .5);
+  skip.style.opacity = f > .5 ? 0 : 1;
+  const chapter = [.05, .16, .25, .34, .425, .51, .595, .68, .765, .85, .93, 1].findIndex(e => p < e);
+  dots.forEach((d, i) => d.classList.toggle('st-on', i === chapter));
+
+  // Nothing to draw once the canvas has faded under the site.
+  if (+canvas.style.opacity !== 0) renderer.render(scene, camera);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
 </script>
 </body>
 </html>
