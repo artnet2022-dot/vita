@@ -3,928 +3,696 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>آسو — طبيبك ومختبرك وصيدليتك في تطبيق واحد</title>
-<meta name="description" content="آسو يربط المراجع بطبيبه ومختبره ومركز الأشعة والسونار والصيدلية في كل محافظات العراق: حجز، طابور، وصفات إلكترونية، نتائج برمز QR، وتذكير بكل جرعة دواء.">
-<meta name="theme-color" content="#070E1D">
-<meta property="og:title" content="Aasu">
-<meta property="og:description" content="من الحجز إلى آخر جرعة دواء، في تطبيق واحد.">
-<meta property="og:image" content="assets/logo.jpg">
+<title>إلكم</title>
+<meta name="description" content="إلكم: طبيبك ومختبرك وأشعتك وصيدليتك وسجل عائلتك بملف واحد، من الحجز لآخر جرعة دوا. منصة صحية عراقية.">
+<meta name="theme-color" content="#F4EEE2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1426" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Outfit:wght@600;700&family=Readex+Pro:wght@400;500;600;700&family=Reem+Kufi:wght@600;700&display=swap">
 <style>
 :root {
-  --night: #050A16;
-  --ink: #0D1831;
-  --ink-2: #121E3C;
-  --teal: #122C67;
-  --teal-glow: #3B64C5;
-  --brass: #C9A24B;
-  --brass-soft: #E8D29A;
-  --paper: #F6F3EC;
-  --sheet: #FFFEFB;
-  --line-dark: rgba(216, 221, 234, .12);
-  --line-light: #E2DBCC;
-  --text-dark: #DEE2EA;
-  --muted-dark: #A4ADC1;
-  --text-light: #0D1831;
-  --muted-light: #5A6378;
-  --patient: #3466C0;
-  --doctor: #234799;
-  --desk: #C98B2E;
-  --lab: #E07B34;
-  --imaging: #8B67C9;
-  --pharmacy: #D4507A;
-  --ok: #3759A9;
-  --display: "Reem Kufi", "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  --ground: #F4EEE2;
+  --ground-2: #EDE5D5;
+  --surface: #FBF8F1;
+  --ink: #17213A;
+  --text: #17213A;
+  --muted: #5B6276;
+  --line: #DED4C1;
+  --orange: #E8572A;
+  --orange-text: #C2441A;
+  --orange-soft: #F9DCCF;
+  --ok: #2F7A62;
+  --ok-soft: #DCEDE5;
+  --warn: #B87510;
+  --warn-soft: #F6E7C8;
+  --bad: #C0322A;
+  --bad-soft: #F7DCD8;
+  --band: #17213A;
+  --band-text: #F4EEE2;
+  --band-muted: #A9B0C2;
+  --shadow: 0 1px 0 rgba(23,33,58,.04), 0 18px 40px -22px rgba(23,33,58,.35);
+  --brand: "Reem Kufi", "Readex Pro", sans-serif;
+  --display: "Readex Pro", "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
   --body: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
-  --gutter: clamp(16px, 5vw, 72px);
+  --latin: "Outfit", "Segoe UI", Arial, sans-serif;
+  --gutter: clamp(16px, 5vw, 64px);
   --ease: cubic-bezier(.22, .8, .2, 1);
+  color-scheme: light;
 }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #0E1426; --ground-2: #121A30; --surface: #17213A; --ink: #F4EEE2; --text: #F1ECE2;
+    --muted: #A9B0C2; --line: #2A3552; --orange: #EE6A3F; --orange-text: #F59A76; --orange-soft: #3A2723;
+    --ok: #6CC3A3; --ok-soft: #173229; --warn: #E4AE55; --warn-soft: #34291A; --bad: #F07F74; --bad-soft: #3A1E22;
+    --band: #F4EEE2; --band-text: #17213A; --band-muted: #5B6276;
+    --shadow: 0 1px 0 rgba(0,0,0,.2), 0 22px 44px -24px rgba(0,0,0,.7);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #0E1426; --ground-2: #121A30; --surface: #17213A; --ink: #F4EEE2; --text: #F1ECE2;
+  --muted: #A9B0C2; --line: #2A3552; --orange: #EE6A3F; --orange-text: #F59A76; --orange-soft: #3A2723;
+  --ok: #6CC3A3; --ok-soft: #173229; --warn: #E4AE55; --warn-soft: #34291A; --bad: #F07F74; --bad-soft: #3A1E22;
+  --band: #F4EEE2; --band-text: #17213A; --band-muted: #5B6276;
+  --shadow: 0 1px 0 rgba(0,0,0,.2), 0 22px 44px -24px rgba(0,0,0,.7);
+  color-scheme: dark;
+}
+
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 76px; -webkit-text-size-adjust: 100%; }
 body {
-  margin: 0;
-  background: var(--night);
-  color: var(--text-dark);
-  font-family: var(--body);
-  font-size: 17px;
-  line-height: 1.85;
-  overflow-x: hidden;
+  margin: 0; background: var(--ground); color: var(--text);
+  font: 400 17px/1.75 var(--body); overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
 }
-img { max-width: 100%; display: block; }
+h1, h2, h3, h4 { font-family: var(--display); margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+p { margin: 0; }
 a { color: inherit; }
-.num { font-variant-numeric: tabular-nums; }
-.wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--gutter); }
-:focus-visible { outline: 3px solid var(--brass); outline-offset: 3px; border-radius: 8px; }
-.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
+.wrap { width: min(1260px, 100%); margin-inline: auto; padding-inline: var(--gutter); }
+.num, .ltr { font-family: var(--latin); direction: ltr; unicode-bidi: isolate; font-variant-numeric: tabular-nums; }
+.brandword { font-family: var(--brand); font-weight: 700; }
+
+/* eyebrow: the mark's dot leads every section */
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 600 14px/1 var(--display); color: var(--orange-text); letter-spacing: .02em; }
+.eyebrow::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--orange); }
+.sec-head { display: grid; gap: 14px; max-width: 760px; margin-bottom: clamp(32px, 5vw, 56px); }
+.sec-head h2 { font-size: clamp(30px, 4.6vw, 52px); line-height: 1.2; font-weight: 600; }
+.sec-head p { color: var(--muted); font-size: clamp(16px, 1.6vw, 19px); max-width: 62ch; }
 
 /* ---------- top bar ---------- */
-.bar {
-  position: fixed; inset-inline: 0; top: 0; z-index: 50;
-  transition: background .4s var(--ease), border-color .4s var(--ease);
-  border-bottom: 1px solid transparent;
-}
-.bar.scrolled { background: rgba(5, 10, 22, .78); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); border-color: var(--line-dark); }
-.bar .wrap { display: flex; align-items: center; gap: 28px; height: 72px; }
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.brand img { width: 38px; height: 38px; border-radius: 11px; }
-.brand span { font-family: var(--display); font-size: 22px; font-weight: 600; color: #fff; white-space: nowrap; }
-.bar nav { display: flex; gap: 26px; margin-inline-start: auto; }
-.bar nav a { text-decoration: none; color: var(--muted-dark); font-size: 15.5px; transition: color .25s; }
-.bar nav a:hover { color: #fff; }
-.btn {
-  display: inline-flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer;
-  font: 600 16px/1 var(--body); padding: 15px 24px; border-radius: 999px; border: 1px solid transparent;
-  transition: transform .25s var(--ease), background .25s, box-shadow .25s, border-color .25s;
-}
-.btn svg { width: 19px; height: 19px; flex: none; }
-.btn-brass { background: linear-gradient(180deg, #D9BC7E, var(--brass)); color: #1E1708; box-shadow: 0 10px 24px -8px rgba(0, 0, 0, .55), inset 0 1px 0 rgba(255,255,255,.45); }
-.btn-brass:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -10px rgba(0, 0, 0, .6), inset 0 1px 0 rgba(255,255,255,.45); }
-.btn-ghost { color: #fff; border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.04); }
-.btn-ghost:hover { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.08); }
-.bar .btn { padding: 11px 18px; font-size: 15px; }
+.top { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--ground) 86%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.top.scrolled { border-bottom-color: var(--line); }
+.top .wrap { display: flex; align-items: center; gap: 20px; height: 68px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo svg { width: 34px; height: 34px; }
+.logo span { font: 700 26px/1 var(--brand); color: var(--ink); }
+.nav { display: flex; gap: 4px; margin-inline-start: auto; }
+.nav a { text-decoration: none; padding: 8px 12px; border-radius: 999px; font: 500 15px/1 var(--display); color: var(--muted); transition: color .2s, background .2s; white-space: nowrap; }
+.nav a:hover, .nav a.here { color: var(--ink); background: var(--ground-2); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 999px; padding: 12px 22px; font: 600 16px/1 var(--display); text-decoration: none; transition: transform .2s var(--ease), background .2s, box-shadow .2s; white-space: nowrap; }
+.btn:active { transform: scale(.97); }
+.btn-ink { background: var(--ink); color: var(--ground); }
+.btn-ink:hover { box-shadow: 0 10px 24px -12px var(--ink); }
+.btn-orange { background: var(--orange); color: #fff; }
+.btn-orange:hover { box-shadow: 0 10px 24px -10px var(--orange); }
+.btn-line { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn-line:hover { box-shadow: inset 0 0 0 1.5px var(--ink); }
+.top .btn { padding: 10px 18px; font-size: 15px; }
 
-/* ---------- hero ---------- */
-.hero { position: relative; padding: 132px 0 0; overflow: hidden; isolation: isolate; }
-.hero::before {
-  content: ""; position: absolute; inset: -20% -10% auto; height: 120%; z-index: -2;
-  background:
-    radial-gradient(700px 520px at 18% 30%, rgba(35, 71, 153, .30), transparent 65%),
-    radial-gradient(600px 460px at 92% 8%, rgba(201, 168, 102, .14), transparent 60%),
-    linear-gradient(180deg, #0A1327 0%, var(--night) 70%);
-}
-.hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 40px; align-items: center; }
-.hero h1 {
-  font-family: var(--display); font-weight: 700; color: #fff;
-  font-size: clamp(38px, 5.6vw, 76px); line-height: 1.28; margin: 0 0 24px; text-wrap: balance;
-}
-.hero h1 .line { display: block; overflow: hidden; padding-bottom: .06em; }
-.hero h1 .line span { display: inline-block; }
-.hero .lede { font-size: clamp(18px, 1.6vw, 21px); color: var(--muted-dark); max-width: 34em; margin: 0 0 34px; }
-.cta { display: flex; flex-wrap: wrap; gap: 14px; }
-.hero-facts { display: flex; flex-wrap: wrap; gap: 14px 40px; margin-top: 46px; padding-top: 26px; border-top: 1px solid var(--line-dark); max-width: 560px; }
-.hero-facts div strong { display: block; font-family: var(--display); font-size: 34px; color: var(--brass-soft); line-height: 1.2; }
-.hero-facts div span { font-size: 14.5px; color: var(--muted-dark); }
+/* ---------- hero: everything orbits the dot ---------- */
+.hero { overflow-x: clip; padding-block: clamp(28px, 5vw, 64px) clamp(40px, 6vw, 88px); }
+.hero .wrap { display: grid; grid-template-columns: 1.02fr 1fr; align-items: center; gap: clamp(24px, 4vw, 56px); }
+.hero h1 { font-size: clamp(44px, 7.4vw, 92px); line-height: 1.08; font-weight: 700; letter-spacing: -.02em; }
+.hero h1 em { font-style: normal; color: var(--orange); }
+.hero h1 .brandword { font-weight: 700; }
+.hero .lead { margin-top: 22px; font-size: clamp(17px, 1.8vw, 20px); color: var(--muted); max-width: 46ch; }
+.hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.facts { display: flex; flex-wrap: wrap; gap: 10px 36px; margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line); }
+.facts div { display: grid; gap: 2px; }
+.facts b { font: 700 30px/1.1 var(--latin); color: var(--ink); }
+.facts span { font-size: 14px; color: var(--muted); }
 
-.phone-wrap { position: relative; display: grid; place-items: center; perspective: 1400px; min-height: 640px; }
-.phone {
-  position: relative; width: min(318px, 74vw); aspect-ratio: 420 / 884; border-radius: 46px; padding: 12px;
-  background: linear-gradient(145deg, #1E273B, #080D18 55%, #11192C);
-  box-shadow: 0 0 0 1.5px rgba(255,255,255,.08) inset, 0 50px 90px -20px rgba(0,0,0,.7);
-  transform-style: preserve-3d; transition: transform .6s var(--ease);
-}
-.phone .screen { position: relative; width: 100%; height: 100%; border-radius: 35px; overflow: hidden; background: #F6F3EC; }
-.phone .screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-.phone::after { content: ""; position: absolute; top: 22px; left: 50%; translate: -50% 0; width: 92px; height: 24px; border-radius: 20px; background: #03050A; }
-.float-card {
-  position: absolute; z-index: 3; background: rgba(255, 254, 251, .96); color: var(--text-light); border-radius: 18px;
-  padding: 12px 16px; box-shadow: 0 20px 50px -12px rgba(0,0,0,.55); font-size: 14px; line-height: 1.6; display: flex; gap: 12px; align-items: center;
-  max-width: 250px;
-}
-.float-card b { display: block; font-size: 14.5px; }
-.float-card span { color: var(--muted-light); font-size: 13px; }
-.float-card .dot { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; flex: none; color: #fff; }
-.float-card .dot svg { width: 20px; height: 20px; }
-.fc-1 { top: 92px; inset-inline-start: -8px; }
-.fc-2 { bottom: 120px; inset-inline-end: -14px; }
+.orbit { position: relative; width: min(600px, 100%); aspect-ratio: 100 / 66; margin-inline: auto; user-select: none; touch-action: pan-y; }
+.orbit svg.rings { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.orbit .ring { fill: none; stroke: var(--line); stroke-width: .35; }
+.orbit .spoke { stroke: var(--ink); stroke-width: .25; opacity: .16; transition: opacity .3s, stroke .3s; }
+.orbit .spoke.lit { opacity: .9; stroke: var(--orange); stroke-width: .45; }
+.you { position: absolute; left: 50%; top: 50%; width: 19%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; background: var(--orange); color: #fff; display: grid; place-items: center; font: 700 clamp(18px, 3.4vw, 28px)/1 var(--display); z-index: 5; box-shadow: 0 18px 40px -14px var(--orange); }
+.you::before, .you::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--orange); animation: pulse 3.2s var(--ease) infinite; }
+.you::after { animation-delay: 1.6s; }
+@keyframes pulse { from { transform: scale(1); opacity: .55; } to { transform: scale(2.3); opacity: 0; } }
+.sat { position: absolute; left: 0; top: 0; translate: -50% -50%; display: flex; align-items: center; gap: 8px; padding: 7px 14px 7px 10px; border-radius: 999px; background: var(--surface); box-shadow: var(--shadow); border: 1px solid var(--line); font: 600 15px/1 var(--display); white-space: nowrap; transition: border-color .25s, background .25s; will-change: left, top, transform; cursor: default; }
+.sat i { width: 9px; height: 9px; border-radius: 50%; background: var(--ink); flex: none; transition: background .25s; }
+.sat small { display: none; font: 400 13px/1.3 var(--body); color: var(--muted); }
+.sat.lit { border-color: var(--orange); z-index: 8 !important; }
+.sat.lit i { background: var(--orange); }
+.sat.lit small { display: inline; }
+.orbit-note { text-align: center; font-size: 14px; color: var(--muted); margin-top: 6px; min-height: 1.7em; }
 
-.monitor { position: relative; height: 170px; margin-top: 30px; }
-.monitor canvas { width: 100%; height: 100%; display: block; }
-.monitor .bpm { position: absolute; inset-inline-end: var(--gutter); top: 18px; font-family: var(--display); color: var(--teal-glow); font-size: 15px; display: flex; gap: 8px; align-items: center; }
-.monitor .bpm i { width: 8px; height: 8px; border-radius: 50%; background: var(--teal-glow); box-shadow: 0 0 12px var(--teal-glow); }
+/* ---------- journey: the dot travels one thread ---------- */
+.journey { position: relative; overflow-x: clip; padding-block: clamp(56px, 8vw, 110px) clamp(40px, 6vw, 80px); background: linear-gradient(var(--ground), var(--ground-2) 12%, var(--ground-2) 88%, var(--ground)); }
+.thread { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 1; }
+.thread .base { fill: none; stroke: var(--line); stroke-width: 2; stroke-dasharray: 2 7; stroke-linecap: round; }
+.thread .lit { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-linecap: round; }
+.thread .rider { fill: var(--orange); }
+.thread .halo { fill: var(--orange); opacity: .18; }
+.stations { position: relative; z-index: 2; display: grid; gap: clamp(72px, 10vw, 140px); }
+.station { display: grid; grid-template-columns: 1fr 150px 1.25fr; align-items: start; }
+.station .copy { grid-column: 1; padding-top: 2px; max-width: 470px; justify-self: end; width: 100%; }
+.station .node { grid-column: 2; grid-row: 1; justify-self: center; margin-top: 10px; width: 22px; height: 22px; border-radius: 50%; background: var(--ground-2); border: 2.5px solid var(--line); transition: border-color .4s, background .4s, transform .4s var(--ease); }
+.station .demo { grid-column: 3; grid-row: 1; min-width: 0; }
+.station .copy { min-width: 0; }
+.station:nth-child(even) .copy { grid-column: 3; justify-self: start; }
+.station:nth-child(even) .demo { grid-column: 1; }
+.station.on .node { border-color: var(--ink); background: var(--ink); transform: scale(1.12); }
+.who { display: inline-block; font: 600 13px/1 var(--display); color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; margin-bottom: 14px; background: var(--surface); }
+.station h3 { font-size: clamp(26px, 3.3vw, 38px); line-height: 1.22; font-weight: 600; }
+.station .copy p { margin-top: 14px; color: var(--muted); }
+.station .copy .try { margin-top: 18px; font: 500 14px/1.5 var(--display); color: var(--orange-text); display: flex; gap: 8px; align-items: baseline; }
+.station .copy .try::before { content: "↙"; font-family: var(--latin); }
+.station:nth-child(even) .copy .try::before { content: "↘"; }
 
-/* ---------- section heads ---------- */
-.sec { padding: 120px 0; position: relative; }
-.sec-title { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 3.8vw, 50px); line-height: 1.35; margin: 0 0 16px; color: #fff; text-wrap: balance; max-width: 18em; }
-.sec-lede { color: var(--muted-dark); max-width: 38em; margin: 0; font-size: 18px; }
-.light { background: var(--paper); color: var(--text-light); }
-.light .sec-title { color: var(--ink); }
-.light .sec-lede { color: var(--muted-light); }
+/* demo surfaces */
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: clamp(16px, 2.4vw, 24px); position: relative; }
+.panel + .panel { margin-top: 14px; }
+.ph { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--line); }
+.ph b { font: 600 16px/1.3 var(--display); }
+.ph small { color: var(--muted); font-size: 13px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 999px; font: 500 13px/1.2 var(--display); background: var(--ground-2); color: var(--muted); white-space: nowrap; }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); }
+.chip.bad { background: var(--bad-soft); color: var(--bad); }
+.chip.or { background: var(--orange-soft); color: var(--orange-text); }
+.avatar { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--ground); font: 600 19px/1 var(--display); flex: none; }
+.row { display: flex; align-items: center; gap: 12px; }
+.grow { flex: 1; min-width: 0; }
+.mut { color: var(--muted); font-size: 14px; }
+.small-btn { border: 0; border-radius: 12px; padding: 11px 16px; font: 600 15px/1 var(--display); background: var(--ink); color: var(--ground); transition: transform .15s, opacity .2s; }
+.small-btn:active { transform: scale(.97); }
+.small-btn.or { background: var(--orange); color: #fff; }
+.small-btn[disabled] { opacity: .45; cursor: default; }
 
-/* ---------- the journey ---------- */
-.journey { padding: 120px 0 60px; background: linear-gradient(180deg, var(--night), #080F1F 30%, var(--night)); }
-.journey-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 70px; }
-.stage { position: sticky; top: 96px; height: calc(100vh - 120px); min-height: 600px; display: grid; place-items: center; }
-.stage .phone { width: min(300px, 70vw); }
-.stage .screen > * { position: absolute; inset: 0; transition: opacity .55s var(--ease), transform .55s var(--ease); }
-.stage .screen .leaving { opacity: 0; transform: scale(.97); }
-.trace { position: absolute; inset-inline: -30px; top: 50%; height: 120px; translate: 0 -50%; z-index: -1; overflow: visible; }
-.trace path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.trace .base { stroke: rgba(59, 100, 197, .10); stroke-width: 2; }
-.trace .live { stroke: url(#traceGrad); stroke-width: 3; filter: drop-shadow(0 0 8px rgba(59, 100, 197,.6)); }
-.stage-label { position: absolute; bottom: 4px; inset-inline: 0; text-align: center; font-size: 14px; color: var(--muted-dark); }
-.stage-label b { color: var(--c, var(--brass-soft)); font-weight: 600; transition: color .4s; }
+/* booking */
+.price { display: flex; align-items: baseline; gap: 10px; margin: 14px 0 6px; }
+.price s { color: var(--muted); font-size: 15px; }
+.price b { font: 700 24px/1 var(--latin); }
+.days { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 14px 0; }
+.day { border: 1.5px solid var(--line); background: transparent; border-radius: 14px; padding: 10px 6px; text-align: center; font: 500 15px/1.3 var(--display); transition: border-color .2s, background .2s; }
+.day small { display: block; color: var(--muted); font-size: 12px; font-weight: 400; }
+.day[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--ground); }
+.day[aria-pressed="true"] small { color: inherit; opacity: .7; }
+.ticket { margin-top: 14px; display: none; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 16px; background: var(--orange-soft); }
+.ticket.show { display: flex; animation: rise .45s var(--ease); }
+.ticket .big { font: 700 40px/1 var(--latin); color: var(--orange-text); }
+@keyframes rise { from { transform: translateY(10px); opacity: 0; } to { transform: none; opacity: 1; } }
 
-.steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
-.step { min-height: 78vh; display: flex; flex-direction: column; justify-content: center; padding: 30px 0; opacity: .32; transition: opacity .5s var(--ease); counter-increment: s; }
-.step.on { opacity: 1; }
-.step .who { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: var(--c); margin-bottom: 14px; }
-.step .who::before { content: counter(s); font-family: var(--display); width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--c); color: var(--c); font-size: 16px; }
-.step h3 { font-family: var(--display); font-weight: 700; color: #fff; font-size: clamp(26px, 2.7vw, 36px); line-height: 1.4; margin: 0 0 12px; }
-.step p { color: var(--muted-dark); margin: 0; max-width: 30em; }
-.step .mock-holder { display: none; }
+/* queue */
+.now { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; border-radius: 16px; background: var(--ink); color: var(--ground); margin-bottom: 12px; }
+.now b { font: 700 42px/1 var(--latin); }
+.q { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.q li { display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 12px; transition: background .3s, opacity .3s; }
+.q li .n { font: 600 16px/1 var(--latin); color: var(--muted); text-align: center; }
+.q li.cur { background: var(--orange-soft); }
+.q li.cur .n { color: var(--orange-text); }
+.q li.done { opacity: .45; }
+.q li b { font: 500 15px/1.3 var(--display); display: block; }
+.q li small { color: var(--muted); font-size: 12.5px; }
 
-/* ---------- mock screens (inside the phone) ---------- */
-.m { position: absolute; inset: 0; background: #F6F3EC; color: #141C2E; font-size: 12.5px; line-height: 1.5; padding: 54px 14px 14px; display: flex; flex-direction: column; gap: 10px; }
-.m .mh { font: 700 16px/1.4 var(--display); margin: 0 2px 2px; color: #0D1831; }
-.m .sub { color: #5A6378; font-size: 11.5px; margin: -8px 2px 2px; }
-.m .card { background: #fff; border-radius: 16px; padding: 11px 12px; box-shadow: 0 1px 0 #E5DFD2, 0 6px 16px -10px rgba(13, 24, 49,.25); }
-.m .row { display: flex; align-items: center; gap: 10px; }
-.m .row + .row { margin-top: 8px; }
-.m .q { width: 30px; height: 30px; border-radius: 10px; background: #E3E6EE; color: #122C67; display: grid; place-items: center; font-weight: 700; flex: none; font-size: 13px; }
-.m .grow { flex: 1; min-width: 0; }
-.m .grow b { display: block; font-size: 13px; }
-.m .grow span { color: #5A6378; font-size: 11px; }
-.chip { display: inline-block; font-size: 10.5px; font-weight: 700; border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
-.chip.ok { background: #DFE4F0; color: #253C73; }
-.chip.wait { background: #F6EBD3; color: #8A5A1C; }
-.chip.warn { background: #FBE3E1; color: #B0372D; }
-.chip.info { background: #E3E9F4; color: #2F5DA8; }
-.m .tv { background: #0D1831; color: #fff; border-radius: 16px; padding: 12px; text-align: center; }
-.m .tv small { color: #D0D6E2; display: block; font-size: 11px; }
-.m .tv strong { font: 700 40px/1.1 var(--display); color: #E8D29A; }
-.m .arrows { display: flex; gap: 4px; }
-.m .arrows i { width: 22px; height: 22px; border-radius: 7px; background: #F0ECE3; display: grid; place-items: center; font-style: normal; color: #122C67; font-size: 11px; }
-.m .vit { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
-.m .vit div { background: #F0ECE3; border-radius: 10px; padding: 6px; text-align: center; }
-.m .vit b { display: block; font-size: 13px; }
-.m .vit span { font-size: 10px; color: #5A6378; }
-.m .spark { height: 38px; }
-.m .spark path { fill: none; stroke: #122C67; stroke-width: 2; }
-.m .spark .area { fill: rgba(18, 44, 103,.12); stroke: none; }
-.m .rx { border-inline-start: 3px solid #122C67; padding-inline-start: 9px; }
-.m .rx + .rx { margin-top: 8px; }
-.m .rx b { font-size: 12.5px; display: block; direction: ltr; text-align: right; }
-.m .rx span { color: #5A6378; font-size: 11px; }
-.receipt { background: #fff; border-radius: 6px; padding: 14px 14px 18px; box-shadow: 0 10px 24px -14px rgba(0,0,0,.4); position: relative; font-size: 11.5px; }
-.receipt::after { content: ""; position: absolute; inset-inline: 0; bottom: -8px; height: 8px; background: radial-gradient(circle at 6px 0, transparent 6px, #fff 6.5px) 0 0 / 12px 8px repeat-x; }
-.receipt .rh { text-align: center; border-bottom: 1px dashed #CFC6B5; padding-bottom: 8px; margin-bottom: 8px; }
-.receipt .rh b { font: 700 14px/1.4 var(--display); display: block; }
-.receipt .li { display: flex; justify-content: space-between; gap: 8px; padding: 2px 0; }
-.receipt .li span:first-child { direction: ltr; }
-.receipt .tot { border-top: 1px dashed #CFC6B5; margin-top: 6px; padding-top: 6px; font-weight: 700; }
-.receipt .qr-row { display: flex; gap: 10px; align-items: center; margin-top: 10px; }
-.qr { width: 74px; height: 74px; display: grid; grid-template-columns: repeat(21, 1fr); background: #fff; flex: none; }
-.qr i { background: #0D1831; }
-.qr i.o { background: transparent; }
-.results { position: relative; }
-.results .r { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #EEE8DC; font-size: 12px; }
-.results .r span:first-child { direction: ltr; }
-.results .val { font-weight: 700; direction: ltr; unicode-bidi: isolate; transition: filter .6s var(--ease); }
-.results .val.hi { color: #B0372D; }
-.results.locked .val { filter: blur(6px); }
-.lock-note { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; background: rgba(255,254,251,.55); border-radius: 12px; transition: opacity .5s var(--ease); }
-.lock-note b { display: block; font-size: 13px; }
-.lock-note span { font-size: 11px; color: #5A6378; }
-.results:not(.locked) .lock-note { opacity: 0; pointer-events: none; }
-.lockscreen { position: absolute; inset: 0; background: radial-gradient(400px 500px at 50% 0%, #203057, #080D18); color: #fff; padding: 70px 14px 14px; display: flex; flex-direction: column; gap: 10px; }
-.lockscreen .time { text-align: center; font: 600 54px/1 var(--display); letter-spacing: .02em; margin-bottom: 4px; direction: ltr; }
-.lockscreen .date { text-align: center; color: #DDE1EA; font-size: 12px; margin-bottom: 16px; }
-.notif { background: rgba(255,255,255,.14); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 18px; padding: 10px 12px; display: flex; gap: 10px; align-items: flex-start; font-size: 12px; }
-.notif .ic { width: 30px; height: 30px; border-radius: 9px; flex: none; background: #122C67; display: grid; place-items: center; }
-.notif .ic svg { width: 17px; height: 17px; }
-.notif b { display: block; font-size: 12.5px; }
-.notif span { color: #D0D6E2; }
-.notif small { margin-inline-start: auto; color: #E5E8EF; font-size: 10.5px; white-space: nowrap; }
-.btn-mini { background: #122C67; color: #fff; border: 0; border-radius: 12px; padding: 9px; font: 600 12px var(--body); text-align: center; }
+/* doctor */
+.vitals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.vitals div { background: var(--ground-2); border-radius: 12px; padding: 10px; text-align: center; }
+.vitals b { display: block; font: 700 20px/1.1 var(--latin); }
+.vitals small { color: var(--muted); font-size: 12px; }
+.spark { display: flex; align-items: center; gap: 10px; margin: 12px 0; font-size: 13px; color: var(--muted); }
+.spark svg { width: 120px; height: 34px; flex: none; }
+.alert { display: flex; align-items: center; gap: 8px; border-radius: 12px; padding: 9px 12px; font: 500 14px/1.4 var(--display); }
+.alert.bad { background: var(--bad-soft); color: var(--bad); }
+.alert.warn { background: var(--warn-soft); color: var(--warn); }
+.alert.ok { background: var(--ok-soft); color: var(--ok); }
+.rx { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 6px; }
+.rx li { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); animation: rise .35s var(--ease); }
+.rx li b { font: 600 15px/1.3 var(--latin); direction: ltr; }
+.rx li small { color: var(--muted); font-size: 13px; }
+.pick { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.pick button { border: 1.5px dashed var(--line); background: transparent; border-radius: 999px; padding: 7px 12px; font: 500 14px/1 var(--latin); direction: ltr; transition: border-color .2s, opacity .2s; }
+.pick button:hover { border-color: var(--ink); }
+.pick button[disabled] { opacity: .35; cursor: default; }
+.feedback { margin-top: 10px; min-height: 42px; }
+
+/* lab */
+.lab-pair { display: grid; grid-template-columns: minmax(170px, .72fr) 1fr; gap: 14px; align-items: start; }
+.receipt { background: #FFFDF8; color: #17213A; border-radius: 6px; padding: 18px 16px 22px; font-size: 14px; box-shadow: var(--shadow); position: relative; mask: radial-gradient(circle 6px at 50% 100%, #0000 98%, #000) 50% 100% / 14px 100% repeat-x; -webkit-mask: radial-gradient(circle 6px at 50% calc(100% + 1px), #0000 98%, #000) 0 0 / 14px 100% repeat-x; }
+.receipt h4 { text-align: center; font-size: 16px; }
+.receipt .c { text-align: center; color: #5B6276; font-size: 12px; }
+.receipt hr { border: 0; border-top: 1.5px dashed #C9BFAE; margin: 10px 0; }
+.receipt .l { display: flex; justify-content: space-between; gap: 8px; line-height: 1.9; }
+.receipt .l .ltr { font-size: 13px; }
+.receipt .tot { font-weight: 600; }
+.receipt canvas { display: block; width: 84px; height: 84px; margin: 10px auto 4px; image-rendering: pixelated; }
+.res { overflow: hidden; }
+.res .lines { display: grid; gap: 8px; transition: filter .6s var(--ease); }
+.res .lines div { white-space: nowrap; display: flex; justify-content: space-between; gap: 10px; padding: 8px 10px; border-radius: 10px; background: var(--ground-2); font-size: 14px; }
+.res .lines .hi b { color: var(--bad); }
+.res.locked .lines { filter: blur(7px); }
+.lock { position: absolute; inset: 58px 14px 14px; display: grid; place-content: center; justify-items: center; gap: 8px; text-align: center; transition: opacity .4s, transform .4s var(--ease); }
+.lock svg { width: 34px; height: 34px; }
+.lock b { font: 600 16px/1.3 var(--display); }
+.res:not(.locked) .lock { opacity: 0; transform: scale(.9); pointer-events: none; }
+.unlocked-note { display: none; margin-top: 10px; }
+.res:not(.locked) .unlocked-note { display: flex; animation: rise .4s var(--ease); }
+
+/* pharmacy */
+.disp li { transition: background .4s; }
+.disp li .to { display: none; }
+.disp.done li { background: var(--ok-soft); border-color: transparent; }
+.disp.done li .to { display: inline-flex; animation: rise .4s var(--ease) both; }
+.disp.done li:nth-child(2) .to { animation-delay: .15s; }
+
+/* phone */
+.phone { width: min(300px, 100%); margin-inline: auto; aspect-ratio: 9 / 17.5; border-radius: 42px; padding: 12px; background: #0B0F1C; box-shadow: var(--shadow), inset 0 0 0 2px #2A3552; }
+.screen { height: 100%; border-radius: 32px; background: linear-gradient(170deg, #22305A, #17213A 55%, #3A2723); color: #F4EEE2; padding: 34px 12px 12px; position: relative; overflow: hidden; }
+.screen .clock { text-align: center; font: 600 54px/1 var(--latin); letter-spacing: -.02em; }
+.screen .date { text-align: center; font: 500 14px/1.4 var(--display); opacity: .75; margin-bottom: 22px; }
+.notes { display: grid; gap: 8px; }
+.note { background: rgba(244,238,226,.14); backdrop-filter: blur(10px); border-radius: 18px; padding: 10px 12px; display: grid; grid-template-columns: 28px 1fr auto; gap: 4px 10px; align-items: start; }
+.note .ic { width: 28px; height: 28px; border-radius: 8px; background: #F4EEE2; display: grid; place-items: center; grid-row: span 2; }
+.note .ic svg { width: 20px; height: 20px; }
+.note b { font: 600 13.5px/1.35 var(--display); }
+.note small { grid-column: 2 / 4; font-size: 12.5px; opacity: .8; line-height: 1.45; }
+.note time { font-size: 11px; opacity: .6; }
+.station.on .note { animation: drop .6s var(--ease) both; }
+.station.on .note:nth-child(2) { animation-delay: .5s; }
+.station.on .note:nth-child(3) { animation-delay: 1s; }
+@keyframes drop { from { transform: translateY(-18px) scale(.96); opacity: 0; } to { transform: none; opacity: 1; } }
 
 /* ---------- roles ---------- */
-.roles-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin: 46px 0 34px; }
-.tab {
-  --c: var(--teal); cursor: pointer; border: 1px solid var(--line-light); background: var(--sheet); color: var(--text-light);
-  font: 600 15.5px/1 var(--body); padding: 13px 20px; border-radius: 999px; display: inline-flex; align-items: center; gap: 10px;
-  transition: background .3s var(--ease), color .3s, border-color .3s, transform .2s;
-}
-.tab i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
-.tab:hover { transform: translateY(-1px); border-color: var(--c); }
-.tab[aria-selected="true"] { background: var(--c); color: #fff; border-color: var(--c); }
-.tab[aria-selected="true"] i { background: #fff; }
-.panel { display: grid; grid-template-columns: 1.15fr .85fr; gap: 46px; align-items: start; }
-.panel[hidden] { display: none; }
-.panel h3 { font-family: var(--display); font-size: clamp(26px, 2.6vw, 34px); margin: 0 0 10px; color: var(--c); line-height: 1.4; }
-.panel .intro { color: var(--muted-light); margin: 0 0 26px; max-width: 34em; }
-.feats { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 30px; }
-.feat b { display: block; font-size: 16.5px; margin-bottom: 4px; color: var(--ink); }
-.feat span { color: var(--muted-light); font-size: 15.5px; line-height: 1.75; display: block; }
-.panel-art { background: var(--ink); border-radius: 30px; padding: 34px 24px; display: grid; place-items: center; position: relative; overflow: hidden; min-height: 470px; }
-.panel-art::before { content: ""; position: absolute; inset: 0; background: radial-gradient(360px 280px at 50% 0%, color-mix(in srgb, var(--c) 45%, transparent), transparent 70%); }
-.panel-art .phone { width: 236px; border-radius: 36px; padding: 9px; }
-.panel-art .phone .screen { border-radius: 28px; }
-.panel-art .phone::after { width: 70px; height: 18px; top: 17px; }
-.panel.enter .feat { animation: rise .6s var(--ease) both; }
-.panel.enter .feat:nth-child(2) { animation-delay: .05s; } .panel.enter .feat:nth-child(3) { animation-delay: .1s; }
-.panel.enter .feat:nth-child(4) { animation-delay: .15s; } .panel.enter .feat:nth-child(5) { animation-delay: .2s; } .panel.enter .feat:nth-child(6) { animation-delay: .25s; }
-.panel.enter .panel-art .phone { animation: pop .7s var(--ease) both; }
-@keyframes rise { from { opacity: 0; transform: translateY(12px); } }
-@keyframes pop { from { opacity: 0; transform: translateY(18px) rotate(-2deg) scale(.96); } }
+.roles { padding-block: clamp(64px, 9vw, 120px); }
+.tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 28px; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { flex: none; border: 1.5px solid var(--line); background: transparent; border-radius: 999px; padding: 11px 18px; font: 500 16px/1 var(--display); color: var(--muted); transition: all .2s; }
+.tab:hover { color: var(--ink); border-color: var(--ink); }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+.role { display: none; grid-template-columns: .8fr 1.4fr; gap: clamp(24px, 4vw, 64px); align-items: start; }
+.role.show { display: grid; animation: rise .4s var(--ease); }
+.role h3 { font-size: clamp(30px, 4vw, 46px); line-height: 1.15; font-weight: 600; }
+.role .intro p { margin-top: 14px; color: var(--muted); font-size: 18px; }
+.role .count { margin-top: 26px; font: 700 64px/1 var(--latin); color: var(--orange); }
+.role .count + small { color: var(--muted); font-size: 14px; }
+.feats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 32px; list-style: none; margin: 0; padding: 0; }
+.feats li { padding: 18px 0; border-top: 1px solid var(--line); }
+.feats b { display: flex; align-items: center; gap: 10px; font: 600 17px/1.4 var(--display); }
+.feats b::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--orange); flex: none; }
+.feats span { display: block; margin-top: 4px; padding-inline-start: 17px; color: var(--muted); font-size: 15.5px; line-height: 1.65; }
 
-/* ---------- lock demo ---------- */
-.lock-demo { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: center; }
-.paper-sheet { background: #fff; color: var(--text-light); border-radius: 26px; padding: 28px; box-shadow: 0 40px 80px -30px rgba(0,0,0,.6); max-width: 440px; position: relative; }
-.paper-sheet h3 { margin: 0 0 4px; font: 700 20px/1.4 var(--display); }
-.paper-sheet .meta { color: var(--muted-light); font-size: 14px; margin-bottom: 14px; }
-.paper-sheet .results .r { font-size: 15px; padding: 10px 0; }
-.paper-sheet .lock-note b { font-size: 16px; }
-.paper-sheet .lock-note span { font-size: 14px; }
-.pay-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 18px; padding-top: 16px; border-top: 1px solid #EEE8DC; }
-.pay-row .owed { font-size: 15px; }
-.pay-row .owed b { color: #B0372D; }
-.pay-row.paid .owed b { color: var(--ok); }
-.btn-pay { background: var(--teal); color: #fff; border: 0; border-radius: 14px; padding: 12px 18px; font: 600 15px var(--body); cursor: pointer; transition: background .25s, transform .2s; }
-.btn-pay:hover { background: #0F2558; transform: translateY(-1px); }
-.points { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 18px; }
-.points li { display: grid; grid-template-columns: 30px 1fr; gap: 12px; }
-.points svg { width: 26px; height: 26px; stroke: var(--brass); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; margin-top: 3px; }
-.points b { color: #fff; display: block; }
-.points span { color: var(--muted-dark); font-size: 16px; }
+/* ---------- privacy band ---------- */
+.band { background: var(--band); color: var(--band-text); padding-block: clamp(64px, 9vw, 120px); border-radius: clamp(28px, 4vw, 48px); margin-inline: clamp(8px, 1.6vw, 20px); }
+.band .eyebrow { color: var(--orange); }
+.band h2 { font-size: clamp(34px, 5.4vw, 64px); line-height: 1.15; font-weight: 600; max-width: 16ch; margin-top: 14px; }
+.band h2 em { font-style: normal; color: var(--orange); }
+.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 40px); margin-top: clamp(36px, 5vw, 64px); }
+.pillars div { border-top: 2px solid color-mix(in srgb, var(--band-text) 22%, transparent); padding-top: 18px; }
+.pillars b { font: 600 20px/1.4 var(--display); }
+.pillars p { margin-top: 8px; color: var(--band-muted); font-size: 16px; }
 
 /* ---------- providers ---------- */
-.prov { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 50px; border-top: 1px solid var(--line-light); }
-.prov div { padding: 28px 0 28px 28px; border-bottom: 1px solid var(--line-light); }
-.prov div:nth-child(3n) { padding-left: 0; }
-.prov b { font: 700 19px/1.5 var(--display); display: block; margin-bottom: 6px; color: var(--ink); }
-.prov span { color: var(--muted-light); font-size: 15.5px; }
-/* the same list on the dark ground («جديد في آسو») */
-#new .prov { border-top-color: var(--line-dark); }
-#new .prov div { border-bottom-color: var(--line-dark); }
-#new .prov b { color: #fff; }
-#new .prov span { color: var(--muted-dark); }
-.join { margin-top: 56px; display: flex; flex-wrap: wrap; gap: 20px 40px; align-items: center; justify-content: space-between; background: var(--ink); color: var(--text-dark); border-radius: 28px; padding: 34px clamp(22px, 4vw, 48px); }
-.join h3 { margin: 0 0 6px; font: 700 26px/1.4 var(--display); color: #fff; }
-.join p { margin: 0; color: var(--muted-dark); max-width: 34em; }
+.providers { padding-block: clamp(64px, 9vw, 120px); }
+.prov { display: grid; grid-template-columns: 1fr 1.25fr; gap: clamp(28px, 5vw, 72px); align-items: start; }
+.prov .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.plist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.plist div { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
+.plist b { font: 600 17px/1.4 var(--display); display: block; }
+.plist span { display: block; margin-top: 6px; color: var(--muted); font-size: 15px; line-height: 1.6; }
 
 /* ---------- download ---------- */
-.get { text-align: center; padding: 130px 0 110px; position: relative; overflow: hidden; }
-.get .sec-title, .get .sec-lede { margin-inline: auto; }
-.get .stores { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 40px; }
-.store { display: flex; align-items: center; gap: 14px; text-align: start; text-decoration: none; padding: 16px 24px; border-radius: 20px; border: 1px solid var(--line-dark); background: rgba(255,255,255,.04); min-width: 250px; transition: border-color .25s, background .25s, transform .25s var(--ease); }
-a.store:hover { border-color: var(--brass); background: rgba(201,168,102,.08); transform: translateY(-2px); }
-.store svg { width: 32px; height: 32px; fill: #fff; flex: none; }
-.store b { display: block; color: #fff; font-size: 17px; }
-.store span { color: var(--muted-dark); font-size: 14px; }
-.store.soon { opacity: .7; }
-.get-pulse { position: absolute; inset-inline: 0; bottom: 0; height: 160px; opacity: .5; pointer-events: none; }
-.get-pulse path { fill: none; stroke: var(--brass); stroke-width: 2; }
+.get { padding-block: clamp(40px, 6vw, 80px) clamp(64px, 9vw, 110px); }
+.get-box { display: grid; grid-template-columns: auto 1fr; gap: clamp(24px, 5vw, 64px); align-items: center; padding: clamp(28px, 4vw, 48px); border-radius: 32px; background: var(--orange-soft); }
+.get-box .mark-big { width: clamp(110px, 16vw, 190px); }
+.get-box h2 { font-size: clamp(32px, 5vw, 56px); line-height: 1.15; font-weight: 600; }
+.get-box p { color: var(--muted); margin-top: 10px; }
+.stores { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 26px; }
+.store { display: grid; gap: 2px; text-decoration: none; padding: 14px 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); transition: border-color .2s, transform .2s var(--ease); }
+a.store:hover { border-color: var(--ink); transform: translateY(-2px); }
+.store b { font: 600 17px/1.3 var(--display); }
+.store span { font-size: 13.5px; color: var(--muted); }
+.store.main { background: var(--ink); border-color: var(--ink); color: var(--ground); }
+.store.main span { color: inherit; opacity: .75; }
 
-footer { border-top: 1px solid var(--line-dark); padding: 34px 0 44px; color: var(--muted-dark); font-size: 14.5px; }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 14px 30px; align-items: center; }
-footer nav { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-inline-start: auto; }
-footer a { color: var(--muted-dark); text-decoration: none; }
-footer a:hover { color: #fff; }
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; font-size: 14.5px; color: var(--muted); }
+footer .ilkum { height: 20px; width: auto; color: var(--ink); }
+footer nav { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-inline-start: auto; }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--ink); }
 
-/* ---------- motion on entry (content stays visible without script) ---------- */
-.js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
-.js .reveal.in { opacity: 1; transform: none; }
-.js .hero h1 .line span { transform: translateY(105%); transition: transform 1.1s var(--ease); }
-.js .hero.ready h1 .line span { transform: none; }
-.js .hero h1 .line:nth-child(2) span { transition-delay: .12s; }
-.js .hero .lede, .js .hero .cta, .js .hero-facts, .js .phone-wrap { opacity: 0; transform: translateY(18px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
-.js .hero.ready .lede { opacity: 1; transform: none; transition-delay: .35s; }
-.js .hero.ready .cta { opacity: 1; transform: none; transition-delay: .5s; }
-.js .hero.ready .hero-facts { opacity: 1; transform: none; transition-delay: .65s; }
-.js .hero.ready .phone-wrap { opacity: 1; transform: none; transition-delay: .2s; }
-.float-card { animation: bob 6s ease-in-out infinite; }
-.fc-2 { animation-delay: -3s; }
-@keyframes bob { 50% { transform: translateY(-10px); } }
-
-/* ---------- small screens ---------- */
-@media (max-width: 980px) {
-  .bar nav { display: none; }
-  .bar .btn { margin-inline-start: auto; }
-  .hero { padding-top: 112px; }
-  .hero-grid, .panel, .lock-demo { grid-template-columns: 1fr; }
-  .phone-wrap { min-height: 560px; }
-  .journey-grid { grid-template-columns: 1fr; margin-top: 30px; }
-  .stage { display: none; }
-  .step { min-height: 0; opacity: 1; padding: 34px 0; border-bottom: 1px solid var(--line-dark); }
-  .step .mock-holder { display: block; margin-top: 24px; }
-  .step .mock-holder .phone { width: min(270px, 78vw); margin: 0 auto; }
-  .prov { grid-template-columns: 1fr; }
-  .prov div { padding: 22px 0; }
-  .feats { grid-template-columns: 1fr; }
-  .panel-art { min-height: 0; }
-  .fc-1 { inset-inline-start: 0; top: 40px; }
-  .fc-2 { inset-inline-end: 0; bottom: 60px; }
+/* ---------- smaller screens ---------- */
+@media (max-width: 1020px) {
+  .nav a.hide-md { display: none; }
 }
+@media (max-width: 900px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .orbit { width: min(520px, 100%); margin-top: 8px; }
+  .station, .station:nth-child(even) { grid-template-columns: minmax(0, 1fr); padding-inline-start: 44px; position: relative; gap: 22px; }
+  .station .copy, .station:nth-child(even) .copy { grid-column: 1; justify-self: stretch; max-width: none; }
+  .station .demo, .station:nth-child(even) .demo { grid-column: 1; grid-row: 2; }
+  .station .node { position: absolute; inset-inline-start: 6px; top: 0; margin: 4px 0 0; }
+  .station .copy .try::before, .station:nth-child(even) .copy .try::before { content: "↓"; }
+  .role.show { grid-template-columns: 1fr; }
+  .prov { grid-template-columns: 1fr; }
+  .pillars { grid-template-columns: 1fr; }
+  .stores { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  .nav { display: none; }
+  .top .btn { margin-inline-start: auto; }
+  .mnav { display: flex; }
+}
+@media (min-width: 721px) { .mnav { display: none; } }
+.mnav { gap: 6px; overflow-x: auto; padding: 0 var(--gutter) 10px; scrollbar-width: none; }
+.mnav::-webkit-scrollbar { display: none; }
+.mnav a { flex: none; text-decoration: none; padding: 7px 13px; border-radius: 999px; background: var(--ground-2); font: 500 14px/1 var(--display); color: var(--muted); }
+.mnav a.here { background: var(--ink); color: var(--ground); }
 @media (max-width: 560px) {
-  .float-card { max-width: 210px; padding: 10px 12px; }
-  .float-card .dot { width: 32px; height: 32px; }
-  .store { min-width: 0; width: 100%; }
-  .hero-facts { gap: 14px 26px; }
+  body { font-size: 16px; }
+  .feats { grid-template-columns: 1fr; }
+  .plist { grid-template-columns: 1fr; }
+  .lab-pair { grid-template-columns: 1fr; }
+  .get-box { grid-template-columns: 1fr; }
+  .sat { padding: 6px 11px 6px 8px; font-size: 13px; }
+  .sat.lit small { display: none; }
+  .hero .cta .btn { flex: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation: none !important; transition: none !important; }
-  .js .reveal, .js .hero .lede, .js .hero .cta, .js .hero-facts, .js .phone-wrap { opacity: 1; transform: none; }
-  .js .hero h1 .line span { transform: none; }
-}
-
-/* ===== the opening story ===== */
-:root {
-  --st-night: #050A16; --st-lapis: #0F2557; --st-lapis-glow: #3B64C5; --st-gold: #D2AE58; --st-gold-soft: #F3DE9E;
-  --st-text: #EDEAE2; --st-muted: #A9B1C4;
-  --st-display: "Reem Kufi", "IBM Plex Sans Arabic", Tahoma, sans-serif; --st-body: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
-  --st-latin: "Marcellus", Georgia, serif; --st-gutter: clamp(16px, 5vw, 72px);
-}
-/* The story's fixed layer fades away as the site arrives. */
-.st-layer { transition: opacity .2s linear; }
-body.story-done .st-layer { opacity: 0; pointer-events: none; }
-/* The top bar stays from the first frame, so the story is never forced:
-   its links jump straight to the sections. */
-.st-hint { display: none; }
-/* A small arrow at the foot of the screen invites the next scene. */
-.st-next { position: fixed; z-index: 4; bottom: max(16px, env(safe-area-inset-bottom)); left: 50%; translate: -50% 0;
-  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; color: var(--st-gold-soft);
-  background: rgba(5, 10, 22, .45); border: 1px solid rgba(243, 222, 158, .35); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-  transition: opacity .4s, background .3s; animation: st-nudge 2.2s ease-in-out infinite; }
-.st-next:hover { background: rgba(15, 37, 87, .7); }
-.st-next:focus-visible { outline: 3px solid var(--st-gold-soft); outline-offset: 3px; }
-.st-next svg { width: 18px; height: 18px; }
-@keyframes st-nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
-@media (prefers-reduced-motion: reduce) { .st-next { animation: none; } }
-/* The site sits on its own ground over the canvas. */
-main#top, footer { position: relative; z-index: 5; background: var(--night); }
-main#top { box-shadow: 0 -60px 80px 20px var(--night); }
-.preview-pill { position: fixed; z-index: 60; bottom: 12px; inset-inline-start: 12px; font-size: 12px; color: #A9B1C4;
-  background: rgba(5, 10, 22, .7); border: 1px solid rgba(243, 222, 158, .25); border-radius: 999px; padding: 4px 12px; pointer-events: none; }
-
-
-#st-gl { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 0;
-  background: radial-gradient(120% 90% at 50% 20%, #12295E 0%, #0A1736 45%, var(--st-night) 100%); }
-.st-grain { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .07; mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
-
-/* The scroll track: tall, empty; the story is painted on the canvas and
-   the captions below follow the scroll position. */
-#st-track { position: relative; height: 1700vh; height: 1700svh; z-index: 2; }
-
-.st-caption { position: fixed; z-index: 3; inset-inline-start: var(--st-gutter); bottom: clamp(56px, 12vh, 140px);
-  max-width: min(520px, calc(100vw - 2 * var(--st-gutter))); opacity: 0; transform: translateY(18px);
-  pointer-events: none; will-change: opacity, transform; }
-.st-caption .st-eyebrow { font-family: var(--st-latin); font-size: 12px; letter-spacing: .38em; color: var(--st-gold); text-transform: uppercase; margin: 0 0 10px; direction: ltr; text-align: end; }
-.st-caption h2 { font-family: var(--st-display); font-weight: 600; font-size: clamp(30px, 4.6vw, 54px); line-height: 1.25; margin: 0 0 12px; text-wrap: balance; color: #fff;
-  text-shadow: 0 2px 30px rgba(5, 10, 22, .85); }
-.st-caption p { margin: 0; font-size: clamp(16px, 1.6vw, 19px); color: #E3E0D7; text-shadow: 0 1px 18px rgba(5, 10, 22, .95); max-width: 46ch; }
-.st-caption .st-gold { color: var(--st-gold-soft); }
-
-.st-hero { position: fixed; z-index: 3; inset: 0; display: grid; place-items: end center; padding-bottom: clamp(40px, 9vh, 110px);
-  pointer-events: none; text-align: center; }
-.st-hero .st-name { font-family: var(--st-display); font-weight: 600; font-size: clamp(64px, 11vw, 150px); line-height: 1; color: #fff; margin: 0;
-  text-shadow: 0 8px 60px rgba(59, 100, 197, .45); }
-.st-hero .st-latin { font-family: var(--st-latin); letter-spacing: .7em; color: var(--st-gold); font-size: clamp(13px, 1.3vw, 16px); margin: 14px 0 0 .7em; direction: ltr; }
-.st-hero .st-line { margin: 18px 0 0; color: var(--st-muted); font-size: clamp(15px, 1.5vw, 18px); }
-.st-hint { margin-top: 26px; display: inline-flex; flex-direction: column; align-items: center; gap: 6px; color: var(--st-muted); font-size: 13px; }
-.st-hint i { width: 1px; height: 38px; background: linear-gradient(var(--st-gold), transparent); animation: drip 2.4s ease-in-out infinite; }
-@keyframes drip { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
-
-.st-finale { position: fixed; z-index: 3; inset: 0; display: grid; place-items: end center; padding-bottom: clamp(44px, 10vh, 120px);
-  text-align: center; opacity: 0; pointer-events: none; }
-.st-finale.st-on { pointer-events: auto; }
-.st-finale h2 { font-family: var(--st-display); font-weight: 600; font-size: clamp(34px, 5vw, 60px); line-height: 1.2; margin: 0; color: #fff; text-wrap: balance; }
-.st-finale p { margin: 10px auto 0; color: #D9D6CE; max-width: 44ch; }
-.st-cta { margin-top: 24px; display: inline-flex; align-items: center; gap: 10px; padding: 14px 30px; border-radius: 999px; text-decoration: none;
-  font-weight: 600; color: #0B1430; background: linear-gradient(135deg, var(--st-gold-soft), var(--st-gold) 55%, #A2802F);
-  box-shadow: 0 10px 40px rgba(210, 174, 88, .35); transition: transform .3s cubic-bezier(.22, .8, .2, 1), box-shadow .3s; }
-.st-cta:hover { transform: translateY(-2px); box-shadow: 0 14px 50px rgba(210, 174, 88, .5); }
-.st-cta:focus-visible { outline: 3px solid var(--st-gold-soft); outline-offset: 4px; }
-
-/* The chapters, as a thin gold rail: a real sequence, so it is numbered by position only. */
-.st-rail { position: fixed; z-index: 3; inset-inline-end: clamp(12px, 2.4vw, 34px); top: 50%; transform: translateY(-50%);
-  display: flex; flex-direction: column; gap: 11px; }
-.st-rail span { width: 6px; height: 6px; border-radius: 50%; background: rgba(243, 222, 158, .25); transition: background .4s, transform .4s; }
-.st-rail span.st-on { background: var(--st-gold); transform: scale(1.5); }
-
-.st-scrim { position: fixed; z-index: 2; inset: 0; pointer-events: none; opacity: 0;
-  background: radial-gradient(90% 70% at 85% 100%, rgba(5, 10, 22, .88) 0%, rgba(5, 10, 22, .55) 38%, rgba(5, 10, 22, 0) 70%); }
-.st-finale-scrim { background: radial-gradient(80% 55% at 50% 100%, rgba(5, 10, 22, .8) 0%, rgba(5, 10, 22, 0) 70%); }
-.st-skip { position: fixed; z-index: 4; top: 12px; inset-inline-end: 14px; font: inherit; font-size: 13px; color: var(--st-text);
-  background: rgba(5, 10, 22, .55); border: 1px solid rgba(243, 222, 158, .3); border-radius: 999px; padding: 6px 16px; cursor: pointer;
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: opacity .4s; }
-.st-skip:focus-visible { outline: 3px solid var(--st-gold-soft); outline-offset: 3px; }
-.st-flash { position: fixed; inset: 0; z-index: 2; pointer-events: none; opacity: 0;
-  background: radial-gradient(40% 50% at 50% 50%, rgba(243, 222, 158, .9) 0%, rgba(210, 174, 88, .45) 30%, #050A16 75%); }
-.st-preview-tag { position: fixed; z-index: 4; top: 14px; inset-inline-start: 14px; font-size: 12px; color: var(--st-muted);
-  background: rgba(5, 10, 22, .6); border: 1px solid rgba(243, 222, 158, .2); border-radius: 999px; padding: 4px 12px; }
-
-@media (max-width: 640px) {
-  .st-caption { bottom: 64px; }
-  .st-rail { display: none; }
 }
 </style>
 </head>
 <body>
-<script>document.documentElement.classList.add('js');</script>
-<script>if (!location.hash) { history.scrollRestoration = 'manual'; scrollTo(0, 0); }</script>
 
-<canvas id="st-gl" aria-hidden="true"></canvas>
-<div class="st-layer" id="st-layer">
-<div class="st-grain" aria-hidden="true"></div>
-<div class="st-scrim" id="st-scrim" aria-hidden="true"></div>
-<div class="st-flash" id="st-flash" aria-hidden="true"></div>
-
-
-<section class="st-hero" id="st-hero" aria-label="آسو">
-  <div>
-    <h1 class="st-name">آسو</h1>
-    <div class="st-latin">AASU</div>
-    <p class="st-line">من أور… إلى تلفونك</p>
-    <div class="st-hint" aria-hidden="true">انزل<i></i></div>
-  </div>
-</section>
-
-<article class="st-caption" data-in=".1" data-out=".16">
-  <p class="st-eyebrow">Ur · 2100 BC</p>
-  <h2>قبل أكثر من أربعة آلاف سنة، في أور</h2>
-  <p>رفع السومريون الزقورة، درجاً من الطين نحو السماء، وحولها قامت أول مدن الدنيا.</p>
-</article>
-<article class="st-caption" data-in=".175" data-out=".245">
-  <p class="st-eyebrow">Cuneiform</p>
-  <h2>وهنا وُلدت الكتابة</h2>
-  <p>أسافين تنضغط على الطين. وعلى لوح منها، من نِفّر، وصلتنا <span class="st-gold">أقدم وصفات طبية</span> يعرفها التاريخ.</p>
-</article>
-<article class="st-caption" data-in=".265" data-out=".33">
-  <p class="st-eyebrow">Asû</p>
-  <h2>وكان الطبيب يُسمّى «آسو»</h2>
-  <p>يعرف الأعشاب، ويطحنها، ويحضّر منها الدواء بإيده لكل مريض.</p>
-</article>
-<article class="st-caption" data-in=".35" data-out=".415">
-  <p class="st-eyebrow">The tablet</p>
-  <h2>ويكتب العلاج على لوح</h2>
-  <p>حتى ما تضيع جرعة، وحتى يتعلّم اللي بعده.</p>
-</article>
-<article class="st-caption" data-in=".435" data-out=".50">
-  <p class="st-eyebrow">The record</p>
-  <h2>وتنحفظ الألواح على الرفوف</h2>
-  <p>أول سجلّ في التاريخ: كل شي مكتوب، وكل شي محفوظ.</p>
-</article>
-<article class="st-caption" data-in=".52" data-out=".585">
-  <p class="st-eyebrow">Four thousand years later</p>
-  <h2>وبعد أربعة آلاف سنة، صار الطب علم</h2>
-  <p>مختبرات وأجهزة وتحاليل تقرا الجسم من جوّا.</p>
-</article>
-<article class="st-caption" data-in=".605" data-out=".67">
-  <p class="st-eyebrow">Pharmacy</p>
-  <h2>علاجك يذكّرك بنفسه</h2>
-  <p>تضيف دواك بآسو، ويذكّرك بكل جرعة بوقتها، حتى والتطبيق مسدود.</p>
-</article>
-<article class="st-caption" data-in=".69" data-out=".755">
-  <p class="st-eyebrow">Laboratory</p>
-  <h2>تحاليلك، ونتيجتها على تلفونك</h2>
-  <p>باقات تحاليل من المختبرات بخصم آسو، والنتيجة توصلك بدون ما ترجع للمختبر.</p>
-</article>
-<article class="st-caption" data-in=".775" data-out=".84">
-  <p class="st-eyebrow">Imaging</p>
-  <h2>أشعتك وسونارك</h2>
-  <p>تحجز موعدك بالمركز، والتقرير يوصلك على التطبيق وين ما تكون.</p>
-</article>
-<article class="st-caption" data-in=".86" data-out=".925">
-  <p class="st-eyebrow">Every specialty</p>
-  <h2>وطبيب أسنانك هم</h2>
-  <p>أطباء بكل الاختصاصات، وبكل محافظات العراق.</p>
-</article>
-
-<section class="st-finale" id="st-finale" aria-label="حمّل آسو">
-  <div>
-    <h2>واليوم، رجع آسو</h2>
-    <p>طبيبك ومختبرك وأشعتك وصيدليتك وسجلّك، بتطبيق واحد.</p>
-    <a class="st-cta" href="https://aasu.app/download">حمّل آسو</a>
-  </div>
-</section>
-
-<nav class="st-rail" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></nav>
-<button class="st-next" id="st-skip" type="button" aria-label="المشهد الجاي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-
-</div>
-<div id="st-track"></div>
-
-
-<header class="bar" id="bar">
+<header class="top" id="top">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="آسو، أعلى الصفحة"><img src="assets/logo.jpg" alt=""><span>آسو</span></a>
-    <nav aria-label="أقسام الصفحة">
-      <a href="#journey">كيف يعمل</a>
+    <a class="logo" href="#" aria-label="إلكم، أول الصفحة">
+      <svg viewBox="0 0 120 120" aria-hidden="true"><path d="M56 16 V78 Q56 92 42 92 H32" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ink)"/><path d="M88 30 V80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" style="color:var(--ink)"/><circle cx="88" cy="103" r="9.3" fill="#E8572A"/></svg>
+      <span>إلكم</span>
+    </a>
+    <nav class="nav" aria-label="أقسام الصفحة">
+      <a href="#journey">الرحلة</a>
       <a href="#roles">الواجهات</a>
-      <a href="#lock">الخصوصية</a>
-      <a href="#providers">للأطباء والمراكز</a>
+      <a href="#privacy">الخصوصية</a>
+      <a href="#providers" class="hide-md">للأطباء والمراكز</a>
     </nav>
-    <a class="btn btn-brass" href="#get">حمّل التطبيق</a>
+    <a class="btn btn-ink" href="#get">حمّل التطبيق</a>
   </div>
+  <nav class="mnav" aria-label="أقسام الصفحة">
+    <a href="#journey">الرحلة</a>
+    <a href="#roles">الواجهات</a>
+    <a href="#privacy">الخصوصية</a>
+    <a href="#providers">للأطباء والمراكز</a>
+    <a href="#get">التحميل</a>
+  </nav>
 </header>
 
-<main id="top">
-  <!-- ================= hero ================= -->
-  <section class="hero" id="hero">
-    <div class="wrap hero-grid">
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">منصة صحية عراقية</span>
+      <h1 style="margin-top:18px">إنت بالمركز،<br>وكلنا <em class="brandword">إلكم</em>.</h1>
+      <p class="lead">طبيبك ومختبرك ومركز الأشعة وصيدليتك وسجل عائلتك، يشتغلون على ملف واحد يمشي وياك من الحجز لآخر جرعة دوا. التطبيق ببلاش للمراجعين، وبكل محافظات العراق.</p>
+      <div class="cta">
+        <a class="btn btn-orange" href="#get">حمّل إلكم</a>
+        <a class="btn btn-line" href="#journey">شوف شلون يشتغل</a>
+      </div>
+      <div class="facts">
+        <div><b class="num">7,720</b><span>طبيب بالدليل</span></div>
+        <div><b class="num">18</b><span>محافظة</span></div>
+        <div><b class="num">213</b><span>تحليل باسمه العربي</span></div>
+      </div>
+    </div>
+    <div class="orbit-col">
+      <div class="orbit" id="orbit" aria-label="المراجع بالمركز، وحواليه الطبيب والسكرتير والمختبر والأشعة والصيدلية والعائلة">
+        <svg class="rings" viewBox="0 17 100 66" aria-hidden="true">
+          <g id="ringG"></g>
+          <g id="spokeG"></g>
+        </svg>
+        <div class="you" aria-hidden="true">إنت</div>
+      </div>
+      <p class="orbit-note" id="orbitNote">مرّر على أي واحد حتى تعرف شيسويلك</p>
+    </div>
+  </div>
+</section>
+
+<section class="journey" id="journey">
+  <svg class="thread" id="thread" aria-hidden="true">
+    <path class="base" id="tBase"/>
+    <path class="lit" id="tLit"/>
+    <circle class="halo" id="tHalo" r="18"/>
+    <circle class="rider" id="tDot" r="9"/>
+  </svg>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">الرحلة</span>
+      <h2>نقطة وحدة، خيط واحد، ست محطات</h2>
+      <p>النقطة البرتقالية بشعارنا هي إنت. انزل وتابعها: كل محطة تسلّمك للي بعدها، وكل شاشة هنا تشتغل، جرّبها بإيدك.</p>
+    </div>
+    <div class="stations">
+
+      <article class="station" data-step="0">
+        <div class="copy">
+          <span class="who">المراجع</span>
+          <h3>تحجز من بيتك، وتعرف دورك قبل لا تطلع</h3>
+          <p>تدوّر الطبيب بالاسم أو الاختصاص أو المحافظة، تختار اليوم، وتاخذ رقمك بالطابور ووقت تقريبي لدورك. وإذا الطبيب عنده خصم إلكم، تشوف السعر بعد الخصم.</p>
+          <p class="try">اختار يوم واضغط «احجز»</p>
+        </div>
+        <span class="node"></span>
+        <div class="demo">
+          <div class="panel">
+            <div class="row">
+              <span class="avatar">ح</span>
+              <div class="grow"><b style="font:600 17px/1.3 var(--display)">د. حيدر داخل</b><div class="mut">باطنية وقلبية · البصرة</div></div>
+              <span class="chip ok">يستقبل اليوم</span>
+            </div>
+            <div class="price"><b class="num">22,500</b><span class="mut">د.ع</span><s class="num">25,000</s><span class="chip or">خصم إلكم 10%</span></div>
+            <div class="days" role="group" aria-label="اختار اليوم">
+              <button class="day" data-n="14" data-t="4:20" aria-pressed="false">السبت<small>14 مراجع قبلك</small></button>
+              <button class="day" data-n="6" data-t="3:10" aria-pressed="false">الأحد<small>6 قبلك</small></button>
+              <button class="day" data-n="9" data-t="3:40" aria-pressed="false">الاثنين<small>9 قبلك</small></button>
+            </div>
+            <button class="small-btn or" id="bookBtn" style="width:100%" disabled>احجز</button>
+            <div class="ticket" id="ticket" aria-live="polite">
+              <span class="big num" id="tNum">15</span>
+              <div><b style="font:600 16px/1.4 var(--display)">هذا رقمك بالطابور</b><div class="mut">دورك تقريباً الساعة <span class="num" id="tTime">4:20</span> م، ونذكّرك قبلها</div></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="station" data-step="1">
+        <div class="copy">
+          <span class="who">السكرتير</span>
+          <h3>توصل العيادة، والدور ماشي بلا دفتر</h3>
+          <p>حجوزات التطبيق والحضور المباشر بطابور واحد. السكرتير يسجّل الضغط والسكر والوزن قبل لا تدخل، ويسجّل الدفع نقد أو بطاقة أو على الضمان، والرقم الحالي يطلع على تلفزيون الصالة.</p>
+          <p class="try">اضغط «نادِ التالي»</p>
+        </div>
+        <span class="node"></span>
+        <div class="demo">
+          <div class="panel">
+            <div class="now"><div><div style="font:500 14px/1.4 var(--display);opacity:.75">الرقم الحالي</div><div style="font:500 13px/1.4 var(--display);opacity:.6">على تلفزيون الصالة</div></div><b class="num" id="qNow">12</b></div>
+            <ul class="q" id="queue">
+              <li data-n="12"><span class="n">12</span><div><b>علي حسن</b><small>حضور مباشر</small></div><span class="chip ok">مدفوع</span></li>
+              <li data-n="13"><span class="n">13</span><div><b>زينب كاظم</b><small>ضغط 130/85 · سكر 112</small></div><span class="chip">على الضمان</span></li>
+              <li data-n="14"><span class="n">14</span><div><b>حسين جاسم</b><small>حجز من التطبيق</small></div><span class="chip warn">بالانتظار</span></li>
+              <li data-n="15"><span class="n">15</span><div><b>مريم عباس</b><small>حجز من التطبيق</small></div><span class="chip warn">بالانتظار</span></li>
+            </ul>
+            <div class="row" style="margin-top:14px"><button class="small-btn" id="nextBtn">نادِ التالي</button><span class="mut grow" id="qMsg">يشتغل حتى إذا انقطع الإنترنت</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="station" data-step="2">
+        <div class="copy">
+          <span class="who">الطبيب</span>
+          <h3>الطبيب يشوفك كامل قبل لا تحچي</h3>
+          <p>آخر تشخيص وآخر علاج وآخر النتائج واتجاه العلامات الحيوية، بشاشة وحدة. يكتب الوصفة من قالب جاهز، والتطبيق ينبّهه على الحساسية وتداخل الأدوية، ويرسل طلب التحليل للمختبر بضغطة.</p>
+          <p class="try">ضيف دوا للوصفة وشوف شيصير</p>
+        </div>
+        <span class="node"></span>
+        <div class="demo">
+          <div class="panel">
+            <div class="ph"><div><b>زينب كاظم، 54 سنة</b><br><small>آخر تشخيص: ارتفاع ضغط الدم</small></div><span class="chip bad">حساسية: بنسلين</span></div>
+            <div class="vitals">
+              <div><b class="num">130/85</b><small>الضغط</small></div>
+              <div><b class="num">112</b><small>السكر</small></div>
+              <div><b class="num">78</b><small>الوزن</small></div>
+            </div>
+            <div class="spark">
+              <svg viewBox="0 0 120 34" aria-hidden="true"><polyline points="4,6 32,11 60,14 88,21 116,27" fill="none" stroke="var(--ok)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="116" cy="27" r="3.5" fill="var(--ok)"/></svg>
+              <span>الضغط بآخر 5 زيارات: نازل من <span class="num">148</span> إلى <span class="num">130</span></span>
+            </div>
+            <ul class="rx" id="rx">
+              <li><div><b>Atorvastatin 20 mg</b><br><small>حبة مساءً، 30 يوم</small></div><span class="chip">من الزيارة الماضية</span></li>
+            </ul>
+            <div class="pick" id="pick">
+              <button data-d="amlo">+ Amlodipine 5 mg</button>
+              <button data-d="amox">+ Amoxicillin 500 mg</button>
+              <button data-d="clar">+ Clarithromycin 500 mg</button>
+            </div>
+            <div class="feedback" id="rxMsg" aria-live="polite"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="station" data-step="3">
+        <div class="copy">
+          <span class="who">المختبر</span>
+          <h3>الطلب يوصل المختبر قبلك، والنتيجة ما تطلع قبل التسديد</h3>
+          <p>المختبر يلگى طلب الطبيب جاهز، ويطبع وصل حراري بالأسعار ووقت التسليم ورمز يفتح النتائج. وما دام اكو مبلغ باقي، النتيجة مقفولة على الكل، حتى على الطبيب. تنفتح وحدها لحظة التسديد.</p>
+          <p class="try">اضغط «سجّل التسديد»</p>
+        </div>
+        <span class="node"></span>
+        <div class="demo">
+          <div class="lab-pair">
+            <div class="receipt" aria-label="وصل المختبر">
+              <h4>مختبر الشفاء</h4>
+              <div class="c">وصل <span class="ltr">L-5379828</span></div>
+              <hr>
+              <div class="l"><span class="ltr">Lipid Profile</span><span class="num">20,000</span></div>
+              <div class="l"><span class="ltr">HbA1c</span><span class="num">15,000</span></div>
+              <hr>
+              <div class="l tot"><span>المجموع</span><span class="num">35,000</span></div>
+              <div class="l"><span>المدفوع</span><span class="num" id="paid">20,000</span></div>
+              <div class="l tot"><span>الباقي</span><span class="num" id="left">15,000</span></div>
+              <canvas id="qr" width="25" height="25" aria-hidden="true"></canvas>
+              <div class="c">النتائج جاهزة الساعة <span class="num">4:30</span> م<br>امسح الرمز حتى تفتحها</div>
+            </div>
+            <div class="panel res locked" id="res">
+              <div class="ph" style="margin-bottom:12px"><b>نتائج التحاليل</b><span class="chip" id="resChip">مقفولة</span></div>
+              <div class="lines">
+                <div class="hi"><span class="ltr">Cholesterol</span><b class="num">236 mg/dL</b></div>
+                <div><span class="ltr">Triglycerides</span><b class="num">142 mg/dL</b></div>
+                <div><span class="ltr">HDL</span><b class="num">48 mg/dL</b></div>
+                <div class="hi"><span class="ltr">HbA1c</span><b class="num">6.9 %</b></div>
+              </div>
+              <div class="lock">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+                <b>مقفولة حتى التسديد</b>
+                <span class="mut">الباقي <span class="num">15,000</span> د.ع</span>
+                <button class="small-btn or" id="payBtn">سجّل التسديد</button>
+              </div>
+              <div class="alert ok unlocked-note">انفتحت للمراجع وللطبيب بنفس اللحظة، وحسب العمر والجنس</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="station" data-step="4">
+        <div class="copy">
+          <span class="who">الصيدلية</span>
+          <h3>صرف بضغطة، وجدول علاجك ينكتب وحده</h3>
+          <p>الوصفة توصل الصيدلاني بخط واضح وجرعات منظمة. يضغط «صرف»، فيصير كل دوا علاج بهاتفك بجرعاته ومدته. والوصفة الورقية تنصرف بنفس الطريقة.</p>
+          <p class="try">اضغط «صرف»</p>
+        </div>
+        <span class="node"></span>
+        <div class="demo">
+          <div class="panel">
+            <div class="ph"><div><b>وصفة من د. حيدر داخل</b><br><small>للمراجعة زينب كاظم</small></div><span class="chip">إلكترونية</span></div>
+            <ul class="rx disp" id="disp">
+              <li><div><b>Amlodipine 5 mg</b><br><small>حبة صباحاً، 30 يوم</small></div><span class="chip ok to">صار تذكير 8:00 ص</span></li>
+              <li><div><b>Atorvastatin 20 mg</b><br><small>حبة مساءً، 30 يوم</small></div><span class="chip ok to">صار تذكير 9:00 م</span></li>
+            </ul>
+            <div class="row" style="margin-top:14px"><button class="small-btn" id="dispBtn">صرف</button><span class="mut grow" id="dispMsg">بعد الصرف يندخل «علاجاتي» عند المراجعة</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="station" data-step="5">
+        <div class="copy">
+          <span class="who">المراجع، من جديد</span>
+          <h3>وهاتفك يتذكّر بدالك</h3>
+          <p>إشعار بوقت كل جرعة حتى والتطبيق مسدود، وتنبيه قبل لا يخلص الدوا، وتذكير بموعد المراجعة الجاية اللي حدده الطبيب. وهنا ترجع النقطة لمكانها: إلك.</p>
+        </div>
+        <span class="node"></span>
+        <div class="demo">
+          <div class="phone" aria-label="إشعارات على شاشة الهاتف">
+            <div class="screen">
+              <div class="clock">8:00</div>
+              <div class="date">السبت</div>
+              <div class="notes">
+                <div class="note"><span class="ic"><svg viewBox="0 0 120 120"><path d="M56 16 V78 Q56 92 42 92 H32" fill="none" stroke="#17213A" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M88 30 V80" fill="none" stroke="#17213A" stroke-width="15" stroke-linecap="round"/><circle cx="88" cy="103" r="9.3" fill="#E8572A"/></svg></span><b>حان وقت جرعتك</b><time>الآن</time><small>Amlodipine 5 mg، حبة وحدة بعد الفطور</small></div>
+                <div class="note"><span class="ic"><svg viewBox="0 0 120 120"><path d="M56 16 V78 Q56 92 42 92 H32" fill="none" stroke="#17213A" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M88 30 V80" fill="none" stroke="#17213A" stroke-width="15" stroke-linecap="round"/><circle cx="88" cy="103" r="9.3" fill="#E8572A"/></svg></span><b>نتائج تحاليلك جاهزة</b><time>أمس</time><small>مختبر الشفاء، انفتحت بعد التسديد</small></div>
+                <div class="note"><span class="ic"><svg viewBox="0 0 120 120"><path d="M56 16 V78 Q56 92 42 92 H32" fill="none" stroke="#17213A" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M88 30 V80" fill="none" stroke="#17213A" stroke-width="15" stroke-linecap="round"/><circle cx="88" cy="103" r="9.3" fill="#E8572A"/></svg></span><b>موعد مراجعتك بعد أسبوع</b><time>الاثنين</time><small>د. حيدر داخل، حدده بآخر زيارة</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="roles" id="roles">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">الواجهات</span>
+      <h2>كل واحد بالرحلة إله شاشته</h2>
+      <p>كل واجهة مصممة لشغل صاحبها اليومي، وكلها تحچي ويا بعض. اختار واحدة.</p>
+    </div>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div id="rolePanels"></div>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="band">
+    <div class="wrap">
+      <span class="eyebrow">الخصوصية</span>
+      <h2>سجلّك <em>إلك</em>، ومحد يشوف غير اللي يخصه.</h2>
+      <div class="pillars">
+        <div><b>القفل على الكل</b><p>النتيجة والتقرير والصور ما تطلع لأحد ما دام اكو مبلغ باقي، لا للمراجع ولا للطبيب. تنفتح وحدها لحظة التسديد.</p></div>
+        <div><b>كل طرف يشوف اللي يخصه</b><p>السكرتير ما يشوف السجل الطبي، والدعم ما يشوف أي بيانات طبية، وبالعائلة كل فرد يشوف ملفه وإله رمز حماية إذا يريد.</p></div>
+        <div><b>كل فتح للسجل مسجّل</b><p>سجل تدقيق يبيّن منو فتح السجل ومنو عدّل بيه، وكل حساب طبيب أو مختبر يتفعّل يدوياً بعد ما نتحقق منه.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="providers" id="providers">
+  <div class="wrap prov">
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="eyebrow">للأطباء والمختبرات والمراكز والصيدليات</span>
+        <h2>إلكم يختصر شغلك اليومي، وبعدين يحطك گدام المراجعين</h2>
+        <p>سجّل من التطبيق كطبيب أو مختبر أو مركز أشعة أو صيدلية، ونتواصل وياك ونفعّل حسابك.</p>
+      </div>
+      <div class="cta">
+        <a class="btn btn-ink" href="https://ilkum.app/download">حمّل وسجّل</a>
+        <a class="btn btn-line" href="https://t.me/vita_iraq" rel="noopener">راسلنا على تلغرام</a>
+      </div>
+    </div>
+    <div class="plist">
+      <div><b>على الحاسوب والهاتف</b><span>برنامج ويندوز للعيادة والمختبر، وتطبيق أندرويد وآيفون.</span></div>
+      <div><b>الضمان الصحي مدمج</b><span>المبلغ ينسجل على الشركة، والوصل يگول «على الضمان»، والحساب يبيّن شكد على كل شركة.</span></div>
+      <div><b>طباعة مثل ما تعودت</b><span>وصفة على ترويستك، وصل حراري، تقرير A4، وكلها بالعربي.</span></div>
+      <div><b>إشعارات فورية</b><span>طلب جديد، حجز، رسالة من طبيب، كلها بصوت على هاتفك.</span></div>
+      <div><b>خصم إلكم</b><span>تحدد نسبتك، ويطلعك التطبيق بقسم العروض گدام المراجعين.</span></div>
+      <div><b>تنبيه قبل انتهاء الاشتراك</b><span>قبل أسبوع وقبل يوم، حتى ما يوگف شغلك فجأة.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="get" id="get">
+  <div class="wrap">
+    <div class="get-box">
+      <svg class="mark-big" viewBox="0 0 120 120" aria-hidden="true"><path d="M56 16 V78 Q56 92 42 92 H32" fill="none" stroke="var(--ink)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M88 30 V80" fill="none" stroke="var(--ink)" stroke-width="15" stroke-linecap="round"/><circle cx="88" cy="103" r="9.3" fill="#E8572A"/></svg>
       <div>
-        <h1><span class="line"><span>من الحجز إلى آخر</span></span><span class="line"><span>جرعة دواء، في تطبيق واحد</span></span></h1>
-        <p class="lede">آسو يربط المراجع بطبيبه ومختبره ومركز الأشعة والسونار والصيدلية، في كل محافظات العراق. الطلب يصل قبل المراجع، والنتيجة تصل إلى هاتفه، والدواء يذكّره بنفسه.</p>
-        <div class="cta">
-          <a class="btn btn-brass" href="#get"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>حمّل التطبيق</a>
-          <a class="btn btn-ghost" href="#providers">أنا طبيب أو مختبر أو صيدلية</a>
-        </div>
-        <div class="hero-facts">
-          <div><strong class="num" data-count="7720">7,720</strong><span>طبيباً في الدليل</span></div>
-          <div><strong class="num" data-count="18">18</strong><span>محافظة عراقية</span></div>
-          <div><strong class="num" data-count="213">213</strong><span>تحليلاً بأسمائها العربية</span></div>
-        </div>
-      </div>
-      <div class="phone-wrap" id="tilt">
-        <div class="phone" id="heroPhone"><div class="screen"><img src="assets/screen-1-home.jpg" alt="الصفحة الرئيسية لتطبيق آسو" fetchpriority="high"></div></div>
-        <div class="float-card fc-1"><div class="dot" style="background:var(--lab)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div><b>نتائج تحاليلك جاهزة</b><span>مختبر الشفاء، الآن</span></div></div>
-        <div class="float-card fc-2"><div class="dot" style="background:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="9" width="18" height="6" rx="3"/><path d="M12 9v6"/></svg></div><div><b>حان وقت جرعتك</b><span>حبة الضغط، بعد الفطور</span></div></div>
-      </div>
-    </div>
-    <div class="monitor" aria-hidden="true"><canvas id="ecg"></canvas><div class="bpm"><i></i><span class="num">72</span></div></div>
-  </section>
-
-  <!-- ================= journey ================= -->
-  <section class="journey" id="journey">
-    <div class="wrap">
-      <h2 class="sec-title reveal">مراجع واحد، سبع محطات، ملف واحد</h2>
-      <p class="sec-lede reveal">تابع رحلة مراجع من لحظة الحجز إلى آخر جرعة دواء، وكيف تسلّمه كل واجهة إلى التي بعدها.</p>
-      <div class="journey-grid">
-        <ol class="steps" id="steps">
-          <li class="step" style="--c:var(--patient)" data-label="المراجع">
-            <span class="who">المراجع</span>
-            <h3>يحجز من هاتفه</h3>
-            <p>يبحث عن الطبيب بالاسم أو الاختصاص، يختار اليوم، فيأخذ رقمه في الطابور ووقتاً تقديرياً. وإن كان الطبيب يقدم خصم آسو يرى السعر بعد الخصم.</p>
-            <div class="mock-holder"><template><img src="assets/screen-3-booking.jpg" alt="شاشة الحجز"></template></div>
-          </li>
-          <li class="step" style="--c:var(--desk)" data-label="السكرتير">
-            <span class="who">السكرتير</span>
-            <h3>يستقبله بلا دفتر</h3>
-            <p>يثبّت الحجز، يسجل الضغط والسكر والوزن قبل الدخول، ويسجل الدفع: نقداً أو بطاقة أو على شركة الضمان. الرقم الحالي يظهر على تلفزيون صالة الانتظار.</p>
-            <div class="mock-holder"><template>
-              <div class="m">
-                <div class="mh">طابور اليوم</div>
-                <div class="tv"><small>الرقم الحالي</small><strong class="num">12</strong></div>
-                <div class="card">
-                  <div class="row"><span class="q num">12</span><div class="grow"><b>علي حسن</b><span>عند الطبيب</span></div><span class="chip ok">مدفوع</span></div>
-                  <div class="row"><span class="q num">13</span><div class="grow"><b>زينب كاظم</b><span>ض 130/85، سكر 112</span></div><span class="chip info">على الضمان</span></div>
-                  <div class="row"><span class="q num">14</span><div class="grow"><b>حسين جاسم</b><span>حجز من التطبيق</span></div><div class="arrows"><i>▲</i><i>▼</i></div></div>
-                  <div class="row"><span class="q num">15</span><div class="grow"><b>مريم عباس</b><span>حضور مباشر</span></div><span class="chip wait">بانتظار</span></div>
-                </div>
-                <div class="btn-mini">تسجيل الدفع</div>
-              </div>
-            </template></div>
-          </li>
-          <li class="step" style="--c:var(--doctor)" data-label="الطبيب">
-            <span class="who">الطبيب</span>
-            <h3>يرى المريض كاملاً قبل أن يتكلم</h3>
-            <p>آخر تشخيص، آخر علاج، آخر النتائج، واتجاه العلامات الحيوية. يكتب الوصفة من قالب جاهز، ويتنبه للحساسية والتداخلات، ويرسل طلب التحليل إلى المختبر بضغطة.</p>
-            <div class="mock-holder"><template>
-              <div class="m">
-                <div class="mh">زينب كاظم، 54 سنة</div>
-                <p class="sub">آخر تشخيص: ارتفاع ضغط الدم</p>
-                <div class="vit"><div><b class="num">130/85</b><span>الضغط</span></div><div><b class="num">112</b><span>السكر</span></div><div><b class="num">78</b><span>الوزن</span></div></div>
-                <div class="card"><span style="font-size:11px;color:#5A6378">الضغط في آخر 5 زيارات</span>
-                  <svg class="spark" viewBox="0 0 200 38" preserveAspectRatio="none"><path class="area" d="M0 8 L50 12 L100 18 L150 24 L200 28 V38 H0Z"/><path d="M0 8 L50 12 L100 18 L150 24 L200 28"/></svg></div>
-                <div class="card"><span class="chip warn">تنبيه حساسية: بنسلين</span>
-                  <div class="rx" style="margin-top:9px"><b>Amlodipine 5 mg</b><span>حبة واحدة صباحاً، 30 يوماً</span></div>
-                  <div class="rx"><b>Lipid Profile, HbA1c</b><span>طلب تحاليل إلى المختبر</span></div>
-                </div>
-                <div class="btn-mini">إرسال الوصفة والطلب</div>
-              </div>
-            </template></div>
-          </li>
-          <li class="step" style="--c:var(--lab)" data-label="المختبر">
-            <span class="who">المختبر</span>
-            <h3>الطلب وصل قبله</h3>
-            <p>المختبر يجد الطلب جاهزاً، يسجل المدفوع، ويطبع وصلاً حرارياً عليه الأسعار والمجموع ووقت تسليم النتائج، ورمز QR يفتح النتائج.</p>
-            <div class="mock-holder"><template>
-              <div class="m" style="background:#E9E4D8">
-                <div class="receipt">
-                  <div class="rh"><b>مختبر الشفاء</b><span class="num">وصل L-5379828</span></div>
-                  <div class="li"><span>Lipid Profile</span><span class="num">20,000</span></div>
-                  <div class="li"><span>HbA1c</span><span class="num">15,000</span></div>
-                  <div class="li tot"><span>المجموع</span><span class="num">35,000 د.ع</span></div>
-                  <div class="li"><span>المدفوع</span><span class="num">20,000</span></div>
-                  <div class="li"><span>المتبقي</span><span class="num">15,000</span></div>
-                  <div class="qr-row"><div class="qr" data-qr></div><div><b style="font-size:12px">النتائج جاهزة</b><br><span class="num">الساعة 4:30 م</span><br><span style="color:#5A6378">امسح الرمز لفتحها</span></div></div>
-                </div>
-              </div>
-            </template></div>
-          </li>
-          <li class="step" style="--c:var(--lab)" data-label="النتيجة" data-unlock>
-            <span class="who">النتيجة</span>
-            <h3>تُفتح لحظة التسديد</h3>
-            <p>النتيجة تصل إلى الطبيب والمراجع في التطبيق، ومن لا يملك التطبيق يفتحها بالرمز. وما دام هناك مبلغ متبقٍ تبقى مقفلة على الجميع، حتى الطبيب.</p>
-            <div class="mock-holder"><template>
-              <div class="m">
-                <div class="mh">نتائج التحاليل</div>
-                <p class="sub">مختبر الشفاء، اليوم</p>
-                <div class="card results locked">
-                  <div class="r"><span>Cholesterol</span><span class="val hi num">236 mg/dL</span></div>
-                  <div class="r"><span>Triglycerides</span><span class="val num">142 mg/dL</span></div>
-                  <div class="r"><span>HDL</span><span class="val num">48 mg/dL</span></div>
-                  <div class="r"><span>HbA1c</span><span class="val hi num">6.9 %</span></div>
-                  <div class="lock-note"><div><b>مقفلة حتى التسديد</b><span class="num">المتبقي 15,000 د.ع</span></div></div>
-                </div>
-                <span class="chip ok" style="align-self:flex-start" data-paid hidden>سُدد المبلغ، فُتحت النتائج</span>
-              </div>
-            </template></div>
-          </li>
-          <li class="step" style="--c:var(--pharmacy)" data-label="الصيدلية">
-            <span class="who">الصيدلية</span>
-            <h3>صرف بضغطة، وجدول علاج بلا جهد</h3>
-            <p>الوصفة عند الصيدلاني بخط واضح. يضغط «صرف»، فيتحول كل دواء إلى علاج في هاتف المراجع بجرعاته ومدته.</p>
-            <div class="mock-holder"><template>
-              <div class="m">
-                <div class="mh">وصفة من د. حيدر داخل</div>
-                <p class="sub">زينب كاظم</p>
-                <div class="card">
-                  <div class="rx"><b>Amlodipine 5 mg</b><span>حبة صباحاً، 30 يوماً</span></div>
-                  <div class="rx"><b>Atorvastatin 20 mg</b><span>حبة مساءً، 30 يوماً</span></div>
-                </div>
-                <div class="card row"><span class="chip ok">صُرفت</span><span style="font-size:11.5px;color:#5A6378">أُضيفت إلى «علاجاتي» عند المراجع</span></div>
-                <div class="card row"><span style="font-size:11.5px">إعادة صرف قريبة: بعد <b class="num">28</b> يوماً</span></div>
-              </div>
-            </template></div>
-          </li>
-          <li class="step" style="--c:var(--patient)" data-label="التذكير">
-            <span class="who">المراجع</span>
-            <h3>والهاتف يتذكر عنه</h3>
-            <p>إشعار في وقت كل جرعة حتى والتطبيق مغلق، وتنبيه قبل نفاد الدواء، وتذكير بموعد المراجعة القادمة الذي حدده الطبيب.</p>
-            <div class="mock-holder"><template>
-              <div class="lockscreen">
-                <div class="time num">8:00</div>
-                <div class="date">السبت</div>
-                <div class="notif"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="9" width="18" height="6" rx="3"/><path d="M12 9v6"/></svg></div><div><b>حان وقت جرعتك</b><span>حبة الضغط، حبة واحدة بعد الفطور</span></div><small>الآن</small></div>
-                <div class="notif"><div class="ic" style="background:#C98B2E"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></div><div><b>دواؤك ينفد بعد 3 أيام</b><span>Atorvastatin 20 mg</span></div><small>أمس</small></div>
-                <div class="notif"><div class="ic" style="background:#4A7BD0"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><div><b>موعد مراجعتك بعد أسبوع</b><span>د. حيدر داخل</span></div><small>الإثنين</small></div>
-              </div>
-            </template></div>
-          </li>
-        </ol>
-        <div class="stage" aria-hidden="true">
-          <svg class="trace" viewBox="0 0 600 120" preserveAspectRatio="none">
-            <defs><linearGradient id="traceGrad" x1="1" x2="0" y1="0" y2="0"><stop offset="0" stop-color="#3B64C5"/><stop offset="1" stop-color="#C9A24B"/></linearGradient></defs>
-            <path class="base" id="traceBase" d="M600 70 H520 L508 52 L492 100 L470 14 L452 86 L440 70 H380 L368 52 L352 100 L330 14 L312 86 L300 70 H240 L228 52 L212 100 L190 14 L172 86 L160 70 H100 L88 52 L72 100 L50 14 L32 86 L20 70 H0"/>
-            <path class="live" id="traceLive" d="M600 70 H520 L508 52 L492 100 L470 14 L452 86 L440 70 H380 L368 52 L352 100 L330 14 L312 86 L300 70 H240 L228 52 L212 100 L190 14 L172 86 L160 70 H100 L88 52 L72 100 L50 14 L32 86 L20 70 H0"/>
-          </svg>
-          <div class="phone"><div class="screen" id="stageScreen"><img src="assets/screen-3-booking.jpg" alt=""></div></div>
-          <div class="stage-label" id="stageLabel">المحطة <b class="num">1</b> من <span class="num">7</span></div>
+        <h2>حمّل <span class="brandword">إلكم</span></h2>
+        <p>التطبيق ببلاش للمراجعين وعوائلهم.</p>
+        <div class="stores">
+          <a class="store main" href="https://ilkum.app/download"><b>أندرويد</b><span>تنزيل مباشر</span></a>
+          <div class="store"><b>آيفون</b><span>قريباً على App Store</span></div>
+          <div class="store"><b>ويندوز</b><span>للعيادات والمختبرات عند التفعيل</span></div>
+          <a class="store" href="https://t.me/vita_iraq" rel="noopener"><b>تلغرام</b><span>آخر الأخبار والإصدارات</span></a>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- ================= roles ================= -->
-  <section class="sec light" id="roles">
-    <div class="wrap">
-      <h2 class="sec-title reveal">واجهة لكل من يعمل في الرحلة</h2>
-      <p class="sec-lede reveal">كل واجهة مصممة لعمل صاحبها اليومي، وكلها تتحدث مع بعضها. اختر واجهة لترى ما فيها.</p>
-
-      <div class="roles-tabs" role="tablist" aria-label="الواجهات">
-        <button class="tab" role="tab" id="t-patient" aria-controls="p-patient" aria-selected="true" style="--c:#2F5DA8"><i></i>المراجع</button>
-        <button class="tab" role="tab" id="t-doctor" aria-controls="p-doctor" aria-selected="false" tabindex="-1" style="--c:#122C67"><i></i>الطبيب</button>
-        <button class="tab" role="tab" id="t-desk" aria-controls="p-desk" aria-selected="false" tabindex="-1" style="--c:#8A5A1C"><i></i>السكرتير</button>
-        <button class="tab" role="tab" id="t-lab" aria-controls="p-lab" aria-selected="false" tabindex="-1" style="--c:#A4521A"><i></i>المختبر</button>
-        <button class="tab" role="tab" id="t-img" aria-controls="p-img" aria-selected="false" tabindex="-1" style="--c:#6B4AA0"><i></i>الأشعة والسونار</button>
-        <button class="tab" role="tab" id="t-ph" aria-controls="p-ph" aria-selected="false" tabindex="-1" style="--c:#B23A5E"><i></i>الصيدلية</button>
-      </div>
-
-      <div class="panel" id="p-patient" role="tabpanel" aria-labelledby="t-patient" style="--c:#2F5DA8">
-        <div>
-          <h3>المراجع وعائلته</h3>
-          <p class="intro">تطبيق مجاني يجد فيه الطبيب ويحجز، يحجز التحليل والأشعة، ويحتفظ بسجل العائلة كلها.</p>
-          <div class="feats">
-            <div class="feat"><b>دليل الأطباء</b><span>أكثر من 7,700 طبيب في 18 محافظة، بالبحث بالاسم أو الاختصاص أو المحافظة.</span></div>
-            <div class="feat"><b>صفحة لكل طبيب</b><span>خبرته وتقييمه، الحالات التي يعالجها وشهاداته، وعيادته على الخريطة.</span></div>
-            <div class="feat"><b>أطبائي المفضلون</b><span>احفظ أطباءك بقلب، وشارك بطاقة الطبيب على واتساب برقمه وموقعه.</span></div>
-            <div class="feat"><b>حجز ورقم في الطابور</b><span>يعرف دوره ووقته التقديري قبل أن يخرج من البيت.</span></div>
-            <div class="feat"><b>عروض المختبرات</b><span>باقات بخصم آسو، والأكثر طلباً، والأكثر توفيراً، وكل تحليل باسمه العربي.</span></div>
-            <div class="feat"><b>علاجاتي</b><span>كل دواء مصروف يصير جدول جرعات مع تذكير في وقته.</span></div>
-            <div class="feat"><b>حساب للعائلة</b><span>الزوجة والأبناء والوالدان في حساب واحد، ولكل واحد سجله.</span></div>
-            <div class="feat"><b>لقاحات طفلي</b><span>جدول التحصين الوطني العراقي لكل طفل، وتذكير قبل كل موعد.</span></div>
-            <div class="feat"><b>دورتي الشهرية</b><span>موعد الدورة القادمة وأيام الخصوبة، بخصوصية تامة.</span></div>
-            <div class="feat"><b>احسب سعراتك</b><span>سعراتك اليومية وخطة تنحيف آمنة ونموذج يوم من الوجبات، بأرقام منظمة الصحة العالمية.</span></div>
-            <div class="feat"><b>السجل الطبي</b><span>الزيارات والوصفات والتحاليل وتقارير الأشعة مع صورها.</span></div>
-            <div class="feat"><b>خصوصية في العائلة</b><span>الأب والأم يريان الجميع، وكل فرد يرى ملفه وحده، وله رمز حماية إن أراد.</span></div>
-            <div class="feat"><b>استشارة عن بعد</b><span>محادثة بالنص والصور والصوت مع طبيب يستقبل الاستشارات.</span></div>
-          </div>
-        </div>
-        <div class="panel-art"><div class="phone"><div class="screen"><img src="assets/screen-4-labs.jpg" alt="المختبرات والعروض" loading="lazy"></div></div></div>
-      </div>
-
-      <div class="panel" id="p-doctor" role="tabpanel" aria-labelledby="t-doctor" style="--c:#122C67" hidden>
-        <div>
-          <h3>الطبيب</h3>
-          <p class="intro">العيادة كلها في شاشة واحدة، على الهاتف وعلى حاسوب العيادة.</p>
-          <div class="feats">
-            <div class="feat"><b>ملخص قبل الزيارة</b><span>آخر تشخيص وعلاج ونتائج، واتجاه العلامات الحيوية.</span></div>
-            <div class="feat"><b>وصفة أسرع وأأمن</b><span>قوالب لكل تشخيص، جرعة الأطفال بالوزن، تنبيه الحساسية والتداخلات والتكرار.</span></div>
-            <div class="feat"><b>طلبات إلكترونية</b><span>تحاليل وأشعة وسونار تصل إلى المركز، ونتائجها ترجع إليه مع تعليم الحرج منها.</span></div>
-            <div class="feat"><b>متابعة المرضى</b><span>موعد المراجعة القادمة يُذكَّر به المريض، وقائمة بمن تأخر من المزمنين.</span></div>
-            <div class="feat"><b>مستندات جاهزة</b><span>تقرير طبي، إجازة مرضية، رسالة إحالة على ترويسة الطبيب.</span></div>
-            <div class="feat"><b>حسابات العيادة</b><span>نقد وبطاقة وضمان يوماً بيوم، ويعمل الطابور حتى بلا إنترنت.</span></div>
-            <div class="feat"><b>صفحتك أمام المراجعين</b><span>سنوات خبرتك، الحالات التي تعالجها، شهاداتك وأماكن عملك، وموقع عيادتك.</span></div>
-            <div class="feat"><b>استشارات عن بعد</b><span>فعّلها إن شئت، بأجرك وطريقة الدفع التي تختارها.</span></div>
-          </div>
-        </div>
-        <div class="panel-art"><div class="phone"><div class="screen" data-mock="2"></div></div></div>
-      </div>
-
-      <div class="panel" id="p-desk" role="tabpanel" aria-labelledby="t-desk" style="--c:#8A5A1C" hidden>
-        <div>
-          <h3>السكرتير</h3>
-          <p class="intro">دخول خاص بصلاحيات يحددها الطبيب. يدير الاستقبال ويطبع، ولا يكتب شيئاً طبياً.</p>
-          <div class="feats">
-            <div class="feat"><b>طابور واحد</b><span>حجوزات التطبيق والحضور المباشر معاً، مع تقديم وتأخير الدور.</span></div>
-            <div class="feat"><b>الدفع عند الوصول</b><span>نقد أو بطاقة أو ضمان، دون أن تنتهي الزيارة عند الطبيب.</span></div>
-            <div class="feat"><b>العلامات الحيوية</b><span>يسجلها قبل الدخول، فيجدها الطبيب أمامه.</span></div>
-            <div class="feat"><b>تلفزيون الصالة</b><span>الرقم الحالي على شاشة الانتظار.</span></div>
-            <div class="feat"><b>طباعة أوراق الطبيب</b><span>الوصفات والطلبات التي يرسلها الطبيب مملوءة.</span></div>
-            <div class="feat"><b>بلا إنترنت</b><span>يعمل عند الانقطاع ويرفع ما سجله عند العودة.</span></div>
-          </div>
-        </div>
-        <div class="panel-art"><div class="phone"><div class="screen" data-mock="1"></div></div></div>
-      </div>
-
-      <div class="panel" id="p-lab" role="tabpanel" aria-labelledby="t-lab" style="--c:#A4521A" hidden>
-        <div>
-          <h3>المختبر</h3>
-          <p class="intro">من الاستقبال إلى تسليم النتيجة وتحصيل المبلغ، مع قناة مباشرة إلى المراجعين والأطباء.</p>
-          <div class="feats">
-            <div class="feat"><b>استقبال ووصل QR</b><span>وصل حراري 80 أو 58 ملم أو A5 بالأسعار ووقت التسليم.</span></div>
-            <div class="feat"><b>ورقة نتائج واحدة</b><span>أرقام أو اختيارات أو نص، والحدود الطبيعية حسب العمر والجنس.</span></div>
-            <div class="feat"><b>قفل حتى التسديد</b><span>لا نتيجة تخرج لأحد ما دام هناك مبلغ متبقٍ.</span></div>
-            <div class="feat"><b>213 تحليلاً جاهزاً</b><span>بأسمائها العربية كما في قائمة دائرة صحة البصرة.</span></div>
-            <div class="feat"><b>باقات وعروض</b><span>خصم آسو يضع باقاتك أمام المراجعين في التطبيق.</span></div>
-            <div class="feat"><b>حسابات المالك</b><span>محمية برمز خاص: كشوف، دفعات، مصاريف، وصافٍ.</span></div>
-          </div>
-        </div>
-        <div class="panel-art"><div class="phone"><div class="screen" data-mock="3"></div></div></div>
-      </div>
-
-      <div class="panel" id="p-img" role="tabpanel" aria-labelledby="t-img" style="--c:#6B4AA0" hidden>
-        <div>
-          <h3>مراكز الأشعة والسونار</h3>
-          <p class="intro">التقرير يُكتب أسرع، ويصل إلى الطبيب والمراجع مع الصور.</p>
-          <div class="feats">
-            <div class="feat"><b>قوالب تقارير</b><span>قوالب جاهزة، وقوالب المركز الخاصة.</span></div>
-            <div class="feat"><b>حاسبة الحمل</b><span>عمر الحمل والموعد المتوقع في تقرير السونار.</span></div>
-            <div class="feat"><b>الصور مع التقرير</b><span>تُرفع مضغوطة إلى التخزين السحابي، ورمز QR يفتحها.</span></div>
-            <div class="feat"><b>فحوص وتحضير</b><span>قائمة الفحوص بأسعارها وتعليمات التحضير، وحجز من التطبيق.</span></div>
-            <div class="feat"><b>قفل حتى التسديد</b><span>التقرير والصور مقفلة حتى يُدفع المبلغ كاملاً.</span></div>
-            <div class="feat"><b>الضمان</b><span>تقارير على شركات الضمان ومستحقاتها شهراً بشهر.</span></div>
-          </div>
-        </div>
-        <div class="panel-art"><div class="phone"><div class="screen" data-mock="4"></div></div></div>
-      </div>
-
-      <div class="panel" id="p-ph" role="tabpanel" aria-labelledby="t-ph" style="--c:#B23A5E" hidden>
-        <div>
-          <h3>الصيدلية</h3>
-          <p class="intro">الوصفة تصل مقروءة، والصرف يصنع للمراجع جدول علاجه تلقائياً.</p>
-          <div class="feats">
-            <div class="feat"><b>وصفات إلكترونية</b><span>بخط واضح وجرعات منظمة، ومحادثة مع الطبيب عند الحاجة.</span></div>
-            <div class="feat"><b>زر صرف واحد</b><span>كل دواء يصير تذكيراً بالجرعة في هاتف المراجع.</span></div>
-            <div class="feat"><b>الوصفة الورقية أيضاً</b><span>تُصرف بالطريقة نفسها وتدخل جدول المراجع.</span></div>
-            <div class="feat"><b>إعادة صرف قريبة</b><span>قائمة بمن سينفد دواؤه قريباً.</span></div>
-            <div class="feat"><b>الضمان</b><span>سعر لكل دواء والمجموع على الشركة، مع كشف شهري.</span></div>
-            <div class="feat"><b>في دليل الصيدليات</b><span>تظهر للمراجعين في التطبيق.</span></div>
-          </div>
-        </div>
-        <div class="panel-art"><div class="phone"><div class="screen" data-mock="5"></div></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= new ================= -->
-  <section class="sec" id="new">
-    <div class="wrap">
-      <h2 class="sec-title reveal">جديد في آسو</h2>
-      <p class="sec-lede reveal">ما أضفناه حديثاً للمراجع وعائلته.</p>
-      <div class="prov">
-        <div class="reveal"><b>احسب سعراتك</b><span>كم سعرة يحتاج جسمك، وخطة تنحيف آمنة، والبروتين والكربوهيدرات والألياف، ونموذج يوم كامل من الوجبات.</span></div>
-        <div class="reveal"><b>لقاحات طفلي</b><span>المواعيد من جدول التحصين الوطني العراقي محسوبة من تاريخ الميلاد، مع تذكير قبل الموعد بثلاثة أيام ويوم الموعد.</span></div>
-        <div class="reveal"><b>دورتي الشهرية</b><span>موعد الدورة القادمة وأيام الخصوبة والإباضة، وتذكير خاص بها وحدها لا يراه غيرها.</span></div>
-        <div class="reveal"><b>أطباء كل المحافظات</b><span>أكثر من 7,700 طبيب في 18 محافظة، ولكل طبيب مشترك صفحة بخبرته وعيادته على الخريطة.</span></div>
-        <div class="reveal"><b>استشارة عن بعد</b><span>اسأل طبيبك من البيت بمحادثة فيها الصور والرسائل الصوتية.</span></div>
-        <div class="reveal"><b>خصوصية العائلة</b><span>كل فرد في العائلة يرى ملفه وحده، ويضع رمز حماية لصفحته إن أراد.</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= lock demo ================= -->
-  <section class="sec" id="lock">
-    <div class="wrap lock-demo">
-      <div>
-        <h2 class="sec-title reveal">النتيجة لا تخرج قبل التسديد، ولا تُرى إلا لصاحبها</h2>
-        <p class="sec-lede reveal">جرّب بنفسك: الورقة على اليمين نتيجة مقفلة. سجّل التسديد وانظر ماذا يحدث.</p>
-        <ul class="points">
-          <li><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div><b>قفل على الجميع</b><span>ما دام هناك مبلغ متبقٍ، لا يرى النتيجة المراجع ولا الطبيب، وتُفتح وحدها لحظة التسديد.</span></div></li>
-          <li><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><div><b>كل طرف يرى ما يخصه</b><span>السكرتير لا يرى السجل الطبي، ودعم المراجعين لا يرى أي بيانات طبية.</span></div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M9 12h6M9 16h6M7 3h7l5 5v13H7z"/></svg><div><b>كل فتح للسجل مسجّل</b><span>سجل تدقيق يبين من فتح السجل ومن عدّل فيه.</span></div></li>
-        </ul>
-      </div>
-      <div class="paper-sheet reveal">
-        <h3>نتائج التحاليل</h3>
-        <div class="meta">زينب كاظم، مختبر الشفاء</div>
-        <div class="results locked" id="lockResults">
-          <div class="r"><span>Cholesterol</span><span class="val hi num">236 mg/dL</span></div>
-          <div class="r"><span>Triglycerides</span><span class="val num">142 mg/dL</span></div>
-          <div class="r"><span>HDL</span><span class="val num">48 mg/dL</span></div>
-          <div class="r"><span>HbA1c</span><span class="val hi num">6.9 %</span></div>
-          <div class="lock-note"><div><b>مقفلة حتى التسديد</b><span>ادفع باقي المبلغ لاستلام النتائج</span></div></div>
-        </div>
-        <div class="pay-row" id="payRow">
-          <div class="owed" aria-live="polite">المتبقي: <b class="num" id="owed">15,000 د.ع</b></div>
-          <button class="btn-pay" id="payBtn" type="button">سجّل التسديد</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= providers ================= -->
-  <section class="sec light" id="providers">
-    <div class="wrap">
-      <h2 class="sec-title reveal">للأطباء والمختبرات والمراكز والصيدليات</h2>
-      <p class="sec-lede reveal">آسو يدخل عملك اليومي ليختصره، ثم يضعك أمام المراجعين.</p>
-      <div class="prov">
-        <div class="reveal"><b>تفعيل يدوي لكل حساب</b><span>لا يعمل أي طبيب أو مختبر قبل أن نتحقق منه، فالمراجع يثق بمن يراه.</span></div>
-        <div class="reveal"><b>على الحاسوب والهاتف</b><span>برنامج ويندوز للعيادة والمختبر، وتطبيق أندرويد وآيفون.</span></div>
-        <div class="reveal"><b>الضمان الصحي مدمج</b><span>سجّل المبلغ على الشركة، والوصل يقول «على الضمان»، والحساب يبين ما على كل شركة.</span></div>
-        <div class="reveal"><b>طباعة كما تعودت</b><span>وصفة على ترويستك، وصل حراري، تقرير A4، كلها بالعربية.</span></div>
-        <div class="reveal"><b>إشعارات فورية</b><span>طلب جديد، حجز، رسالة من طبيب، كلها بالصوت على هاتفك.</span></div>
-        <div class="reveal"><b>تنبيه قبل انتهاء الاشتراك</b><span>قبل أسبوع وقبل يوم، فلا يتوقف عملك فجأة.</span></div>
-      </div>
-      <div class="join reveal">
-        <div><h3>اطلب تفعيل حسابك</h3><p>سجّل من التطبيق كطبيب أو مختبر أو مركز أو صيدلية، أو راسلنا وسنتواصل معك.</p></div>
-        <div class="cta">
-          <a class="btn btn-brass" href="mailto:artnet.2022@gmail.com?subject=Aasu%20-%20%D8%B7%D9%84%D8%A8%20%D8%AA%D9%81%D8%B9%D9%8A%D9%84"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>راسلنا</a>
-          <a class="btn btn-ghost" href="https://t.me/vita_iraq" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13.1l-4.8-1.5c-1-.3-1.1-1 .2-1.5L20.5 2.9c.9-.3 1.6.2 1.4 1.4Z"/></svg>قناتنا على تلغرام</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= download ================= -->
-  <section class="get" id="get">
-    <div class="wrap">
-      <h2 class="sec-title reveal">حمّل آسو</h2>
-      <p class="sec-lede reveal">التطبيق مجاني للمراجعين.</p>
-      <div class="stores">
-        <a class="store reveal" href="https://aasu.app/download"><svg viewBox="0 0 24 24"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 0 0-.83.22l-1.88 3.24a11.43 11.43 0 0 0-8.94 0L5.65 5.67a.643.643 0 0 0-.87-.2c-.28.18-.37.54-.22.83L6.4 9.48A10.78 10.78 0 0 0 1 18h22a10.78 10.78 0 0 0-5.4-8.52M7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5m10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5"/></svg><div><b>أندرويد</b><span>تنزيل مباشر</span></div></a>
-        <div class="store soon reveal"><svg viewBox="0 0 24 24"><path d="M16.37 12.6c.02 2.4 2.1 3.2 2.13 3.21-.02.06-.33 1.15-1.1 2.27-.66.97-1.35 1.94-2.43 1.96-1.07.02-1.41-.63-2.63-.63s-1.6.61-2.61.65c-1.04.04-1.84-1.05-2.5-2.02-1.36-1.97-2.4-5.57-1-8 .69-1.2 1.93-1.97 3.28-1.99 1.03-.02 2 .69 2.63.69.63 0 1.81-.85 3.05-.73.52.02 1.98.21 2.92 1.59-.08.05-1.74 1.02-1.73 3.03M14.37 4.6c.56-.67.93-1.6.83-2.53-.8.03-1.77.53-2.34 1.2-.51.59-.96 1.54-.84 2.45.89.07 1.8-.45 2.35-1.12"/></svg><div><b>آيفون</b><span>قريباً في App Store</span></div></div>
-        <a class="store reveal" href="https://t.me/vita_iraq" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13.1l-4.8-1.5c-1-.3-1.1-1 .2-1.5L20.5 2.9c.9-.3 1.6.2 1.4 1.4Z"/></svg><div><b>تلغرام</b><span>آخر الأخبار والإصدارات</span></div></a>
-        <div class="store soon reveal"><svg viewBox="0 0 24 24"><path d="M3 5.5 10 4.5v7H3zm0 13 7 1v-7H3zm8-14.2L21 3v8.5H11zm0 15.4L21 21v-8.5H11z"/></svg><div><b>ويندوز</b><span>للعيادات والمختبرات، عند التفعيل</span></div></div>
-      </div>
-    </div>
-    <svg class="get-pulse" viewBox="0 0 1400 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 110 H560 L590 76 L628 150 L680 20 L724 128 L748 110 H1400"/></svg>
-  </section>
+  </div>
+</section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>آسو © 2026، العراق</span>
+    <svg class="ilkum" viewBox="18 4 352 112" role="img" aria-label="iLKUM" direction="ltr" style="direction:ltr"><polygon points="71.5,16.0 71.5,26.3 71.5,36.7 71.5,47.0 71.5,57.3 71.5,67.7 71.5,77.9 71.6,78.8 71.7,79.7 72.0,80.5 72.4,81.2 72.8,82.0 73.4,82.6 74.0,83.2 74.8,83.6 75.5,84.0 76.3,84.3 77.2,84.4 78.2,84.5 82.0,84.5 88.0,84.5 90.3,84.9 92.4,85.9 94.1,87.6 95.1,89.7 95.5,92.0 95.1,94.3 94.1,96.4 92.4,98.1 90.3,99.1 88.0,99.5 82.0,99.5 77.8,99.5 75.2,99.3 72.4,98.8 69.8,97.9 67.2,96.6 64.9,95.1 62.8,93.2 60.9,91.1 59.4,88.8 58.1,86.2 57.2,83.6 56.7,80.8 56.5,78.1 56.5,67.7 56.5,57.3 56.5,47.0 56.5,36.7 56.5,26.3 56.5,16.0 56.9,13.7 57.9,11.6 59.6,9.9 61.7,8.9 64.0,8.5 66.3,8.9 68.4,9.9 70.1,11.6 71.1,13.7" fill="currentColor"/><polygon points="39.5,30.0 39.5,55.0 39.5,80.0 39.1,82.3 38.1,84.4 36.4,86.1 34.3,87.1 32.0,87.5 29.7,87.1 27.6,86.1 25.9,84.4 24.9,82.3 24.5,80.0 24.5,55.0 24.5,30.0 24.9,27.7 25.9,25.6 27.6,23.9 29.7,22.9 32.0,22.5 34.3,22.9 36.4,23.9 38.1,25.6 39.1,27.7" fill="currentColor"/><circle cx="32" cy="103" r="9.3" fill="#E8572A"/><text x="104" y="99.5" direction="ltr" text-anchor="start" font-family="Outfit, Segoe UI, Arial, sans-serif" font-weight="700" font-size="124" fill="currentColor">KUM</text></svg>
+    <span><span class="brandword" style="color:var(--ink)">إلكم</span> © 2026، العراق</span>
     <nav aria-label="روابط">
-      <a href="https://aasu.app/privacy">سياسة الخصوصية</a>
-      <a href="https://aasu.app/delete-account">حذف الحساب</a>
-      <a href="https://t.me/vita_iraq" target="_blank" rel="noopener">قناة تلغرام</a>
+      <a href="https://ilkum.app/privacy">سياسة الخصوصية</a>
+      <a href="https://ilkum.app/delete-account">حذف الحساب</a>
+      <a href="https://t.me/vita_iraq" rel="noopener">تلغرام</a>
       <a href="mailto:artnet.2022@gmail.com">artnet.2022@gmail.com</a>
     </nav>
   </div>
@@ -936,794 +704,296 @@ main#top { box-shadow: 0 -60px 80px 20px var(--night); }
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
-  /* top bar */
-  const bar = $('#bar');
-  const onScroll = () => bar.classList.toggle('scrolled', scrollY > 30);
-  addEventListener('scroll', onScroll, { passive: true }); onScroll();
-
-  /* hero entrance, then the counters */
-  const startHero = () => {
-  $('#hero').classList.add('ready');
-  if (!reduce) {
-    $$('[data-count]').forEach(el => {
-      const end = +el.dataset.count, t0 = performance.now() + 700, dur = 1600;
-      const fmt = n => n.toLocaleString('en-US');
-      el.textContent = fmt(0);
-      const tick = now => {
-        const p = Math.min(1, Math.max(0, (now - t0) / dur));
-        el.textContent = fmt(Math.round(end * (1 - Math.pow(1 - p, 4))));
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    });
-  }
-  };
-  new IntersectionObserver((entries, io) => {
-    if (entries.some(e => e.isIntersecting)) { startHero(); io.disconnect(); }
-  }, { threshold: .25 }).observe($('#hero'));
-
-  /* the phone leans toward the pointer */
-  const tiltBox = $('#tilt'), heroPhone = $('#heroPhone');
-  if (!reduce && matchMedia('(pointer: fine)').matches) {
-    tiltBox.addEventListener('pointermove', e => {
-      const r = tiltBox.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-      heroPhone.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 10}deg) translateZ(0)`;
-    });
-    tiltBox.addEventListener('pointerleave', () => { heroPhone.style.transform = ''; });
+  /* top bar border + section highlight */
+  const top = $('#top');
+  const links = $$('.nav a, .mnav a');
+  const secs = ['journey', 'roles', 'privacy', 'providers', 'get'].map(id => document.getElementById(id));
+  function onScrollTop() {
+    top.classList.toggle('scrolled', scrollY > 8);
+    let cur = '';
+    for (const s of secs) if (s.getBoundingClientRect().top < innerHeight * .4) cur = s.id;
+    links.forEach(a => a.classList.toggle('here', a.getAttribute('href') === '#' + cur));
   }
 
-  /* an ECG monitor sweeping across the hero, 72 beats a minute */
-  const cv = $('#ecg'), ctx = cv.getContext('2d');
-  let W = 0, H = 0, dpr = 1;
-  const size = () => {
-    dpr = Math.min(devicePixelRatio || 1, 2);
-    W = cv.clientWidth; H = cv.clientHeight;
-    cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  };
-  const g = (t, mu, s, a) => a * Math.exp(-((t - mu) ** 2) / (2 * s * s));
-  const wave = ph => g(ph, .18, .025, .12) - g(ph, .36, .009, .14) + g(ph, .40, .012, 1) - g(ph, .44, .01, .26) + g(ph, .68, .045, .28);
-  const yAt = ph => H * .62 - wave(ph) * H * .5;
-  const period = 60 / 72, speed = 150; // pixels a second
-  const drawStatic = () => {
-    ctx.clearRect(0, 0, W, H);
-    ctx.lineWidth = 2; ctx.strokeStyle = '#3B64C5'; ctx.beginPath();
-    for (let x = 0; x <= W; x += 2) { const ph = ((x / speed) % period) / period; x ? ctx.lineTo(x, yAt(ph)) : ctx.moveTo(x, yAt(ph)); }
-    ctx.stroke();
-  };
-  size();
-  addEventListener('resize', () => { size(); if (reduce) drawStatic(); });
-  if (reduce) drawStatic();
-  else {
-    let last = null, x = 0, tSum = 0, prevY = null, visible = true;
-    new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(cv);
-    const frame = now => {
-      requestAnimationFrame(frame);
-      if (!visible) { last = now; return; }
-      if (last === null) { last = now; return; }
-      const dt = Math.min(.05, (now - last) / 1000); last = now;
-      const steps = Math.max(1, Math.round(dt * speed / 2));
-      for (let i = 0; i < steps; i++) {
-        const sdt = dt / steps; tSum += sdt;
-        const nx = x + speed * sdt, ph = (tSum % period) / period, ny = yAt(ph);
-        ctx.clearRect(nx, 0, 26, H); // the gap ahead of the sweep, as on a bedside monitor
-        if (prevY !== null && nx > x) {
-          ctx.strokeStyle = '#3B64C5'; ctx.lineWidth = 2.2; ctx.shadowColor = 'rgba(59, 100, 197,.8)'; ctx.shadowBlur = 10;
-          ctx.beginPath(); ctx.moveTo(x, prevY); ctx.lineTo(nx, ny); ctx.stroke(); ctx.shadowBlur = 0;
-        }
-        x = nx; prevY = ny;
-        if (x > W) { x = 0; prevY = null; }
-      }
+  /* ---------- orbit ---------- */
+  const orbit = $('#orbit'), ringG = $('#ringG'), spokeG = $('#spokeG'), note = $('#orbitNote');
+  const NS = 'http://www.w3.org/2000/svg';
+  const TILT = -16 * Math.PI / 180;
+  const rings = [{ rx: 25, ry: 10 }, { rx: 35, ry: 15 }, { rx: 45, ry: 20 }];
+  rings.forEach(r => {
+    const e = document.createElementNS(NS, 'ellipse');
+    e.setAttribute('cx', 50); e.setAttribute('cy', 50); e.setAttribute('rx', r.rx); e.setAttribute('ry', r.ry);
+    e.setAttribute('transform', `rotate(${TILT * 180 / Math.PI} 50 50)`); e.setAttribute('class', 'ring');
+    ringG.appendChild(e);
+  });
+  const sats = [
+    { name: 'الطبيب', say: 'يشوف ملفك كامل ويكتب وصفتك', ring: 0, a: .3 },
+    { name: 'المختبر', say: 'يلگى طلبك جاهز قبل لا توصل', ring: 0, a: 3.44 },
+    { name: 'السكرتير', say: 'رقمك بالطابور وعلاماتك الحيوية', ring: 1, a: 1.9 },
+    { name: 'الصيدلية', say: 'تصرف الدوا ويصير تذكير بهاتفك', ring: 1, a: 5.04 },
+    { name: 'الأشعة والسونار', say: 'التقرير والصور توصلك', ring: 2, a: 1.0 },
+    { name: 'العائلة', say: 'سجل كل فرد بحساب واحد', ring: 2, a: 4.14 },
+  ].map(s => {
+    const el = document.createElement('div');
+    el.className = 'sat'; el.tabIndex = 0;
+    el.innerHTML = `<i></i><span>${s.name}</span><small>${s.say}</small>`;
+    orbit.appendChild(el);
+    const line = document.createElementNS(NS, 'line');
+    line.setAttribute('x1', 50); line.setAttribute('y1', 50); line.setAttribute('class', 'spoke');
+    spokeG.appendChild(line);
+    const lit = on => {
+      el.classList.toggle('lit', on); line.classList.toggle('lit', on);
+      hovered = on ? s : (hovered === s ? null : hovered);
+      note.textContent = on ? `${s.name}: ${s.say}` : 'مرّر على أي واحد حتى تعرف شيسويلك';
     };
+    el.addEventListener('pointerenter', () => lit(true));
+    el.addEventListener('pointerleave', () => lit(false));
+    el.addEventListener('focus', () => lit(true));
+    el.addEventListener('blur', () => lit(false));
+    el.addEventListener('click', () => lit(!el.classList.contains('lit')));
+    return { ...s, el, line, speed: [.16, .11, .075][s.ring] };
+  });
+  let hovered = null, last = performance.now(), orbitVisible = true;
+  function placeSats(dt) {
+    for (const s of sats) {
+      if (!hovered) s.a += s.speed * dt;
+      const r = rings[s.ring];
+      const ex = r.rx * Math.cos(s.a), ey = r.ry * Math.sin(s.a);
+      const x = 50 + ex * Math.cos(TILT) - ey * Math.sin(TILT);
+      const y = 50 + ex * Math.sin(TILT) + ey * Math.cos(TILT);
+      const depth = Math.sin(s.a);              // >0 in front of the dot, <0 behind it
+      s.el.style.left = x + '%'; s.el.style.top = (y - 17) / .66 + '%';
+      s.el.style.transform = `scale(${.86 + .14 * (depth + 1) / 2})`;
+      s.el.style.zIndex = depth > 0 ? 7 : 3;
+      s.el.style.opacity = s.el.classList.contains('lit') ? 1 : (.72 + .28 * (depth + 1) / 2).toFixed(2);
+      s.line.setAttribute('x2', x); s.line.setAttribute('y2', y);
+    }
+  }
+  placeSats(0);
+  new IntersectionObserver(([e]) => { orbitVisible = e.isIntersecting; }).observe(orbit);
+
+  /* ---------- the thread ---------- */
+  const journey = $('#journey'), svg = $('#thread'), base = $('#tBase'), lit = $('#tLit'), dot = $('#tDot'), halo = $('#tHalo');
+  const stations = $$('.station');
+  let total = 0, table = [], nodeLens = [], curLen = 0, targetLen = 0;
+  function build() {
+    const r = journey.getBoundingClientRect();
+    const w = r.width, h = r.height;
+    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    const pts = stations.map(st => {
+      const b = $('.node', st).getBoundingClientRect();
+      return { x: b.left + b.width / 2 - r.left, y: b.top + b.height / 2 - r.top };
+    });
+    const narrow = innerWidth <= 900;
+    const swing = narrow ? 14 : 62;
+    const startY = narrow ? pts[0].y - 160 : pts[0].y - 260;
+    let d = `M ${pts[0].x} ${Math.max(0, startY)}`;
+    let prev = { x: pts[0].x, y: Math.max(0, startY) };
+    pts.forEach((p, i) => {
+      const sw = (i % 2 ? 1 : -1) * swing, dy = p.y - prev.y;
+      d += ` C ${prev.x + sw} ${prev.y + dy * .38}, ${p.x + sw} ${p.y - dy * .38}, ${p.x} ${p.y}`;
+      prev = p;
+    });
+    const endY = prev.y + (narrow ? 120 : 200);
+    d += ` C ${prev.x - swing} ${prev.y + 60}, ${prev.x} ${endY - 40}, ${prev.x} ${endY}`;
+    base.setAttribute('d', d); lit.setAttribute('d', d);
+    total = lit.getTotalLength();
+    lit.style.strokeDasharray = `${total} ${total}`;
+    table = [];
+    const N = 500;
+    for (let i = 0; i <= N; i++) { const l = total * i / N; table.push([l, lit.getPointAtLength(l).y]); }
+    nodeLens = pts.map(p => lenAtY(p.y));
+    update(true);
+  }
+  function lenAtY(y) {
+    if (y <= table[0][1]) return 0;
+    for (let i = 1; i < table.length; i++) {
+      if (table[i][1] >= y) {
+        const [l0, y0] = table[i - 1], [l1, y1] = table[i];
+        return l0 + (l1 - l0) * ((y - y0) / Math.max(.001, y1 - y0));
+      }
+    }
+    return total;
+  }
+  function update(jump) {
+    if (!total) return;
+    const r = journey.getBoundingClientRect();
+    targetLen = lenAtY(innerHeight * .55 - r.top);
+    if (jump || reduce) curLen = targetLen;
+  }
+  function draw() {
+    lit.style.strokeDashoffset = total - curLen;
+    const p = lit.getPointAtLength(curLen);
+    dot.setAttribute('cx', p.x); dot.setAttribute('cy', p.y);
+    halo.setAttribute('cx', p.x); halo.setAttribute('cy', p.y);
+    const show = curLen > 2 && curLen < total - 2 ? 1 : 0;
+    dot.style.opacity = halo.style.opacity = show ? '' : 0;
+    stations.forEach((st, i) => {
+      const on = curLen >= nodeLens[i] - 4;
+      if (on !== st.classList.contains('on')) st.classList.toggle('on', on);
+    });
+  }
+
+  /* ---------- one loop for orbit + thread ---------- */
+  function frame(now) {
+    const dt = Math.min(.05, (now - last) / 1000); last = now;
+    if (orbitVisible && !reduce) placeSats(dt);
+    if (Math.abs(targetLen - curLen) > .3) curLen += (targetLen - curLen) * Math.min(1, dt * 7);
+    draw();
     requestAnimationFrame(frame);
   }
-
-  /* a QR-like pattern for the receipts (decorative) */
-  const fillQR = el => {
-    if (el.childElementCount) return;
-    let seed = 7;
-    const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
-    const finder = (r, c) => { const inF = (r0, c0) => r >= r0 && r < r0 + 7 && c >= c0 && c < c0 + 7; for (const [r0, c0] of [[0, 0], [0, 14], [14, 0]]) if (inF(r0, c0)) { const rr = r - r0, cc = c - c0; return rr === 0 || rr === 6 || cc === 0 || cc === 6 || (rr > 1 && rr < 5 && cc > 1 && cc < 5); } return null; };
-    for (let r = 0; r < 21; r++) for (let c = 0; c < 21; c++) {
-      const f = finder(r, c), i = document.createElement('i');
-      if (f === false || (f === null && rnd() > .52)) i.className = 'o';
-      el.appendChild(i);
-    }
-  };
-
-  /* the journey: the step in view drives the phone and the trace */
-  const steps = $$('#steps .step');
-  const stageScreen = $('#stageScreen'), label = $('#stageLabel'), live = $('#traceLive');
-  const mockHTML = steps.map(s => $('template', s.querySelector('.mock-holder')).innerHTML);
-  // phones inside each step for small screens
-  steps.forEach((s, i) => {
-    const holder = $('.mock-holder', s);
-    holder.innerHTML = `<div class="phone"><div class="screen">${mockHTML[i]}</div></div>`;
-  });
-  // phones inside the role panels reuse the same screens
-  $$('[data-mock]').forEach(el => { el.innerHTML = mockHTML[+el.dataset.mock]; });
-  $$('[data-qr]').forEach(fillQR);
-
-  const len = live.getTotalLength();
-  live.style.strokeDasharray = len; live.style.strokeDashoffset = len;
-  let current = -1, unlockTimer = null;
-  const show = i => {
-    if (i === current) return;
-    current = i;
-    steps.forEach((s, k) => s.classList.toggle('on', k === i));
-    const old = [...stageScreen.children];
-    const wrap = document.createElement('div');
-    wrap.innerHTML = mockHTML[i]; wrap.style.opacity = 0;
-    stageScreen.appendChild(wrap);
-    $$('[data-qr]', wrap).forEach(fillQR);
-    requestAnimationFrame(() => { wrap.style.opacity = 1; old.forEach(o => { o.classList.add('leaving'); setTimeout(() => o.remove(), 600); }); });
-    label.innerHTML = `المحطة <b class="num">${i + 1}</b> من <span class="num">${steps.length}</span>: ${steps[i].dataset.label}`;
-    label.style.setProperty('--c', getComputedStyle(steps[i]).getPropertyValue('--c'));
-    clearTimeout(unlockTimer);
-    if (steps[i].hasAttribute('data-unlock')) {
-      unlockTimer = setTimeout(() => {
-        const res = $('.results', wrap), note = $('[data-paid]', wrap);
-        if (res) res.classList.remove('locked');
-        if (note) note.hidden = false;
-      }, reduce ? 0 : 1500);
-    }
-  };
-  const journey = $('#journey');
-  const progress = () => {
-    const r = $('#steps').getBoundingClientRect();
-    const p = Math.min(1, Math.max(0, (innerHeight * .5 - r.top) / r.height));
-    live.style.strokeDashoffset = len * (1 - p);
-    // the step crossing the middle of the screen is the one shown
-    const mid = innerHeight * .5;
-    let i = 0;
-    steps.forEach((s, k) => { if (s.getBoundingClientRect().top < mid) i = k; });
-    if (matchMedia('(min-width: 981px)').matches) show(i);
-  };
-  addEventListener('scroll', progress, { passive: true });
-  addEventListener('resize', progress);
-  progress();
-  if (current < 0 && matchMedia('(min-width: 981px)').matches) show(0);
-  // on small screens, unlock the results card when it comes into view
-  new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting && e.target.hasAttribute('data-unlock') && !matchMedia('(min-width: 981px)').matches) {
-      setTimeout(() => { const res = $('.results', e.target); if (res) res.classList.remove('locked'); const n = $('[data-paid]', e.target); if (n) n.hidden = false; }, reduce ? 0 : 1200);
-    }
-  }), { threshold: .6 }).observe(steps.find(s => s.hasAttribute('data-unlock')));
-
-  /* role tabs */
-  const tabs = $$('[role="tab"]');
-  const select = tab => {
-    tabs.forEach(t => {
-      const on = t === tab;
-      t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
-      const p = document.getElementById(t.getAttribute('aria-controls'));
-      p.hidden = !on;
-      if (on) { p.classList.remove('enter'); void p.offsetWidth; p.classList.add('enter'); $$('[data-qr]', p).forEach(fillQR); }
-    });
-  };
-  tabs.forEach((t, i) => {
-    t.addEventListener('click', () => select(t));
-    t.addEventListener('keydown', e => {
-      const dir = e.key === 'ArrowLeft' ? 1 : e.key === 'ArrowRight' ? -1 : 0; // right-to-left order
-      if (!dir) return;
-      e.preventDefault();
-      const n = tabs[(i + dir + tabs.length) % tabs.length]; n.focus(); select(n);
-    });
-  });
-
-  /* the lock demo */
-  const payBtn = $('#payBtn'), lockRes = $('#lockResults'), owed = $('#owed'), payRow = $('#payRow');
-  payBtn.addEventListener('click', () => {
-    const locked = lockRes.classList.toggle('locked');
-    owed.textContent = locked ? '15,000 د.ع' : '0 د.ع، سُدد كاملاً';
-    payRow.classList.toggle('paid', !locked);
-    payBtn.textContent = locked ? 'سجّل التسديد' : 'أعد القفل';
-  });
-
-  /* gentle reveals */
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
-  $$('.reveal').forEach(el => io.observe(el));
-})();
-</script>
-<script type="importmap">
-{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
-</script>
-<script type="module">
-import * as THREE from 'three';
-if (!location.hash) history.scrollRestoration = 'manual';
-
-const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const small = Math.min(innerWidth, innerHeight) < 700;
-const canvas = document.getElementById('st-gl');
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
-renderer.setPixelRatio(Math.min(devicePixelRatio, small ? 1.6 : 2));
-renderer.setClearColor(0x000000, 0);
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(38, 1, .1, 120);
-camera.position.set(0, 0, 6);
-
-const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
-const seg = (p, a, b) => clamp((p - a) / (b - a));
-const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-const window1 = (p, a, b, f = .03) => Math.min(seg(p, a - f, a + f), 1 - seg(p, b - f, b + f));
-
-/* ---------- Photographs turned into depth: each one a dense mesh pushed
-   towards the camera by its depth map, so the camera can move through it. */
-const loader = new THREE.TextureLoader();
-const photoVert = `
-  uniform sampler2D uDepth; uniform float uAmount;
-  varying vec2 vUv; varying float vD;
-  void main() {
-    vUv = uv;
-    float d = texture2D(uDepth, uv).r; vD = d;
-    vec3 p = position; p.z += d * uAmount;
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.);
-  }`;
-const photoFrag = `
-  uniform sampler2D uMap; uniform float uOpacity; uniform float uWarm;
-  varying vec2 vUv; varying float vD;
-  void main() {
-    vec3 c = texture2D(uMap, vUv).rgb;
-    // Night grade: deep shadows lean to lapis, the near light stays warm.
-    float l = dot(c, vec3(.299, .587, .114));
-    vec3 lapis = vec3(.06, .11, .26);
-    c = mix(lapis + c * .9, c, smoothstep(.05, .55, l));
-    c *= mix(.78, 1.04, vD) * uWarm;
-    vec2 q = vUv - .5;
-    float vig = smoothstep(.85, .25, length(q * vec2(1., 1.15)));
-    c *= mix(.35, 1., vig);
-    float edge = smoothstep(0., .07, vUv.x) * smoothstep(1., .93, vUv.x) * smoothstep(0., .06, vUv.y) * smoothstep(1., .94, vUv.y);
-    gl_FragColor = vec4(c, uOpacity * edge);
-  }`;
-
-const photos = {};
-function addPhoto(key, aspect, amount) {
-  const mat = new THREE.ShaderMaterial({
-    uniforms: {
-      uMap: { value: loader.load(`assets/story/s${key}.jpg`) },
-      uDepth: { value: loader.load(`assets/story/s${key}-depth.png`) },
-      uAmount: { value: amount }, uOpacity: { value: 0 }, uWarm: { value: 1 },
-    },
-    vertexShader: photoVert, fragmentShader: photoFrag, transparent: true, depthWrite: false,
-  });
-  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(1, 1, small ? 160 : 240, small ? 160 : 240), mat);
-  mesh.userData.aspect = aspect;
-  mesh.visible = false;
-  scene.add(mesh);
-  photos[key] = mesh;
-}
-// key, aspect, how far the depth pushes forward.
-const PHOTOS = [
-  ['68', 1400 / 1875, 1.25], ['71', 765 / 1024, 1.1], ['69', 765 / 1024, 1.1], ['70', 1024 / 553, 1.0],
-  ['85', 1, 1.15], ['87', 735 / 413, 1.2], ['86', 735 / 412, 1.15], ['94', 1, 1.1], ['93', 736 / 1308, 1.3],
-];
-for (const [k, a, d] of PHOTOS) addPhoto(k, a, d);
-
-// Cover the view at the plane's distance, with room for the camera to move.
-function fitPhoto(mesh, dist) {
-  const h = 2 * dist * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * 1.22;
-  const w = h * camera.aspect;
-  const a = mesh.userData.aspect;
-  let sw = Math.max(w, h * a), sh = sw / a;
-  // A tall picture on a wide screen is shown whole, floating, rather than
-  // cropped to a sliver.
-  if (a < camera.aspect * .42) { sh = h * .9; sw = sh * a; }
-  mesh.scale.set(sw, sh, 1);
-}
-
-/* ---------- Between photographs: the outgoing picture breaks into its own
-   coloured, depth-lifted points, which swirl through the air and settle as
-   the next picture. */
-const N2 = small ? 60000 : 140000;
-const samples = {};
-function samplePhoto(key) {
-  if (samples[key]) return samples[key];
-  return samples[key] = Promise.all([`assets/story/s${key}.jpg`, `assets/story/s${key}-depth.png`].map(src => new Promise(ok => {
-    const im = new Image(); im.onload = () => ok(im); im.src = src;
-  }))).then(([im, dm]) => {
-    const w = 320, h = Math.round(320 * im.height / im.width);
-    const read = img => {
-      const c = document.createElement('canvas'); c.width = w; c.height = h;
-      const g = c.getContext('2d'); g.drawImage(img, 0, 0, w, h); return g.getImageData(0, 0, w, h).data;
-    };
-    const px = read(im), dp = read(dm);
-    const uvd = new Float32Array(N2 * 3), col = new Float32Array(N2 * 3);
-    for (let i = 0; i < N2; i++) {
-      const u = Math.random(), v = Math.random();
-      const x = Math.min(w - 1, Math.floor(u * w)), y = Math.min(h - 1, Math.floor((1 - v) * h)), o = (y * w + x) * 4;
-      uvd.set([u, v, dp[o] / 255], i * 3);
-      // The same night grade as the photograph's shader, so the swap is seamless.
-      let r = px[o] / 255, g = px[o + 1] / 255, b = px[o + 2] / 255;
-      const l = .299 * r + .587 * g + .114 * b, k = clamp((l - .05) / .5), t = k * k * (3 - 2 * k);
-      r = (.06 + r * .9) * (1 - t) + r * t; g = (.11 + g * .9) * (1 - t) + g * t; b = (.26 + b * .9) * (1 - t) + b * t;
-      col.set([r, g, b], i * 3);
-    }
-    return { uvd, col };
-  });
-}
-const cloudGeo = new THREE.BufferGeometry();
-const cSwirl = new Float32Array(N2 * 3), cSeed = new Float32Array(N2 * 4);
-for (let i = 0; i < N2; i++) {
-  const a = Math.random() * 2 - 1, b = Math.random() * Math.PI * 2, q = Math.sqrt(1 - a * a);
-  cSwirl.set([q * Math.cos(b), a, q * Math.sin(b)], i * 3);
-  cSeed.set([Math.random(), Math.random(), Math.random(), Math.random()], i * 4);
-}
-cloudGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(N2 * 3), 3));
-for (const name of ['aA', 'aB', 'aColA', 'aColB']) cloudGeo.setAttribute(name, new THREE.BufferAttribute(new Float32Array(N2 * 3), 3));
-cloudGeo.setAttribute('aSwirl', new THREE.BufferAttribute(cSwirl, 3));
-cloudGeo.setAttribute('aSeed', new THREE.BufferAttribute(cSeed, 4));
-const cloudMat = new THREE.ShaderMaterial({
-  uniforms: {
-    uSA: { value: new THREE.Vector2(1, 1) }, uSB: { value: new THREE.Vector2(1, 1) }, uDA: { value: 1 }, uDB: { value: 1 },
-    uMix: { value: 0 }, uOpacity: { value: 0 }, uSize: { value: 1.5 }, uPx: { value: renderer.getPixelRatio() }, uTime: { value: 0 },
-  },
-  vertexShader: `
-    attribute vec3 aA, aB, aColA, aColB, aSwirl; attribute vec4 aSeed;
-    uniform vec2 uSA, uSB; uniform float uDA, uDB, uMix, uSize, uPx, uTime;
-    varying vec3 vCol; varying float vLift;
-    void main() {
-      vec3 pa = vec3((aA.x - .5) * uSA.x, (aA.y - .5) * uSA.y, aA.z * uDA);
-      vec3 pb = vec3((aB.x - .5) * uSB.x, (aB.y - .5) * uSB.y, aB.z * uDB);
-      float m = smoothstep(0., 1., clamp(uMix * 1.5 - aSeed.x * .5, 0., 1.));
-      float lift = sin(3.14159 * m);
-      // Fine smoke: the picture lifts off as a haze that curls on slow,
-      // layered currents and rises a little, then settles as the next one.
-      vec3 q = mix(pa, pb, m);
-      float t = uTime * .35;
-      vec3 curl = vec3(
-        sin(q.y * 1.6 + t + aSeed.x * 6.) + .5 * sin(q.z * 3.1 - t * 1.3 + aSeed.y * 9.),
-        sin(q.x * 1.3 - t * .8 + aSeed.y * 6.) + .5 * sin(q.x * 2.9 + q.y * 1.7 + t * 1.1),
-        sin((q.x + q.y) * 1.1 + t * .6 + aSeed.z * 6.));
-      // Neighbours share a current, so the haze moves in wisps, not grains.
-      vec3 curl2 = vec3(sin(q.y * 4.2 - t * 1.7), sin(q.x * 3.8 + t * 1.4), 0.);
-      q += (curl * .6 + curl2 * .18) * lift * (.85 + .3 * aSeed.z) + vec3(0., lift * .45, lift * .6);
-      vec4 mv = modelViewMatrix * vec4(q, 1.);
-      gl_Position = projectionMatrix * mv;
-      // Small whatever the distance: smoke, never confetti.
-      gl_PointSize = uSize * uPx * (.7 + .6 * aSeed.w) * clamp(6. / -mv.z, .8, 1.25);
-      vCol = mix(mix(aColA, aColB, m), vec3(1., .88, .66), lift * .45) * (1. + lift * .7);
-      vLift = lift;
-    }`,
-  fragmentShader: `
-    uniform float uOpacity; varying vec3 vCol; varying float vLift;
-    void main() {
-      vec2 q = gl_PointCoord - .5; float r = dot(q, q) * 4.;
-      if (r > 1.) discard;
-      float a = pow(1. - r, 2.) * mix(.6, .7, vLift);
-      gl_FragColor = vec4(vCol * a * uOpacity, 1.);
-    }`,
-  transparent: true, depthWrite: false, depthTest: false,
-  // Additive, premultiplied: thin smoke that glows where it gathers.
-  blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneFactor,
-});
-const photoCloud = new THREE.Points(cloudGeo, cloudMat);
-photoCloud.renderOrder = 1; photoCloud.frustumCulled = false; photoCloud.visible = false;
-scene.add(photoCloud);
-let cloudPair = '';
-async function setCloudPair(ka, kb) {
-  const id = ka + '>' + kb;
-  if (cloudPair === id) return;
-  cloudPair = id;
-  const [A, B] = await Promise.all([samplePhoto(ka), samplePhoto(kb)]);
-  if (cloudPair !== id) return;
-  cloudGeo.attributes.aA.array.set(A.uvd); cloudGeo.attributes.aColA.array.set(A.col);
-  cloudGeo.attributes.aB.array.set(B.uvd); cloudGeo.attributes.aColB.array.set(B.col);
-  for (const n of ['aA', 'aB', 'aColA', 'aColB']) cloudGeo.attributes[n].needsUpdate = true;
-  cloudGeo.userData.ready = id;
-}
-// Sample the pictures in the background so the first break is instant.
-for (const [k] of PHOTOS.slice(1)) samplePhoto(k);
-
-/* ---------- One field of motes that is, in turn, a hologram of the
-   ziggurat, a sheet of cuneiform rippling like silk, gold dust, and the
-   Aasu mark. */
-const N = small ? 26000 : 60000;
-const rnd = (a, b) => a + Math.random() * (b - a);
-
-function sampleZiggurat(n) {
-  const out = new Float32Array(n * 3);
-  // Terraces as boxes (x, y, z extents); the stair as a ramp in front.
-  const boxes = [
-    [-1.7, 1.7, -.95, -.35, -1.1, 1.1],
-    [-1.2, 1.2, -.35, .15, -.8, .8],
-    [-.78, .78, .15, .55, -.52, .52],
-    [-.26, .26, .55, .9, -.22, .22],
-  ];
-  const areas = boxes.map(([a, b, c, d, e, f]) => 2 * ((b - a) * (d - c) + (b - a) * (f - e) + (d - c) * (f - e)));
-  const total = areas.reduce((s, v) => s + v, 0);
-  for (let i = 0; i < n; i++) {
-    let x, y, z;
-    const r = Math.random();
-    if (r >= .16 && r < .185) {
-      // The shrine's gate: a lit frame you can walk through.
-      const side = Math.random();
-      if (side < .38) { x = -.09; y = rnd(.55, .8); } else if (side < .76) { x = .09; y = rnd(.55, .8); } else { x = rnd(-.09, .09); y = .8; }
-      z = .22 + rnd(-.01, .01);
-      out.set([x * .78, y * .78 + .95, z * .78], i * 3);
-      continue;
-    }
-    if (r < .16) {
-      // The front stair: from the ground at the front to the top terrace.
-      // Stepped: each mote sits on a tread or a riser.
-      const t = Math.floor(Math.random() * 26) / 26 + (Math.random() < .5 ? 0 : 1 / 52), w = rnd(-.17, .17);
-      x = w; y = -.95 + t * 1.5; z = 1.55 - t * 1.05;
-      if (Math.random() < .3) x = Math.sign(w || 1) * .17;
-    } else {
-      let pick = Math.random() * total, k = 0;
-      while (pick > areas[k]) { pick -= areas[k]; k++; }
-      const [a, b, c, d, e, f] = boxes[k];
-      const face = Math.floor(Math.random() * 6);
-      x = rnd(a, b); y = rnd(c, d); z = rnd(e, f);
-      if (face === 0) x = a; else if (face === 1) x = b; else if (face === 2) y = d;
-      else if (face === 3) y = c; else if (face === 4) z = e; else z = f;
-      // Crowd the edges so the form reads as a lit wireframe.
-      if (Math.random() < .45) {
-        const snap = Math.random();
-        if (snap < .33) x = Math.random() < .5 ? a : b;
-        else if (snap < .66) y = Math.random() < .5 ? c : d;
-        else z = Math.random() < .5 ? e : f;
-      }
-      // Keep the gate open.
-      if (k === 3 && z === f && Math.abs(x) < .1 && y < .81) { i--; continue; }
-    }
-    out.set([x * .78, y * .78 + .95, z * .78], i * 3);
-  }
-  return out;
-}
-
-// A wedge as (head x, head y, length, angle°, half head, neck x, neck, notch, blunt tip).
-function inWedge(w) {
-  const [hx, hy, L, ang, half, nx, neck, , tail = 0] = w;
-  const width = a => a < nx ? half + (neck - half) * a / nx : neck + (tail - neck) * (a - nx) / (L - nx);
-  for (;;) {
-    const a = Math.random() * L, hw = width(a);
-    if (Math.random() * half > hw) continue;
-    const v = (Math.random() * 2 - 1) * hw * .9;
-    const r = ang * Math.PI / 180, c = Math.cos(r), s = Math.sin(r);
-    return [hx + a * c - v * s, hy + a * s + v * c];
-  }
-}
-
-function sampleSilk(n) {
-  // Rows of signs built from horizontals, verticals and corner wedges,
-  // laid out in "pixels" then scaled onto a 6 × 3.3 sheet.
-  const k = .021, W = 6 / k, H = 3.3 / k, wedges = [];
-  const wedge = (x, y, ang, len) => wedges.push([x, y, len, ang, 1.9, 3.8, .55, 1.2]);
-  for (let y = 9; y < H - 6; y += 15.5) {
-    let x = 4 + Math.random() * 4;
-    while (x < W - 14) {
-      const parts = 1 + Math.floor(Math.random() * 3);
-      for (let p = 0; p < parts; p++) {
-        const kind = Math.floor(Math.random() * 5);
-        if (kind < 2) {
-          const c = 1 + Math.floor(Math.random() * 3), len = 6 + Math.random() * 4;
-          for (let i = 0; i < c; i++) wedge(x, y + (i - (c - 1) / 2) * 3.4, 0, len);
-          x += len * .7 + 1.5;
-        } else if (kind < 4) {
-          const c = 1 + Math.floor(Math.random() * 3), len = 7 + Math.random() * 4;
-          for (let i = 0; i < c; i++) wedge(x + i * 2.8, y - len / 2, 90, len);
-          x += c * 2.8 + 1.5;
-        } else {
-          wedge(x, y - 2.4, 40, 5.6); if (Math.random() < .5) wedge(x, y + 2.4, -40, 5.6);
-          x += 4.5;
-        }
-      }
-      x += 2 + Math.random() * 3;
-    }
-  }
-  const out = new Float32Array(n * 3);
-  for (let i = 0; i < n; i++) {
-    const [px, py] = inWedge(wedges[Math.floor(Math.random() * wedges.length)]);
-    out.set([(px - W / 2) * k, (H / 2 - py) * k + .2, rnd(-.015, .015)], i * 3);
-  }
-  return out;
-}
-
-// Aasu's mark, the same geometry as the app (lib/core/branding/aasu_mark.dart).
-const MARK = [
-  [43.23, 42.86, 22.17, 0, 8.2, 9.02, 1.8, 2.95],
-  [32.36, 64.17, 43.9, 0, 8.2, 9.02, 1.8, 2.95],
-  [21.5, 85.48, 65.63, 0, 8.2, 9.02, 1.8, 2.95],
-  [54.93, 19.91, 93.84, 63, 8.61, 9.47, 3.1, 3.1, 1.07],
-];
-function sampleMark(n) {
-  const area = MARK.map(w => w[2] * (w[6] + w[4] * .5));
-  const total = area.reduce((s, v) => s + v, 0);
-  const out = new Float32Array(n * 3), k = 2.6 / 120;
-  for (let i = 0; i < n; i++) {
-    let pick = Math.random() * total, j = 0;
-    while (pick > area[j]) { pick -= area[j]; j++; }
-    const [x, y] = inWedge(MARK[j]);
-    out.set([(x - 60) * k, (60 - y) * k + .7, rnd(-.03, .03)], i * 3);
-  }
-  return out;
-}
-
-const geo = new THREE.BufferGeometry();
-const cloud = new Float32Array(N * 3), swirl = new Float32Array(N * 3), seed = new Float32Array(N * 4);
-for (let i = 0; i < N; i++) {
-  const u = Math.random() * 2 - 1, t = Math.random() * Math.PI * 2, r = 5 + Math.random() * 6;
-  const s = Math.sqrt(1 - u * u);
-  cloud.set([s * Math.cos(t) * r, u * r * .6, s * Math.sin(t) * r - 2], i * 3);
-  const a = Math.random() * 2 - 1, b = Math.random() * Math.PI * 2, q = Math.sqrt(1 - a * a);
-  swirl.set([q * Math.cos(b), a, q * Math.sin(b)], i * 3);
-  seed.set([Math.random(), Math.random(), Math.random(), Math.random()], i * 4);
-}
-geo.setAttribute('position', new THREE.BufferAttribute(sampleZiggurat(N), 3));
-geo.setAttribute('aCloud', new THREE.BufferAttribute(cloud, 3));
-geo.setAttribute('aSilk', new THREE.BufferAttribute(sampleSilk(N), 3));
-geo.setAttribute('aMark', new THREE.BufferAttribute(sampleMark(N), 3));
-geo.setAttribute('aSwirl', new THREE.BufferAttribute(swirl, 3));
-geo.setAttribute('aSeed', new THREE.BufferAttribute(seed, 4));
-
-const moteMat = new THREE.ShaderMaterial({
-  uniforms: {
-    uTime: { value: 0 }, uIntro: { value: 0 }, uRot: { value: 0 }, uSilk: { value: 0 },
-    uMark: { value: 0 }, uDust: { value: 0 }, uOpacity: { value: 1 }, uScale: { value: 1 },
-    uPx: { value: renderer.getPixelRatio() }, uSize: { value: small ? 2.6 : 2.2 },
-  },
-  vertexShader: `
-    attribute vec3 aCloud, aSilk, aMark, aSwirl; attribute vec4 aSeed;
-    uniform float uTime, uIntro, uRot, uSilk, uMark, uDust, uScale, uPx, uSize;
-    varying float vGold, vAlpha;
-    float stag(float g, float d) { return smoothstep(0., 1., clamp(g * 1.7 - d * .7, 0., 1.)); }
-    vec3 arc(vec3 a, vec3 b, float e, float k) {
-      vec3 mid = (a + b) * .5 + aSwirl * length(b - a) * k;
-      return mix(mix(a, mid, e), mix(mid, b, e), e);
-    }
-    void main() {
-      float d = aSeed.x;
-      // The hologram ziggurat, turning.
-      vec3 z = position;
-      float c = cos(uRot), s = sin(uRot);
-      z = vec3(c * z.x + s * z.z, z.y, -s * z.x + c * z.z);
-      float scan = sin(z.y * 34. - uTime * 2.2) * .5 + .5;
-      vec3 p = arc(aCloud, z, stag(uIntro, d), .5);
-
-      // The sheet of writing, lifting like silk.
-      vec3 w = aSilk;
-      float t = uTime * .55;
-      w.z += .32 * sin(1.25 * w.x + t) + .22 * sin(.9 * w.y - t * .8 + 1.4 * sin(.7 * w.x + t * .5));
-      w.y += .07 * sin(1.7 * w.x - t * 1.1);
-      float tilt = -.32; w = vec3(w.x, w.y * cos(tilt) - w.z * sin(tilt), w.y * sin(tilt) + w.z * cos(tilt));
-      float eS = stag(uSilk, d);
-      p = arc(p, w, eS, .45);
-
-      float eM = stag(uMark, 1. - d);
-      p = arc(p, aMark, eM, .55);
-
-      // Gold dust: the form loosens and drifts while photographs play.
-      p += aSwirl * uDust * (1.4 + 2.2 * aSeed.y) + vec3(sin(uTime * .3 + d * 40.), cos(uTime * .25 + d * 30.), 0.) * uDust * .25;
-      // Each mote floats on its own small loop, crossing its neighbours.
-      float ft = uTime * (.35 + .4 * aSeed.z);
-      p += vec3(sin(ft + d * 31.), sin(ft * 1.3 + d * 17.), cos(ft * .9 + d * 23.)) * (.012 + .022 * aSeed.y) * (1. - eM);
-      p *= uScale;
-
-      vec4 mv = modelViewMatrix * vec4(p, 1.);
-      gl_Position = projectionMatrix * mv;
-      float size = uSize * (.55 + aSeed.z * .9) * (1. + eM * .35);
-      gl_PointSize = size * uPx * clamp(6. / -mv.z, .7, 1.35);
-      vGold = max(max(eS, eM), step(.9, aSeed.w));
-      // Dense gold would burn to white under additive light; the mark is
-      // the densest form, so its motes are the faintest.
-      vAlpha = mix(.55 + .45 * scan, 1., max(eS, eM)) * (.45 + .55 * aSeed.y) * mix(1., .055, eM);
-      // Motes the camera passes through melt away instead of filling the view.
-      vAlpha *= smoothstep(.05, .6, -mv.z);
-    }`,
-  fragmentShader: `
-    uniform float uOpacity;
-    varying float vGold, vAlpha;
-    void main() {
-      vec2 q = gl_PointCoord - .5; float r = dot(q, q) * 4.;
-      if (r > 1.) discard;
-      float a = pow(1. - r, 1.6) * vAlpha * uOpacity;
-      vec3 ice = vec3(.55, .7, 1.), gold = vec3(1., .8, .42);
-      gl_FragColor = vec4(mix(ice, gold, vGold), a);
-    }`,
-  transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending,
-});
-const motes = new THREE.Points(geo, moteMat);
-motes.renderOrder = 2;
-scene.add(motes);
-
-// Stars far behind everything.
-const starGeo = new THREE.BufferGeometry();
-const SN = small ? 1400 : 2600, sp = new Float32Array(SN * 3), ss = new Float32Array(SN);
-for (let i = 0; i < SN; i++) { sp.set([rnd(-40, 40), rnd(-14, 26), rnd(-60, -25)], i * 3); ss[i] = Math.random(); }
-starGeo.setAttribute('position', new THREE.BufferAttribute(sp, 3));
-starGeo.setAttribute('aS', new THREE.BufferAttribute(ss, 1));
-const starMat = new THREE.ShaderMaterial({
-  uniforms: { uTime: { value: 0 }, uOpacity: { value: 1 }, uPx: { value: renderer.getPixelRatio() } },
-  vertexShader: `attribute float aS; uniform float uTime, uPx; varying float vA;
-    void main() { vec4 mv = modelViewMatrix * vec4(position, 1.); gl_Position = projectionMatrix * mv;
-      gl_PointSize = (1. + aS * 1.8) * uPx; vA = .35 + .65 * (.5 + .5 * sin(uTime * (.6 + aS * 1.4) + aS * 60.)); }`,
-  fragmentShader: `uniform float uOpacity; varying float vA;
-    void main() { vec2 q = gl_PointCoord - .5; float r = dot(q, q) * 4.; if (r > 1.) discard;
-      gl_FragColor = vec4(vec3(.85, .9, 1.), (1. - r) * vA * uOpacity); }`,
-  transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
-});
-scene.add(new THREE.Points(starGeo, starMat));
-
-// A ring of light that spreads from the finished mark.
-const ring = new THREE.Mesh(new THREE.RingGeometry(.98, 1, 160),
-  new THREE.MeshBasicMaterial({ color: 0xF3DE9E, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false }));
-ring.position.set(0, .7, 0); ring.renderOrder = 3;
-scene.add(ring);
-
-/* ---------- Scroll → story. */
-const captions = [...document.querySelectorAll('.st-caption')];
-const hero = document.getElementById('st-hero');
-const finale = document.getElementById('st-finale');
-const dots = [...document.querySelectorAll('.st-rail span')];
-const scrim = document.getElementById('st-scrim');
-const skip = document.getElementById('st-skip');
-let target = 0, shown = 0, introStart = performance.now();
-const trackEl = document.getElementById('st-track');
-const layer = document.getElementById('st-layer');
-const readScroll = () => {
-  const max = trackEl.offsetHeight - innerHeight;
-  target = max > 0 ? clamp(scrollY / max) : 0;
-  const past = scrollY > trackEl.offsetHeight - innerHeight * .55;
-  document.body.classList.toggle('story-done', past);
-  canvas.style.opacity = 1 - clamp((scrollY - (trackEl.offsetHeight - innerHeight)) / (innerHeight * .6));
-};
-addEventListener('scroll', readScroll, { passive: true });
-let mx = 0, my = 0;
-addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; }, { passive: true });
-
-function resize() {
-  renderer.setSize(innerWidth, innerHeight, false);
-  camera.aspect = innerWidth / innerHeight;
-  camera.updateProjectionMatrix();
-  for (const m of Object.values(photos)) fitPhoto(m, 6);
-  moteMat.uniforms.uScale.value = clamp(camera.aspect / 1.15, .5, 1);
-  // Big enough that the points close up into a picture before they break.
-  cloudMat.uniforms.uSize.value = small ? 1.7 : 1.5;
-  readScroll();
-}
-addEventListener('resize', resize);
-resize();
-
-// The story in scroll fractions. Each photograph holds over [a, b]; the
-// gap to the next one is where it breaks apart and becomes the next.
-const shots = [
-  { key: '68', a: .105, b: .16, from: [0, -.75, 6.5], to: [.15, .55, 4.9] },
-  { key: '71', a: .27, b: .325, from: [-.35, .1, 6.3], to: [.2, -.05, 5.1] },
-  { key: '69', a: .355, b: .41, from: [.3, .2, 6.2], to: [-.15, -.1, 5.2] },
-  { key: '70', a: .44, b: .495, from: [-.5, 0, 6.2], to: [.45, .05, 5.3] },
-  { key: '85', a: .525, b: .58, from: [0, -.2, 6.4], to: [0, .1, 5.0] },
-  { key: '87', a: .61, b: .665, from: [.4, 0, 6.2], to: [-.3, .05, 5.2] },
-  { key: '86', a: .695, b: .75, from: [-.3, -.1, 6.2], to: [.25, .1, 5.1] },
-  { key: '94', a: .78, b: .835, from: [0, .1, 6.6], to: [0, -.05, 4.8] },
-  { key: '93', a: .865, b: .92, from: [.2, -.3, 6.3], to: [-.1, .2, 5.2] },
-];
-const MARK_AT = .935;
-// The climb, in the hologram's own units (scaled with it on small screens):
-// to the foot of the stair, up it, and through the shrine's gate.
-const V = (x, y, z) => new THREE.Vector3(x, y, z);
-const climb = new THREE.CatmullRomCurve3([V(0, .1, 6), V(0, .45, 3.1), V(0, .95, 1.75), V(0, 1.52, .95), V(0, 1.48, .5), V(0, 1.47, -.25)]);
-const climbLook = new THREE.CatmullRomCurve3([V(0, .03, 0), V(0, .8, .9), V(0, 1.35, .45), V(0, 1.48, .17), V(0, 1.47, 0), V(0, 1.47, -1)]);
-const flash = document.getElementById('st-flash');
-const lerp3 = (x, y, t) => x.map((v, i) => v + (y[i] - v) * t);
-// Where the camera is at moment t (0-1) of a shot. On a narrow screen a
-// wide picture is wider than the view, so the camera travels across it.
-function camFor(s, t) {
-  const c = lerp3(s.from, s.to, t);
-  const view = 2 * c[2] * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.aspect;
-  const extra = (photos[s.key].scale.x - view) / 2;
-  if (extra > view * .3) c[0] = (s.to[0] >= s.from[0] ? 1 : -1) * extra * .75 * (2 * t - 1);
-  return c;
-}
-
-// The arrow takes you to the start of the next scene.
-const SCENES = [.105, .175, .265, .35, .435, .52, .605, .69, .775, .86, .955];
-document.getElementById('st-skip').addEventListener('click', () => {
-  const max = trackEl.offsetHeight - innerHeight;
-  const next = SCENES.find(s => s > target + .004);
-  scrollTo({ top: next === undefined ? trackEl.offsetHeight : next * max, behavior: reduced ? 'auto' : 'smooth' });
-});
-
-function frame(now) {
-  const time = now / 1000;
-  shown += (target - shown) * (reduced ? 1 : .075);
-  const p = shown;
-
-  // Hero: the hologram assembles on load and turns as you start to scroll.
-  const intro = reduced ? 1 : clamp((now - introStart) / 3200);
-  const u = moteMat.uniforms;
-  u.uTime.value = reduced ? 0 : time;
-  u.uIntro.value = ease(intro);
-  // The climb: the hologram turns its stair to you and grows as the
-  // camera walks up it and through the shrine's gate.
-  const fly = seg(p, .012, .094);
-  const free = reduced ? 0 : time * .12;
-  const facing = Math.round(free / (Math.PI * 2)) * Math.PI * 2;
-  u.uRot.value = free + (facing - free) * ease(seg(fly, 0, .3));
-  u.uSilk.value = ease(seg(p, .16, .22));
-  u.uMark.value = ease(seg(p, MARK_AT, MARK_AT + .04));
-  const dust = Math.max(window1(p, .105, .155, .012), window1(p, .255, .925, .015));
-  u.uDust.value = ease(dust);
-  u.uOpacity.value = 1 - .88 * dust;
-  starMat.uniforms.uTime.value = time;
-  starMat.uniforms.uOpacity.value = 1 - .8 * window1(p, .255, .925);
-
-  // Photographs: which one shows, and the break between two of them.
-  let cam = null;
-  cloudMat.uniforms.uOpacity.value = 0;
-  photoCloud.visible = false;
-  shots.forEach((s, i) => {
-    const prev = shots[i - 1], next = shots[i + 1];
-    const inA = i === 0 ? .094 : i === 1 ? .245 : s.a - (s.a - prev.b) * .45;
-    const outB = i === 0 ? .172 : !next ? .935 : s.b + (next.a - s.b) * .45;
-    const o = Math.min(seg(p, inA, s.a), 1 - seg(p, s.b, outB));
-    const m = photos[s.key];
-    m.material.uniforms.uOpacity.value = o;
-    m.visible = o > .001;
-    if (p >= s.a && p <= s.b) cam = camFor(s, ease(seg(p, s.a, s.b)));
-    else if (p > inA && p < s.a && i < 2) cam = camFor(s, 0);
-    else if (p > s.b && p < outB && (i === 0 || !next)) cam = camFor(s, 1);
-    // The break into the next photograph.
-    if (i >= 1 && next && p > s.b && p < next.a) {
-      const t = seg(p, s.b, next.a);
-      setCloudPair(s.key, next.key);
-      if (cloudGeo.userData.ready === s.key + '>' + next.key) {
-        const A = photos[s.key].scale, B = photos[next.key].scale;
-        cloudMat.uniforms.uSA.value.set(A.x, A.y); cloudMat.uniforms.uSB.value.set(B.x, B.y);
-        cloudMat.uniforms.uDA.value = photos[s.key].material.uniforms.uAmount.value;
-        cloudMat.uniforms.uDB.value = photos[next.key].material.uniforms.uAmount.value;
-        cloudMat.uniforms.uMix.value = ease(seg(t, .18, .82));
-        cloudMat.uniforms.uTime.value = time;
-        cloudMat.uniforms.uOpacity.value = Math.min(seg(t, 0, .22), 1 - seg(t, .78, 1));
-        photoCloud.visible = true;
-      }
-      cam = lerp3(camFor(s, 1), camFor(next, 0), ease(t));
-    }
-  });
-
-  // The camera: on its path through a photograph, or resting, always with
-  // a slow drift (so the pictures live on a phone too) and pointer parallax.
-  const drift = reduced ? [0, 0] : [Math.sin(time * .23) * .12, Math.cos(time * .19) * .08];
-  let [cx, cy, cz] = cam || [0, .1, 6];
-  let look = null;
-  if (!cam && fly > 0) {
-    const k = u.uScale.value, t = ease(fly);
-    const at = climb.getPoint(t), to = climbLook.getPoint(t);
-    [cx, cy, cz] = [at.x * k, at.y * k, at.z * k];
-    look = [to.x * k, to.y * k, to.z * k];
-  }
-  cx += drift[0] + mx * .3; cy += drift[1] - my * .22;
-  camera.position.set(cx, cy, cz);
-  if (look) camera.lookAt(look[0], look[1], look[2]); else camera.lookAt(cx * .35, cy * .35, 0);
-  // Through the gate: the light closes in, then opens on Ur.
-  flash.style.opacity = seg(fly, .8, .98) * (1 - seg(p, .096, .11));
-
-  // The ring, once the mark is whole.
-  const r = seg(p, MARK_AT + .03, .99);
-  ring.scale.setScalar((1.2 + r * 2.4) * u.uScale.value);
-  ring.material.opacity = r > 0 && r < 1 ? (1 - r) * .55 : 0;
-
-  // Captions.
-  hero.style.opacity = 1 - seg(p, .006, .025);
-  let shade = 0;
-  for (const c of captions) {
-    const o = window1(p, +c.dataset.in, +c.dataset.out, .012);
-    shade = Math.max(shade, o);
-    c.style.opacity = o;
-    c.style.transform = `translateY(${(1 - o) * 18}px)`;
-  }
-  const f = seg(p, .955, .985);
-  scrim.style.opacity = Math.max(shade, f * .7);
-  finale.style.opacity = f;
-  finale.classList.toggle('st-on', f > .5);
-  skip.style.opacity = f > .5 ? 0 : 1;
-  const chapter = [.05, .16, .25, .34, .425, .51, .595, .68, .765, .85, .93, 1].findIndex(e => p < e);
-  dots.forEach((d, i) => d.classList.toggle('st-on', i === chapter));
-
-  // Nothing to draw once the canvas has faded under the site.
-  if (+canvas.style.opacity !== 0) renderer.render(scene, camera);
+  addEventListener('scroll', () => { update(); onScrollTop(); }, { passive: true });
+  addEventListener('resize', build);
+  new ResizeObserver(() => build()).observe(journey);
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(build);
+  build(); onScrollTop();
   requestAnimationFrame(frame);
-}
-requestAnimationFrame(frame);
+
+  /* ---------- station demos ---------- */
+  // booking
+  const days = $$('.day'), bookBtn = $('#bookBtn'), ticket = $('#ticket');
+  let chosen = null;
+  days.forEach(b => b.addEventListener('click', () => {
+    days.forEach(x => x.setAttribute('aria-pressed', x === b)); chosen = b;
+    bookBtn.disabled = false; ticket.classList.remove('show'); bookBtn.textContent = 'احجز';
+  }));
+  bookBtn.addEventListener('click', () => {
+    if (!chosen) return;
+    $('#tNum').textContent = +chosen.dataset.n + 1;
+    $('#tTime').textContent = chosen.dataset.t;
+    ticket.classList.remove('show'); void ticket.offsetWidth; ticket.classList.add('show');
+    bookBtn.textContent = 'انحجز ✓';
+  });
+
+  // queue
+  const qItems = $$('#queue li'); let qi = 0;
+  function paintQueue() {
+    qItems.forEach((li, i) => { li.classList.toggle('cur', i === qi); li.classList.toggle('done', i < qi); });
+    $('#qNow').textContent = qItems[Math.min(qi, qItems.length - 1)].dataset.n;
+  }
+  paintQueue();
+  $('#nextBtn').addEventListener('click', () => {
+    qi = (qi + 1) % qItems.length;
+    paintQueue();
+    $('#qMsg').textContent = qi === 0 ? 'رجعنا لأول الطابور، جرّبها مرة ثانية' : `ينادى ${qItems[qi].querySelector('b').textContent}، والرقم تغيّر على التلفزيون`;
+  });
+
+  // prescription
+  const rx = $('#rx'), rxMsg = $('#rxMsg');
+  const drugs = {
+    amlo: { add: '<li><div><b>Amlodipine 5 mg</b><br><small>حبة صباحاً، 30 يوم</small></div><span class="chip ok">من قالب الضغط</span></li>', msg: '<div class="alert ok">انضاف من قالب «ارتفاع ضغط الدم»، بلا تداخل مع علاجها الحالي</div>' },
+    amox: { msg: '<div class="alert bad">ما انضاف: Amoxicillin من عائلة البنسلين، وزينب عندها حساسية بنسلين</div>' },
+    clar: { msg: '<div class="alert warn">تنبيه تداخل: Clarithromycin يرفع مستوى Atorvastatin بالدم ويزيد خطر أذى العضلات. فكّر ببديل أو أوقف الستاتين مؤقتاً</div>' },
+  };
+  $$('#pick button').forEach(b => b.addEventListener('click', () => {
+    const d = drugs[b.dataset.d];
+    rxMsg.innerHTML = d.msg;
+    if (d.add) { rx.insertAdjacentHTML('beforeend', d.add); b.disabled = true; }
+  }));
+
+  // lab: QR-looking code and the lock
+  (function qr() {
+    const c = $('#qr'), x = c.getContext('2d'), n = 25;
+    let seed = 5379828;
+    const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    x.fillStyle = '#FFFDF8'; x.fillRect(0, 0, n, n); x.fillStyle = '#17213A';
+    const finder = (ox, oy) => { x.fillRect(ox, oy, 7, 7); x.fillStyle = '#FFFDF8'; x.fillRect(ox + 1, oy + 1, 5, 5); x.fillStyle = '#17213A'; x.fillRect(ox + 2, oy + 2, 3, 3); };
+    for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
+      const inF = (i < 8 && j < 8) || (i > n - 9 && j < 8) || (i < 8 && j > n - 9);
+      if (!inF && rnd() > .52) x.fillRect(i, j, 1, 1);
+    }
+    finder(0, 0); finder(n - 7, 0); finder(0, n - 7);
+  })();
+  $('#payBtn').addEventListener('click', () => {
+    $('#res').classList.remove('locked');
+    $('#paid').textContent = '35,000'; $('#left').textContent = '0';
+    const ch = $('#resChip'); ch.textContent = 'مفتوحة'; ch.className = 'chip ok';
+  });
+
+  // pharmacy
+  $('#dispBtn').addEventListener('click', e => {
+    $('#disp').classList.add('done');
+    e.currentTarget.disabled = true; e.currentTarget.textContent = 'انصرفت ✓';
+    $('#dispMsg').textContent = 'ودخلت «علاجاتي» بهاتف المراجعة، وكل جرعة إلها إشعار';
+  });
+
+  /* ---------- roles ---------- */
+  const roles = [
+    { name: 'المراجع', title: 'المراجع وعائلته', intro: 'تطبيق ببلاش تلگى بيه طبيبك وتحجز، تحجز التحليل والأشعة، وتحتفظ بسجل العائلة كلها.', count: '7,720', countLabel: 'طبيب بالدليل، بـ18 محافظة', feats: [
+      ['دليل الأطباء', 'بحث بالاسم أو الاختصاص أو المحافظة، ولكل طبيب صفحة بخبرته وعيادته على الخريطة.'],
+      ['حجز ورقم بالطابور', 'تعرف دورك ووقتك التقريبي قبل لا تطلع من البيت.'],
+      ['علاجاتي', 'كل دوا ينصرف يصير جدول جرعات ويا تذكير بوقته.'],
+      ['حساب للعائلة', 'الزوجة والأطفال والوالدين بحساب واحد، ولكل واحد سجله.'],
+      ['لقاحات طفلي', 'جدول التحصين الوطني العراقي لكل طفل، وتذكير قبل كل موعد.'],
+      ['عروض المختبرات', 'باقات بخصم إلكم، وكل تحليل باسمه العربي.'],
+      ['دورتي الشهرية', 'موعد الدورة الجاية وأيام الخصوبة، بخصوصية تامة.'],
+      ['استشارة عن بعد', 'محادثة بالنص والصور والصوت ويا طبيب يستقبل الاستشارات.'],
+    ] },
+    { name: 'الطبيب', title: 'العيادة كلها بشاشة وحدة', intro: 'على الهاتف وعلى حاسوب العيادة، من ملخص المريض لحسابات اليوم.', count: '0', countLabel: 'ورقة تضيع: كل شي بالملف', feats: [
+      ['ملخص قبل الزيارة', 'آخر تشخيص وعلاج ونتائج، واتجاه العلامات الحيوية.'],
+      ['وصفة أسرع وأأمن', 'قوالب لكل تشخيص، جرعة الأطفال بالوزن، وتنبيه الحساسية والتداخل والتكرار.'],
+      ['طلبات إلكترونية', 'تحاليل وأشعة وسونار توصل للمركز، ونتائجها ترجع إلك ويا تعليم الحرج منها.'],
+      ['متابعة المرضى', 'موعد المراجعة الجاية يتذكّره المريض، وقائمة بمن تأخر من المزمنين.'],
+      ['مستندات جاهزة', 'تقرير طبي، إجازة مرضية، رسالة إحالة على ترويستك.'],
+      ['حسابات العيادة', 'نقد وبطاقة وضمان يوم بيوم، والطابور يشتغل حتى بلا إنترنت.'],
+    ] },
+    { name: 'السكرتير', title: 'الاستقبال، بصلاحيات يحددها الطبيب', intro: 'يدير الطابور ويطبع، وما يكتب أي شي طبي ولا يشوف السجل.', count: '1', countLabel: 'طابور يجمع التطبيق والحضور المباشر', feats: [
+      ['طابور واحد', 'حجوزات التطبيق والحضور المباشر سوا، ويا تقديم وتأخير الدور.'],
+      ['الدفع عند الوصول', 'نقد أو بطاقة أو ضمان، بدون ما تنتهي الزيارة عند الطبيب.'],
+      ['العلامات الحيوية', 'يسجلها قبل الدخول، فيلگاها الطبيب گدامه.'],
+      ['تلفزيون الصالة', 'الرقم الحالي على شاشة الانتظار.'],
+      ['طباعة أوراق الطبيب', 'الوصفات والطلبات اللي يرسلها الطبيب مملوءة.'],
+      ['بلا إنترنت', 'يشتغل وقت الانقطاع ويرفع اللي سجّله من يرجع.'],
+    ] },
+    { name: 'المختبر', title: 'من الاستقبال لتسليم النتيجة', intro: 'ويا قناة مباشرة للمراجعين وللأطباء اللي يطلبون منك.', count: '213', countLabel: 'تحليل جاهز بأسمائه العربية', feats: [
+      ['استقبال ووصل QR', 'وصل حراري 80 أو 58 ملم أو A5، بالأسعار ووقت التسليم.'],
+      ['ورقة نتائج وحدة', 'أرقام أو اختيارات أو نص، والحدود الطبيعية حسب العمر والجنس.'],
+      ['قفل حتى التسديد', 'ما تطلع نتيجة لأحد ما دام اكو مبلغ باقي.'],
+      ['باقات وعروض', 'خصم إلكم يحط باقاتك گدام المراجعين بالتطبيق.'],
+      ['حسابات المالك', 'محمية برمز خاص: كشوف، دفعات، مصاريف، وصافي.'],
+      ['الضمان', 'المبالغ على كل شركة، شهر بشهر.'],
+    ] },
+    { name: 'الأشعة والسونار', title: 'التقرير أسرع، ويوصل ويا الصور', intro: 'للطبيب وللمراجع، والصور محفوظة بالسحابة.', count: 'QR', countLabel: 'رمز يفتح التقرير والصور', feats: [
+      ['قوالب تقارير', 'قوالب جاهزة، وقوالب المركز الخاصة بيه.'],
+      ['حاسبة الحمل', 'عمر الحمل والموعد المتوقع داخل تقرير السونار.'],
+      ['الصور ويا التقرير', 'تنرفع مضغوطة، ورمز QR يفتحها.'],
+      ['فحوص وتحضير', 'قائمة الفحوص بأسعارها وتعليمات التحضير، وحجز من التطبيق.'],
+      ['قفل حتى التسديد', 'التقرير والصور مقفولة لحد ما ينْدفع المبلغ كامل.'],
+      ['الضمان', 'تقارير على شركات الضمان ومستحقاتها شهر بشهر.'],
+    ] },
+    { name: 'الصيدلية', title: 'الوصفة توصل مقروءة', intro: 'والصرف يصنع للمراجع جدول علاجه تلقائياً.', count: '1', countLabel: 'ضغطة صرف، وجدول علاج كامل', feats: [
+      ['وصفات إلكترونية', 'بخط واضح وجرعات منظمة، ومحادثة ويا الطبيب وقت الحاجة.'],
+      ['زر صرف واحد', 'كل دوا يصير تذكير بالجرعة بهاتف المراجع.'],
+      ['الوصفة الورقية هم', 'تنصرف بنفس الطريقة وتدخل جدول المراجع.'],
+      ['إعادة صرف قريبة', 'قائمة بمن راح يخلص دواه قريباً.'],
+      ['الضمان', 'سعر لكل دوا والمجموع على الشركة، ويا كشف شهري.'],
+      ['بدليل الصيدليات', 'تطلع للمراجعين بالتطبيق.'],
+    ] },
+  ];
+  const tabs = $('#tabs'), panels = $('#rolePanels');
+  roles.forEach((r, i) => {
+    const t = document.createElement('button');
+    t.className = 'tab'; t.setAttribute('role', 'tab'); t.id = 'tab' + i; t.textContent = r.name;
+    t.setAttribute('aria-controls', 'role' + i); t.setAttribute('aria-selected', i === 0);
+    tabs.appendChild(t);
+    const p = document.createElement('div');
+    p.className = 'role' + (i === 0 ? ' show' : ''); p.id = 'role' + i; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', t.id);
+    p.innerHTML = `<div class="intro"><h3>${r.title}</h3><p>${r.intro}</p><div class="count num">${r.count}</div><small>${r.countLabel}</small></div>
+      <ul class="feats">${r.feats.map(([b, s]) => `<li><b>${b}</b><span>${s}</span></li>`).join('')}</ul>`;
+    panels.appendChild(p);
+    t.addEventListener('click', () => select(i));
+  });
+  function select(i) {
+    $$('.tab', tabs).forEach((t, j) => t.setAttribute('aria-selected', i === j));
+    $$('.role', panels).forEach((p, j) => p.classList.toggle('show', i === j));
+  }
+  tabs.addEventListener('keydown', e => {
+    const cur = $$('.tab', tabs).findIndex(t => t.getAttribute('aria-selected') === 'true');
+    const n = e.key === 'ArrowLeft' ? cur + 1 : e.key === 'ArrowRight' ? cur - 1 : null;   // RTL
+    if (n === null) return;
+    const k = (n + roles.length) % roles.length; select(k); $('#tab' + k).focus();
+  });
+})();
 </script>
 </body>
 </html>
